@@ -57,3 +57,24 @@ html, body {
     float:right;
     margin-left: 10px;
 }
+
+img.project-figure-left {
+    width: 280px;
+    height: auto;
+    float: left;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+img.project-figure-right {
+    width: 280px;
+    height: auto;
+    float: right;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+
+.clear{
+    clear: both;
+}
