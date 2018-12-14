@@ -4,15 +4,26 @@ title: Home
 
 I have received my Bachelors and PhD in Computer Science from the [University of São Paulo](http://www.usp.br) at the [Institute of Mathematics and Statistics](http://www.ime.usp.br) under the supervision of profs. [Roberto Hirata Jr](http://www.ime.usp.br/~hirata) and [Nina Hirata](http://www.ime.usp.br/~nina). I also did an internship at the [Institut National des Sciences Appliquées](http://www.insa-rouen.fr/) in Rouen under the supervision of professor [Stéphane Canu](http://asi.insa-rouen.fr/enseignants/~scanu/) in the [LITIS lab](http://litis.insa-rouen.fr/).
 
-Currently I am a lecturer at Insper's [Computer Engineering](https://www.insper.edu.br/graduacao/engenharia-computacao/) course and I also do research as a PosDoc at IAG-USP with prof. Cláudia de Oliveira.
+Currently I am an Assistant Professor at Insper's [Computer Engineering](https://www.insper.edu.br/graduacao/engenharia-computacao/) course.
 
-### Teaching (in portuguese)
+### Teaching 
 
-1. Sistemas de Hardware e Software 2017-2 - Engenharia da Computação;
+I teach courses belonging to the *Systems Development* core. Some of the materials are available online, but most are in Portuguese only.
+
+1. Desenvolvimento Aberto (Open Source Development) - [2018/2](https://igordsm.github.io/dev-aberto)
+1. SuperComputação (High Performance Computing) - [2018/2](https://www.github.com/igordsm/supercomp)
+1. Sistemas Hardware-Software (Computer Systems) - 2017/2, 2018/1
 
 ### Research Projects
 
-#### W-operator learning
+My research efforts are focused, at the moment, in Computer Science Education and Accessibility. I am still transitioning from my previous research project (shown below) and do not have strong results yet. We did present the preliminary works below, but they are not yet at the level I want to achieve. 
+
+1. MONTAGNER, IGOR S.; MIRANDA, F. R. ; HASHIMOTO, M. . Customizing rubrics to enable open-themed projects in Robotics and AI. In: PAEE/ALE, 2018, Brasília. International Symposium on Project Approaches in Engineering Education, 2018. v. 8. 
+2. MONTAGNER, IGOR S.; HASHIMOTO, M.; MIRANDA, F. R. . Avaliação entre pares. Rubricas. Educação em Engenharia. In: COBENGE, Congresso Brasileiro de Educação em Engenharia, 2018.
+
+More will certainly come in 2019!
+
+#### Thesis research
 
 W-operator learning investigates the use of Machine Learning techniques to estimate local image transformations. Each pixel is processed using only a small window around it. More details about the techniques studied in this area can be found at our tutorial ["Image operator learning and Applications"](http://ieeexplore.ieee.org/abstract/document/7812925/). My thesis is available at [USP virtual library](http://www.teses.usp.br/teses/disponiveis/45/45134/tde-21082017-111455/publico/tese_final.pdf). Code and other resources about this work are available at [TRIOSlib](http://trioslib.github.io).
 
