@@ -84,9 +84,10 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="vala-reactive-programming">Vala reactive programming</h1>
-<p>I've been doing some web programming using <a href="https://preactjs.com/">preact</a> these last weeks and one of the things that impressed the most was the way logic and UI are split in code. When doing functional components this is specially explicit. Your function returns whatever should be displayed by the component and receives a <code>props</code> object contaning all the information the components need to render. A component rerenders when some of its <code>props</code> are changed, either because an external component made changes or in response to an event. </p>
+<p>I've been doing some web programming using <a href="https://preactjs.com/">preact</a> these last weeks and one of the things that impressed the most was the way logic and UI are split in code. When doing functional components this is specially explicit. Your function returns whatever should be displayed by the component and receives a <code>props</code> object containing all the information the components need to render. A component rerenders when some of its <code>props</code> are changed, either because an external component made changes or in response to an event. </p>
 <p>IMHO, this really helps to organize code and separate concerns. All the logic is written in terms of the components' properties. The GUI is updated in response to changes in the properties in order to synchronize the component state with what is shown on screen. </p>
-<p>We can also achieve this in Vala using <code>properties</code> and <code>bindings</code> from GLib. In this article we will produce a login screen that validates the username and password fields. All code is available at <a href="https://github.com/igordsm/reactive-gtk-vala">Github</a>.  </p>
+<p>We can also achieve this in Vala using <code>properties</code> and <code>bindings</code> from GLib. In this article we will produce a login screen that validates the username and password fields. All code is available at <a href="https://github.com/igordsm/reactive-gtk-vala">Github</a>.</p>
+<p><img alt="" src="../reactive.gif" />  </p>
 <p><strong>Important</strong>: The repo contains many iterations of the code presented in this article. A comment containing the name of the original file is shown at the top of each code listing.  </p>
 <p>Let's start with the basic code to build the form above. This is just standard GTK code: all the ui elements are created in the <code>construct</code> method. The original file (<em>v1/main.vala</em>) also contains a <code>Gtk.Application</code> subclass that handles initialization and showing our form. </p>
 <p><strong>Vala tip</strong>: the <code>construct</code> block runs during an object's creation and after named constructors are called. </p>
@@ -202,7 +203,9 @@ class LoginForm : Gtk.Grid {
         validation_error = &quot;&quot;;
     }
 </code></pre>
-<p>And that's it for the <code>username</code> field. We can do exactly the same for the <code>password</code> field and arrive at the final code available at <code>final.vala</code> in the <a href="https://github.com/igordsm/reactive-gtk-vala">example repository</a>.</p></div>
+<p>And that's it for the <code>username</code> field. We can do exactly the same for the <code>password</code> field and arrive at the final code available at <code>final.vala</code> in the <a href="https://github.com/igordsm/reactive-gtk-vala">example repository</a>.</p>
+<p>Another interesting project is <a href="https://gitlab.gnome.org/jwestman/blueprint-compiler">Blueprint compiler</a>, which creates a sort of DSL for <em>Gtk</em> components. So, what do you think about this style of <em>Gtk</em> programming? Join the discussion <a href="https://dev.to/igordsm/vala-reactive-programming-2pf4">here</a>. </p>
+<p>If you liked this post consider <a href="https://www.buymeacoffee.com/igordsm">buying me a coffe</a> and/or following me on twitter at <a href="https://twitter.com/igor_montagner">@igor_montagner</a>. </p></div>
             </div>
         </div>
 
