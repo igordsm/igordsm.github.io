@@ -4,6 +4,11 @@ Hi, I'm Igor. I'm currently a Teaching Professor at Insper and also an open sour
 
 ----------
 
+## News
+
+* [(2021-12-06) Vala reactive programming](blog/2021-12-06) - Creating Vala apps that behave like React frontend apps (kinda)
+
+
 ## Curriculum Vitae
 
 - Bachelors and PhD in Computer Science ([University of São Paulo](http://www.usp.br)) under the supervision of profs. [Roberto Hirata Jr](http://www.ime.usp.br/~hirata) and [Nina Hirata](http://www.ime.usp.br/~nina)
@@ -19,7 +24,7 @@ Most of my time is currently devoted to teaching and writing educational open so
 When I'm not involved with teaching I contribute to open source software. I believe that writing software that people use is important both as a learning experience and as way to influence the way we do computing. 
 
 - [Open Development course](https://insper.github.io/dev-aberto) (Pt-BR): students contribute to FLOSS software and experience the contact with the community of people that develop it.
-- [elementary](https://elementary.io): I contribute mainly with Camera, Code and Terminal, but also have minor contributions in other places. [(more details)](elementary)
+- [elementary](https://elementary.io): I contribute mainly with Camera, Code and Terminal, but also have minor contributions in other places. [(details)](elementary)
 
 ## Support
 
