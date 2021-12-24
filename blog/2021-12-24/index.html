@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Igor Montagner">
+        <link rel="canonical" href="https://igordsm.github.io/blog/2021-12-24/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Vala reactive programming: part 2 - Igor Montagner</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/docco.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Igor Montagner</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">About me</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../elementary/" class="nav-link">elementary OS</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../talks/" class="nav-link">Talks</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../other-floss/" class="nav-link">Other projects</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/igordsm/edit/master/docs/blog/2021-12-24.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#vala-reactive-programming-part-2" class="nav-link">Vala reactive programming: part 2</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#dealing-with-events-inside-a-component" class="nav-link">Dealing with events inside a component</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#sending-information-out" class="nav-link">Sending information out</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#intermission-application-mixes-ui-and-logic" class="nav-link">Intermission: Application mixes UI and logic</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#receiving-information-from-other-components" class="nav-link">Receiving information from other components</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="vala-reactive-programming-part-2">Vala reactive programming: part 2</h1>
+<p>In the <a href="../2021-12-06/">last article</a> we explored how to use properties and bindings to create reactive style programming in Vala. All UI code was written in <code>construct</code> and all logic was represented by setting properties. UI was synchronized with the Widget state by binding properties to child widgets. Although the separation of concerns was nice, the example was too simple. There was only one component (the <code>LoginForm</code>) and no information was neither (i) sent to other components; or (ii) received from other components. In this article we'll create a second form that receives the validated user from <code>LoginForm</code> to a second form.</p>
+<p>All the example code for this article is available at the <em>part2</em> folder in <a href="https://github.com/igordsm/reactive-gtk-vala">this github repo</a></p>
+<p><img alt="" src="../reactive-p2.gif" /></p>
+<p>Our component architecture will be based on the following principle:</p>
+<h4 id="if-two-components-share-a-parent-then-its-the-parents-resposability-to-connect-them-into-a-meaningful-flow-for-the-application">If two components share a parent, then it's the parent's resposability to connect them into a meaningful flow for the application</h4>
+<p>Let's use this principle to extend the example from the <a href="../2021-12-06/">last article</a> and add a <code>UserInfoForm</code> after a succesful sign in. We'll start from the <em>part2/v0.vala</em> file.</p>
+<h2 id="dealing-with-events-inside-a-component">Dealing with events inside a component</h2>
+<p>Events are a place where UI and logic code seems hard to separate. It's quite natural, for instance, to create a <code>login_btn_click</code> event handler that uses both GUI calls to get information from the UI and properties. Fortunately, Vala also provides us with a very nice way of separating this: <code>lambda</code> functions as event handlers. </p>
+<pre><code class="language-c#">private void do_login () {
+    // check database and validate login here
+    // GUI calls are forbidden here, only properties and other methods can be used
+}
+
+construct {
+    // ....
+
+    login_btn.clicked.connect (() =&gt; {
+        // extract all info from the UI using GUI calls
+        do_login (); 
+    });
+}
+</code></pre>
+<p>In the <code>lambda</code> event handler we can extract all info from the UI using GUI calls and then pass this information along to a method. Since we can use bindings to link information between properties and GUI elements, the amount of code inside the <code>lambda</code> event handler can be quite small. In fact, it might only treat the event information and pass it on to a method that uses it. Another interesting point is that <code>lambda</code> can <em>ignore</em> arguments and their types, so if we don't use the <code>GEvent</code> that the handler is supposed to receive we can just ignore it in our declaration.</p>
+<p>This has two advantages:</p>
+<ol>
+<li><code>do_login</code> does not receive <code>Gtk.Event</code> (or similar), which means it can be called from anywhere in the code, not only in response to an user generated event.</li>
+<li>Event handlers often receive different arguments depending on which event they handle. The <code>lambda</code>handler is used to treat this arguments, so <code>do_login</code> is not tied to a single type of event. </li>
+</ol>
+<h2 id="sending-information-out">Sending information out</h2>
+<p>For sending information out of our components we can use <em>signals</em>. For instance, upon succesful login our <code>LoginForm</code> could emit a <code>login_succesful</code> signal that sends a <code>User</code> instance with the currently logged in user info. Now it's up to the parent of <code>LoginForm</code> to receive the signal and connect it to the next part of the application flow.</p>
+<p>First we modify <code>LoginForm</code>. For now our <code>User</code> class only contains the <code>username</code> property. Also, <code>username</code> is can only be assigned when creating an <code>User</code> instance.</p>
+<pre><code class="language-c#">class User : Object {
+    public string username { get; construct; }
+
+    public User (string username) {
+        Object (username: username);
+    }
+}
+
+
+class LoginForm : Gtk.Grid {
+    public signal void login_succesful (User u);
+
+    // ....
+
+    private void do_login() {
+        login_succesful (new User (username));
+    }
+}
+</code></pre>
+<p>Then we receive this information in our <code>Application</code> class:</p>
+<pre><code class="language-c#">class Application : Gtk.Application {
+
+    protected override void activate () {
+        var win = new Gtk.ApplicationWindow (this);
+        var login_form = new LoginForm ();
+        login_form.login_succesful.connect ((u) =&gt; {
+            print (&quot;%s\n&quot;, u.username);
+        });
+        win.add (login_form);
+        win.show ();
+    }
+
+}
+</code></pre>
+<p>The complete code is shown in <em>part2/v1.vala</em>.</p>
+<h2 id="intermission-application-mixes-ui-and-logic">Intermission: <code>Application</code> mixes UI and logic</h2>
+<p>Our <code>Application</code> class is not following the principles outline in the <a href="../2021-12-06/">last article</a>. Let's fix that while we add a new <code>Gtk.Stack</code> to hold our new <code>HelloForm</code>.</p>
+<pre><code class="language-c#">class HelloForm : Gtk.Grid {
+    construct {
+        expand = true;
+        valign = Gtk.Align.CENTER;
+        halign = Gtk.Align.CENTER;
+
+        var label = new Gtk.Label (&quot;Hello (username goes here)&quot;);
+        attach (label, 0, 0);
+    }
+}
+</code></pre>
+<p>Instead of creating widgets inside <code>Application</code> we introduce a <code>ApplicationWidget</code>, a class with the sole purpose of creating the workflow of data between our components. Our first version is shown below.</p>
+<pre><code class="language-c#">class ApplicationWidget : Gtk.Stack {
+    construct {
+        // ...
+
+        var login_form = new LoginForm ();
+        add_named (login_form, &quot;login_form&quot;);
+
+        var hello_form = new HelloForm ();
+        add_named (hello_form, &quot;hello_form&quot;);
+
+        visible_child_name = &quot;login_form&quot;;
+    }
+}
+</code></pre>
+<p>The complete code is shown in <em>part2/v2.vala</em>. Our application works exactly the same as before, but now UI is separated from the rest of the app in <code>Application</code> as well.</p>
+<h2 id="receiving-information-from-other-components">Receiving information from other components</h2>
+<p>For receiving information from the "outside" worlds we have two options: regular instance methods or public properties. The advantage of using instance methods is that they can be directly connected to other components' signals. However, we must take care of only updating properties inside it so we don't mix UI and logic. We can also use public properties to receive data from the "outside world".</p>
+<ul>
+<li>Use methods if something besides updating the UI is necessary (i.e. pulling information from the database or the web) </li>
+<li>Use properties otherwise </li>
+</ul>
+<p>We add a <code>user</code> property to <code>HelloForm</code> so it can receive the currently logged in user. We then connect the components in our <code>ApplicationWidget</code>:</p>
+<pre><code class="language-c#">class HelloForm : Gtk.Grid {
+    public User user { get; set; }
+
+    // ...
+}
+
+class ApplicationWidget : Gtk.Stack {
+    construct {
+        // ...
+
+        login_form.login_succesful.connect ((u) =&gt; {
+            hello_form.user = u;
+            visible_child_name = &quot;hello_form&quot;;
+        });
+
+    }
+}
+</code></pre>
+<p>The final part of this is to connect a change in <code>HelloForm.user</code> with the UI. A first could be creating a binding between <code>user.username</code> to the label text. This won't work, as we are not changing the <code>username</code> property of <code>user</code>, we are overwritting the whole user object. Our binding must reflect that and listen to changes on the entire <code>user</code> object.</p>
+<p>Up until this point we only used bindings with the same source and target type. GObject also allows <em>transformation</em> bindings, in which we bind properties with different types and provide a function to <em>transform</em> on type into the other.</p>
+<pre><code class="language-c#">class HelloForm : Gtk.Grid {
+    public User user { get; set; }
+
+    construct {
+        // ...
+
+        bind_property (&quot;user&quot;, label, &quot;label&quot;, BindingFlags.DEFAULT, (binding, srcval, ref targetval) =&gt; {
+            var user = (User) srcval.get_object ();
+            targetval.set_string(&quot;Hello, %s!&quot;.printf (user.username));
+            return true;
+        });
+
+    }
+}
+</code></pre>
+<p>Transformation functions receive <a href="https://valadoc.org/gobject-2.0/GLib.Value.html">GLib.Value</a>, so we need to convert to the type of objects we need. Now our <code>HelloForm</code> reacts to a change in the application state in a complex</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
