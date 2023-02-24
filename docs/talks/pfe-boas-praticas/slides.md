@@ -112,7 +112,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 ![width:700px](bob-esponja.jpg)
 
-* **Visão altruísta**: ter boas práticas ajuda a equipe a trabalhar melhor e a colaborar de maneira eficiente. É exigido pela líderança técnica/gerente de projeto.
+- **Visão altruísta**: ter boas práticas ajuda a equipe a trabalhar melhor e a colaborar de maneira eficiente. É exigido pela líderança técnica/gerente de projeto.
 
 
 ---------
@@ -122,7 +122,7 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 ![bg right](egocentric.jpg)
 
 
-* **Visão egocêntrica**: trabalhar em projeto bagunçado é desgastante e piora a qualidade do meu trabalho. 
+- **Visão egocêntrica**: trabalhar em projeto bagunçado é desgastante e piora a qualidade do meu trabalho. 
 
 **Custo de fazer é menor que o ônus de não fazer**
 
@@ -210,7 +210,9 @@ Cada momento que alguém da equipe perde tentando reproduzir o que outros fizera
 
 -----
 
-![](commit-pandas.png)
+![height:600px](commit-pandas.png)
+
+https://pandas.pydata.org/docs/development/contributing.html
 
 -----
 
@@ -241,5 +243,5 @@ Cada momento que alguém da equipe perde tentando reproduzir o que outros fizera
 5. outros membros do grupo **leem código** e comentam/tiram dúvidas
 6. quando todos estiverem OK faz o merge usando "Squash and Merge"
 
-[Exemplo active-handout](https://github.com/insper-education/active-handout-plugins-py/pull/76)
+[Exemplo active-handout](https://github.com/insper-education/active-handout-plugins-py/pull/76), [Exemplo KDE](https://invent.kde.org/utilities/kate/-/merge_requests/1078)
 
