@@ -1,0 +1,16 @@
+site_name: Igor Montagner
+site_url: https://igordsm.github.io/
+repo_url: https://github.com/igordsm
+site_author: Igor Montagner
+
+nav:
+    - index.md
+    - elementary.md
+    - talks.md
+    - other-floss.md
+
+theme:
+    name: flatly
+
+plugins:
+    - search
