@@ -1,6 +1,11 @@
-# Talks
+---
+title: Talks
+permalink: /talks/
+layout: page
+---
 
-Here's a list of some talks I gave in the last years.
+Here's a list of some talks I gave in the last years. 
+
 
 ## How to contribute to elementary
 
