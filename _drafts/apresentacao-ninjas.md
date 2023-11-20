@@ -1,13 +1,14 @@
 ---
 layout: post
 title:  "Encontro de Ninjas - início de semestre 2024/1"
-date:   2024-02-01 12:00:13 +0300
 categories: ninjas
 ---
 
 Organizei uma conversa com os Ninjas que atuarão na Ciência da Computação do Insper hoje. A apresentação abaixo guiou o andamento do encontro, mas como tivemos muitas discussões ela não dá conta de tudo o que foi feito e falado no dia.
 
-
+<div style="margin-left: auto; margin-right: auto; margin-bottom: 2em; max-width: 500px">
+    <iframe src="/assets/palestra-ninjas-24-1/slides.html" width="100%" height="300" ></iframe>
+</div>
 
 Discutimos as seguintes situações cotidianas:
 

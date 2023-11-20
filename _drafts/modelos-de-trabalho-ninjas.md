@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  "Modelos de Trabalho para Ninjas (alunos de graduação auxiliares)"
-date:   2023-11-24 21:49:13 +0000
 categories: ninjas
 ---
 
@@ -13,6 +12,7 @@ As seguintes expectativas gerais valem para todos os modelos:
 2. dedicar aproximadamente 4 horas por semana
 3. ser proativo/a na identificação de tarefas e proposição de soluções
 4. comprometer-se com as tarefas assumidas junto aos alunos e professores
+5. cuidar do sigilo de aspectos do curso relacionados a avaliação, notas e situações de alunos em geral
 
 Seguem abaixo 3 modelos de planos de trabalho que podem ser adaptados para cada disciplina e aluno candidato a ninja. Lembrando que cada matéria no Insper pode ter até 2 ninjas, então selecionar de acordo com a aptidão de cada ninja é recomendado.
 
