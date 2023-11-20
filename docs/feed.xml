@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-11-18T00:24:15+00:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Palestra sobre licenças de software e qualidade de projeto</title><link href="/talks/2023/11/15/palestra-pfe.html" rel="alternate" type="text/html" title="Palestra sobre licenças de software e qualidade de projeto" /><published>2023-11-15T21:49:13+00:00</published><updated>2023-11-15T21:49:13+00:00</updated><id>/talks/2023/11/15/palestra-pfe</id><content type="html" xml:base="/talks/2023/11/15/palestra-pfe.html"><![CDATA[<p>No semestre passado dei uma palestra para os alunos do Projeto de Final de Engenharia no Insper sobre licenças de software e qualidade de projeto de software. Como registro, a apresentação pode ser vista abaixo.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-11-20T18:37:27-03:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Dados todos os efeitos da IA na sociedade, a resultante é positiva?</title><link href="/reflexoes/2023/11/20/ia-resultante-positiva.html" rel="alternate" type="text/html" title="Dados todos os efeitos da IA na sociedade, a resultante é positiva?" /><published>2023-11-20T00:00:00-03:00</published><updated>2023-11-20T00:00:00-03:00</updated><id>/reflexoes/2023/11/20/ia-resultante-positiva</id><content type="html" xml:base="/reflexoes/2023/11/20/ia-resultante-positiva.html"><![CDATA[<style>
+.card-link-externo {
+    padding: 1.5em;
+    border: 1px #DDDDDD solid;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+.card-link-externo a {
+    margin-bottom: 0.5em;
+    display: block;
+    text-decoration: underline;
+    text-weight: bold;
+}
+.card-link-externo p {
+    margin-bottom: 0;
+}
+</style>
+
+<p>O texto abaixo me causou uma grande reflexão sobre IA e tecnologia na última semana.</p>
+
+<div class="card-link-externo">
+<a href="https://www1.folha.uol.com.br/ambiente/2023/11/canudo-de-papel-e-realmente-melhor-que-o-de-plastico-o-impacto-de-cada-um-segundo-a-ciencia.shtml">Canudo de papel é realmente melhor que de plástico?</a>
+<p>Canudos de papel também tem impacto ambiental e um monte de químicos eternos. Trocar canudos de plástico por papel não é tão obviamente efetivo quanto possa inicialmente parecer.</p>
+</div>
+
+<p>Diversos eventos que ocorreram nos últimos meses no Brasil me impactaram profundamente: quedas de energia, calor extremo, tiroteio em escolas, morte no show da Tatlor Swift, notícias falsas em eleições. Todos problemas complexos, importantes e difíceis de resolver.</p>
+
+<p>Todos os “maravilhosos” benefícios de IA que tenho visto não estão ajudando a resolver esses problemas. Não tem ChatGPT, Bard, Midjourney, dall-e e Bing à altura desses problemas. Mesmo tentativas de usar tecnologia a servíço de problemas complexos como saúde mental esbarram em <a href="https://foundation.mozilla.org/en/privacynotincluded/articles/are-mental-health-apps-better-or-worse-at-privacy-in-2023/">preocupações básicas de privacidade</a>.</p>
+
+<p>Outras melhorias importantes, como esta <a href="https://www.nature.com/articles/d41586-023-03552-y">notícia sobre previsão do tempo usando modelos de IA</a>, esbarram em um segundo problema: colocar planos em prática ainda requer pessoas e todas suas complexidades. Para se ter uma ideia do que isso significa, vale a pena ler o texto abaixo.</p>
+
+<div class="card-link-externo">
+<a href="https://www.wired.com/story/joi-ito-ai-and-bus-routes/"> Bus Routes in Boston </a>
+<p> Este artigo conta a história de uma mudança de horários de ônibus em Chicago feita por uma equipe de pesquisadores do MIT. O algoritmo e a solução encontrada por ele tinham diversos benefícios e cuidados com a população, mas diversos fatores humanos fizera a iniciativa de anos de trabalho naufragar.  </p>
+</div>
+
+<p>Isso tudo sem contar os problemas que já foram reportados com tecnologias baseadas em IA:</p>
+
+<ul>
+  <li><a href="https://earth.org/the-green-dilemma-can-ai-fulfil-its-potential-without-harming-the-environment/">Impacto ambiental</a></li>
+  <li><a href="https://piaui.folha.uol.com.br/nos-erros-de-reconhecimento-facial-um-caso-isolado-atras-do-outro/">Problemas com reconhecimento facial pela policia</a></li>
+  <li>Táxis autônomos tinham dificuldade para identificar crianças e a Cruise (controlada pela GM) sabia disso e continuou com os carros na rua. <a href="https://www.engadget.com/gm-recalls-nearly-1000-cruise-robotaxis-after-pedestrian-collision-183049933.html">Essa informação foi revelada após um acidente de trânsito envolvendo um dos táxis</a></li>
+  <li><a href="https://arxiv.org/pdf/1908.08313.pdf">radicalização via youtube</a></li>
+</ul>
+
+<p>Mais ainda: um brasileiro jovem médio teria dificuldade de verificar informações sugeridas por sistemas de IA e raciocinar sobre seus efeitos e benefícios. Afinal,<a href="https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/37089-em-2022-analfabetismo-cai-mas-continua-mais-alto-entre-idosos-pretos-e-pardos-e-no-nordeste">segundo o IBGE</a>, 18,3% dos jovens entre 15 e 29 anos não concluiram o ensino médio e cerca de 60% não estavam estudando.</p>
+
+<p>Da mesma maneira que o texto sobre os canudos de plástico, me parece que estamos adotando de maneira rápida uma série de tecnologias e ferramentas que tem tantas interações complexas que não é claro que a resultante disso é positiva. Ela pode ser positiva? Não sei, mas ferramentas de IA existem e os alunos usam. Como docente, gistaria de transformar esse uso então em algo que traga benefícios e que seja socialmente inserido. Imagine o que aconteceria se conseguissemos formar gente que tenha conhecimento profundo sobre tecnologia <strong>E</strong> se importa com sua utilização na sociedade? Pra mim essa é uma das questões mais interessantes da docência no momento e é algo que quero explorar mais no futuro.</p>]]></content><author><name></name></author><category term="reflexoes" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Palestra sobre licenças de software e qualidade de projeto</title><link href="/talks/2023/11/15/palestra-pfe.html" rel="alternate" type="text/html" title="Palestra sobre licenças de software e qualidade de projeto" /><published>2023-11-15T18:49:13-03:00</published><updated>2023-11-15T18:49:13-03:00</updated><id>/talks/2023/11/15/palestra-pfe</id><content type="html" xml:base="/talks/2023/11/15/palestra-pfe.html"><![CDATA[<p>No semestre passado dei uma palestra para os alunos do Projeto de Final de Engenharia no Insper sobre licenças de software e qualidade de projeto de software. Como registro, a apresentação pode ser vista abaixo.</p>
 
 <div style="margin-left: auto; margin-right: auto; max-width: 500px">
     <iframe src="/assets/palestra-pfe/slides.html" width="100%" height="300" />
