@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>PSP: alguns experimentos com desenvolvimento de software | Igor Montagner</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="PSP: alguns experimentos com desenvolvimento de software" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Depois de desnterrar meu PSP após algumas oconveras com alunos resolvi ligá-lo e brincar um pouco com ele. É um console portátil estranhamente pequeno para os padrões atuais, sendo ligeiramente menor que meu ceuluar e ridiculamente menor que um SteamDeck" />
+<meta property="og:description" content="Depois de desnterrar meu PSP após algumas oconveras com alunos resolvi ligá-lo e brincar um pouco com ele. É um console portátil estranhamente pequeno para os padrões atuais, sendo ligeiramente menor que meu ceuluar e ridiculamente menor que um SteamDeck" />
+<link rel="canonical" href="/psp/2023/11/29/experimentos-psp.html" />
+<meta property="og:url" content="/psp/2023/11/29/experimentos-psp.html" />
+<meta property="og:site_name" content="Igor Montagner" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-11-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="PSP: alguns experimentos com desenvolvimento de software" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-11-29T00:00:00+00:00","datePublished":"2023-11-29T00:00:00+00:00","description":"Depois de desnterrar meu PSP após algumas oconveras com alunos resolvi ligá-lo e brincar um pouco com ele. É um console portátil estranhamente pequeno para os padrões atuais, sendo ligeiramente menor que meu ceuluar e ridiculamente menor que um SteamDeck","headline":"PSP: alguns experimentos com desenvolvimento de software","mainEntityOfPage":{"@type":"WebPage","@id":"/psp/2023/11/29/experimentos-psp.html"},"url":"/psp/2023/11/29/experimentos-psp.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Igor Montagner" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Igor Montagner</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/talks/">Talks</a><a class="page-link" href="/CV/">CV</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">PSP: alguns experimentos com desenvolvimento de software</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2023-11-29T00:00:00+00:00" itemprop="datePublished">Nov 29, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Depois de desnterrar meu PSP após algumas oconveras com alunos resolvi ligá-lo e brincar um pouco com ele. É um console portátil estranhamente pequeno para os padrões atuais, sendo ligeiramente menor que meu ceuluar e ridiculamente menor que um SteamDeck</p>
+
+<p><img src="/assets/psp/foto-sdl.jpeg" alt="" /></p>
+
+<p>Por gostar de tecnologias abertas e afins, sempre tive instalados alguns homebrew no meu PSP. Só pela diversão resolvi hoje tentar compilar pacotes para o PSP. Não é algo exatamente comum de se fazer, mas gosto de aprender a programar em plataformas  não convencionais.</p>
+
+<p>Uma coisa sensacional do PSP é a evolução das ferramentas desenvolvimento não oficiais: <a href="https://pspdev.github.io/">PSPdev</a>. Não só várias bibliotecas relevantes para jogos como SDL2 e Lua tem versões para PSP como também é possível gerar jogos e programas que rodam também em PSPs que não usam Custom Firmware (ou seja, que não foram hackeados). Vou fazer um guia básico aqui de como fiz para compilar e rodar um dos exemplos do site diretamente no meu PSP.</p>
+
+<p><a href="https://github.com/igordsm/psp-sdl2-with-docker/tree/main">Tudo o que foi feito está disponível neste repositório do github</a>. Os comandos nessa página usam esses arquivos como referência.</p>
+
+<p>Para  facilitar a vida procurei primeiro por algum docker file ou release binário e encontrei esse repo: <a href="https://github.com/ticky/docker-pspdev/">ticky/docker-pspdev</a>. Tentei rodar diretamente, mas não funcionou pela imagem estar baseada em Ubuntu 12.04, que não tem mais repositórios online. Atualizei a imagem para 22.04 e mudei um pouquinho as dependências, conseguindo rodar comandos básicos na imagem de resultado.</p>
+
+<p>Para ter um shell com tudo instalado basta rodar</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -v $PWD:/src/  -it --rm igormontagner/pspdev
+</code></pre></div></div>
+
+<p>O código da pasta atual já estará disponível na pasta <code class="language-plaintext highlighter-rouge">/src</code>. Useis dois exemplos disponíveis no site do PSPdev: um com as bibliotecas nativas do PSP e outro com SDL2 (biblioteca multiplataforma muito usada). Para compilar ambos é só executar os comandos abaixo. Como estamos usando docker, fica muito fácil rodar somente ou ou dois comandos dentro do container e assim não precisamos nem criar uma sessão interativa :D</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir build &amp;&amp; cd build
+psp-cmake ..
+make
+</code></pre></div></div>
+
+<p>Isso deve ter criado um arquivo <code class="language-plaintext highlighter-rouge">EBOOT.PBP</code> na pasta <code class="language-plaintext highlighter-rouge">build</code>. É esse arquivo que representa um jogo no PSP. Para fazê-lo executável pasta ligar o PSP no PC, criar uma pasta <code class="language-plaintext highlighter-rouge">SDL</code> dentro da pasta <code class="language-plaintext highlighter-rouge">/GAME</code> e copiar o <code class="language-plaintext highlighter-rouge">EBOOT.PBP</code> para lá.</p>
+
+<video width="600" controls="">
+    <source src="/assets/psp/demo-sdl.mp4" type="video/mp4" />
+</video>
+
+<p>E é isso! Não é complicado codar e rodar programas no PSP e é essa uma das razões que a cena Homebrew foi tão forte nesse console. Olha só a quantidade de <a href="https://www.gamebrew.org/wiki/List_of_PSP_homebrew_applications">apps</a> e <a href="https://www.gamebrew.org/wiki/List_of_PSP_homebrew_games">jogos</a> homebrew! Alguns deles ainda são atualizados e existe até um port experimental da engine Godot :O</p>
+
+
+  </div><a class="u-url" href="/psp/2023/11/29/experimentos-psp.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Igor Montagner</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Igor Montagner</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/igordsm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">igordsm</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Igor&#39;s personal and academic website. </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
