@@ -1,4 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-11-20T18:37:27-03:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Dados todos os efeitos da IA na sociedade, a resultante é positiva?</title><link href="/reflexoes/2023/11/20/ia-resultante-positiva.html" rel="alternate" type="text/html" title="Dados todos os efeitos da IA na sociedade, a resultante é positiva?" /><published>2023-11-20T00:00:00-03:00</published><updated>2023-11-20T00:00:00-03:00</updated><id>/reflexoes/2023/11/20/ia-resultante-positiva</id><content type="html" xml:base="/reflexoes/2023/11/20/ia-resultante-positiva.html"><![CDATA[<style>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2023-11-29T21:29:18+00:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Modelos de Trabalho para Ninjas (alunos de graduação auxiliares)</title><link href="/ninjas/2023/11/24/modelos-de-trabalho-ninjas.html" rel="alternate" type="text/html" title="Modelos de Trabalho para Ninjas (alunos de graduação auxiliares)" /><published>2023-11-24T21:49:13+00:00</published><updated>2023-11-24T21:49:13+00:00</updated><id>/ninjas/2023/11/24/modelos-de-trabalho-ninjas</id><content type="html" xml:base="/ninjas/2023/11/24/modelos-de-trabalho-ninjas.html"><![CDATA[<p>Este documento detalha alguns modelos de trabalho para alunos de graduação que auxiliam em disciplinas. No Insper eles são chamados de NINJAS (Need Information Just Ask) e aparentemente herdaram o nome usado pelo Olin College of Engineering durante a parceria nos anos iniciais da Engenharia. Ter um plano de trabalho ajuda a explicitar as atividades esperadas do aluno, melhorar a qualidade do trabalho entregue e a interação ninja-alunos-professores.</p>
+
+<p>As seguintes expectativas gerais valem para todos os modelos:</p>
+
+<ol>
+  <li>ser respeitoso/a com os alunos e professores do curso</li>
+  <li>dedicar aproximadamente 4 horas por semana</li>
+  <li>ser proativo/a na identificação de tarefas e proposição de soluções</li>
+  <li>comprometer-se com as tarefas assumidas junto aos alunos e professores</li>
+</ol>
+
+<p>Seguem abaixo 3 modelos de planos de trabalho que podem ser adaptados para cada disciplina e aluno candidato a ninja. Lembrando que cada matéria no Insper pode ter até 2 ninjas, então selecionar de acordo com a aptidão de cada ninja é recomendado.</p>
+
+<p><strong>Engenheira/o de curso</strong>: atua no desenvolvimento de softwares que apoiam o andamento das disciplinas, melhorando suas ferramentas de avaliação e feedback. Estes alunos em geral não fazem horário de atendimento regular, já que a maior parte do seu tempo é dedicada à programação. Algumas de suas responsabilidades são:</p>
+
+<ul>
+  <li>desenvolver a aprimorar softwares abertos criados para as matérias</li>
+  <li>dar suporte a alunos com dificuldades em usar esses softwares</li>
+  <li>implantar novas versões dos softwares desenvolvidos</li>
+</ul>
+
+<p><strong>Auxiliar de prototipação e avaliação</strong>: Essa pessoa deverá realizar todos os trabalhos de avaliação antes da liberação para osalunos e ajudar na correção, realizando controle de qualidade dos trabalhos dos alunos. Pode realizarcorreções sob supervisão direta do professor da disciplina. Pode fazer horários de atendimento eventuais, especialmente perto de avaliações importantes. Algumas de suas responsabilidades são:</p>
+
+<ul>
+  <li>realizar atividades de aula e avaliações antes dos alunos e dar feedback sobre sua experiência emtempo hábil para o professor realizar melhorias</li>
+  <li>realizar controle de qualidade das entregas de trabalho dos alunos</li>
+  <li>fazer correção de atividades <strong>em conjunto com o professor da disciplina</strong></li>
+</ul>
+
+<p><strong>Auxiliar de suporte pedagógico</strong>: atua diretamente com alunos na solução de dúvidas em sala de aula e em horário de atendimento. Exige grande domínio do material, já que acompanha os alunos durante o processo de aprendizagem. Suas responsabilidades são</p>
+
+<ul>
+  <li>estar presente em todas (ou quase todas) aulas da disciplina</li>
+  <li>atender alunos durante as atividades práticas da disciplina</li>
+  <li>durante os atendimentos, guiar os alunos em seu aprendizado ao invés de dar as respostas dos exercícios</li>
+  <li>relatar dúvidas comuns e acompanhar o progresso da sala em conjunto com o/a docente responsável</li>
+</ul>
+
+<h2 id="como-usar-os-modelos">Como usar os modelos</h2>
+
+<p>Considerando que um aluno ninja trabalhará em média 4 horas semanais, não é razoável esperar que seja capaz de fazer de tudo um pouco e ainda ter um impacto significante no curso. Por isso, uma sugestão seria tornar concretas as sugestões de atividades nos modelos acima. Vou dar dois exemplos que usei na seleção para 2024/1.</p>
+
+<ul>
+  <li>
+    <p><strong>Vaga 1</strong> (baseado no modelo 2 - prototipação e avaliação): a pessoa selecionada irá adaptar exercícios que usem testes automáticos usando JUnit para serem disponibilizados via PrairieLearn. Além disso, irá também adaptar alguns exercícios usados em handouts para incluir aleatorização e disponibilizá-los para treino no PrairieLearn. Em semanas de entregas grandes pode dar atendimento extra.</p>
+  </li>
+  <li>
+    <p><strong>Vaga 2</strong> (baseado no modelo 3 - suporte pedagógico): a pessoa selecionada irá oferecer 2 horários de dúvidas de 1 hora durante a semana, além de criar animações de simulações dos algoritmos tratados em aula e ajudar a revisar os materiais de aula. A maioria dos resultados visíveis será na visualização de algoritmos e criação de simulações animadas passo a passo.</p>
+  </li>
+</ul>
+
+<!--
+## Materiais de divulgação úteis
+
+Pessoalmente eu gosto de anunciar as posições disponíveis para todos os alunos e escolher entre os que tem vontade de participar. Outros professores preferem convidar diretamente alunos. Se você quiser fazer um anúncio, pode usar o seguinte kit para criar material de divulgação. Em geral eu gosto de enviar via blackboard (ou Discord) e, dependendo do alcance desejado, também imprimo e colo na porta de alguns dos labs. 
+
+TODO: kit canva que uso 
+-->]]></content><author><name></name></author><category term="ninjas" /><summary type="html"><![CDATA[Este documento detalha alguns modelos de trabalho para alunos de graduação que auxiliam em disciplinas. No Insper eles são chamados de NINJAS (Need Information Just Ask) e aparentemente herdaram o nome usado pelo Olin College of Engineering durante a parceria nos anos iniciais da Engenharia. Ter um plano de trabalho ajuda a explicitar as atividades esperadas do aluno, melhorar a qualidade do trabalho entregue e a interação ninja-alunos-professores.]]></summary></entry><entry><title type="html">Dados todos os efeitos da IA na sociedade, a resultante é positiva?</title><link href="/reflexoes/2023/11/20/ia-resultante-positiva.html" rel="alternate" type="text/html" title="Dados todos os efeitos da IA na sociedade, a resultante é positiva?" /><published>2023-11-20T00:00:00+00:00</published><updated>2023-11-20T00:00:00+00:00</updated><id>/reflexoes/2023/11/20/ia-resultante-positiva</id><content type="html" xml:base="/reflexoes/2023/11/20/ia-resultante-positiva.html"><![CDATA[<style>
 .card-link-externo {
     padding: 1.5em;
     border: 1px #DDDDDD solid;
@@ -46,7 +103,7 @@
 
 <p>Mais ainda: um brasileiro jovem médio teria dificuldade de verificar informações sugeridas por sistemas de IA e raciocinar sobre seus efeitos e benefícios. Afinal,<a href="https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/37089-em-2022-analfabetismo-cai-mas-continua-mais-alto-entre-idosos-pretos-e-pardos-e-no-nordeste">segundo o IBGE</a>, 18,3% dos jovens entre 15 e 29 anos não concluiram o ensino médio e cerca de 60% não estavam estudando.</p>
 
-<p>Da mesma maneira que o texto sobre os canudos de plástico, me parece que estamos adotando de maneira rápida uma série de tecnologias e ferramentas que tem tantas interações complexas que não é claro que a resultante disso é positiva. Ela pode ser positiva? Não sei, mas ferramentas de IA existem e os alunos usam. Como docente, gistaria de transformar esse uso então em algo que traga benefícios e que seja socialmente inserido. Imagine o que aconteceria se conseguissemos formar gente que tenha conhecimento profundo sobre tecnologia <strong>E</strong> se importa com sua utilização na sociedade? Pra mim essa é uma das questões mais interessantes da docência no momento e é algo que quero explorar mais no futuro.</p>]]></content><author><name></name></author><category term="reflexoes" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Palestra sobre licenças de software e qualidade de projeto</title><link href="/talks/2023/11/15/palestra-pfe.html" rel="alternate" type="text/html" title="Palestra sobre licenças de software e qualidade de projeto" /><published>2023-11-15T18:49:13-03:00</published><updated>2023-11-15T18:49:13-03:00</updated><id>/talks/2023/11/15/palestra-pfe</id><content type="html" xml:base="/talks/2023/11/15/palestra-pfe.html"><![CDATA[<p>No semestre passado dei uma palestra para os alunos do Projeto de Final de Engenharia no Insper sobre licenças de software e qualidade de projeto de software. Como registro, a apresentação pode ser vista abaixo.</p>
+<p>Da mesma maneira que o texto sobre os canudos de plástico, me parece que estamos adotando de maneira rápida uma série de tecnologias e ferramentas que tem tantas interações complexas que não é claro que a resultante disso é positiva. Ela pode ser positiva? Não sei, mas ferramentas de IA existem e os alunos usam. Como docente, gistaria de transformar esse uso então em algo que traga benefícios e que seja socialmente inserido. Imagine o que aconteceria se conseguissemos formar gente que tenha conhecimento profundo sobre tecnologia <strong>E</strong> se importa com sua utilização na sociedade? Pra mim essa é uma das questões mais interessantes da docência no momento e é algo que quero explorar mais no futuro.</p>]]></content><author><name></name></author><category term="reflexoes" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Palestra sobre licenças de software e qualidade de projeto</title><link href="/talks/2023/11/15/palestra-pfe.html" rel="alternate" type="text/html" title="Palestra sobre licenças de software e qualidade de projeto" /><published>2023-11-15T21:49:13+00:00</published><updated>2023-11-15T21:49:13+00:00</updated><id>/talks/2023/11/15/palestra-pfe</id><content type="html" xml:base="/talks/2023/11/15/palestra-pfe.html"><![CDATA[<p>No semestre passado dei uma palestra para os alunos do Projeto de Final de Engenharia no Insper sobre licenças de software e qualidade de projeto de software. Como registro, a apresentação pode ser vista abaixo.</p>
 
 <div style="margin-left: auto; margin-right: auto; max-width: 500px">
     <iframe src="/assets/palestra-pfe/slides.html" width="100%" height="300" />
