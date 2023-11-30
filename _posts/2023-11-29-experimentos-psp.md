@@ -32,8 +32,7 @@ make
 
 Isso deve ter criado um arquivo `EBOOT.PBP` na pasta `build`. É esse arquivo que representa um jogo no PSP. Para fazê-lo executável pasta ligar o PSP no PC, criar uma pasta `SDL` dentro da pasta `/GAME` e copiar o `EBOOT.PBP` para lá. 
 
-<video width="600" controls>
-    <source src="/assets/psp/demo-sdl.mp4" type="video/mp4" />
+<video width="600" controls="" src="/assets/psp/demo-sdl.ogv">  
 </video>
 
 E é isso! Não é complicado codar e rodar programas no PSP e é essa uma das razões que a cena Homebrew foi tão forte nesse console. Olha só a quantidade de [apps](https://www.gamebrew.org/wiki/List_of_PSP_homebrew_applications) e [jogos](https://www.gamebrew.org/wiki/List_of_PSP_homebrew_games) homebrew! Alguns deles ainda são atualizados e existe até um port experimental da engine Godot :O
