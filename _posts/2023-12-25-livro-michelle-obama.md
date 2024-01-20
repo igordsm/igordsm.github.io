@@ -4,17 +4,6 @@ layout: post
 categories: livros
 ---
 
-<style>
-    img.capa {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 90%;
-        max-height: 300px
-    }
-</style>
-
-
 Acabei de ler o livro "Minha história" da Michelle Obama e gostei bastante. 
 
 ![Capa do livro "minha história" de Michelle Obama](https://m.media-amazon.com/images/I/815rLjPo9KL._AC_UF1000,1000_QL80_FMwebp_.jpg){: .capa }
