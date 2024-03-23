@@ -1,0 +1,428 @@
+<style>
+
+:root {
+	--red-color: #962426;
+	--h1-color: var(--red-color);
+	--color-fg-default: #6D6B6B;
+}
+
+section h1 {
+	position: absolute;
+	top: 1.5rem;
+}
+
+section img {
+	margin-left: auto;
+	margin-right: auto;
+
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+
+	display: block;
+		
+}
+
+section.side-by-side {
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+section.side-by-side p:nth-child(2) {
+	margin-left: 2rem;
+}
+
+section.side-by-side img {
+	width: 500px;
+}
+
+section.side-by-side > p.bottom {
+	flex-basis: 100%;
+}
+
+section.quote blockquote {
+    border:none;
+    quotes: "\201C""\201D""\2018""\2019";
+    position: relative;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+section.quote blockquote p:before {
+	content: open-quote;
+	font-weight: bold;
+	font-size:100px;
+	color: var(--red-color);
+	position: absolute;
+	left: -30px;
+	top: -50px;
+}
+
+section.quote blockquote p:after {
+	content: close-quote;
+	font-weight: bold;
+	font-size:100px;
+	color: var(--red-color);
+	position: absolute;
+	right: -15px;
+}
+
+section.front h1 {
+	position: relative;
+	margin-bottom: 2.3rem;
+	font-size: 2rem;
+	padding-top: 100px;
+}	
+
+section.front h2 {
+	text-align: right;
+	font-size: 1.3rem;
+	padding-left: 200px;
+}
+
+section.front strong {
+	color: #852022;
+}
+
+section.front img {
+	max-height: 40px;
+	display: inline-block;
+	float: right;
+}
+
+footer {
+	position: absolute;
+	right: 10px;
+	text-align: right;
+}
+
+section p.bottom-right {
+	position: absolute;
+	right: 50px;
+	bottom: 70px;
+	background-color: var(--red-color);
+	opacity: 0.6;
+	font-weight: bold;
+	max-width: 300px;	
+	padding: 0.3rem;
+	border-radius: 0.5rem;
+}
+
+</style>
+
+<!-- _class: front -->
+
+<h1 id="evaluating-mastery-oriented-grading-in-an-intensive-cs1-course">Evaluating Mastery-oriented Grading in an Intensive CS1 Course</h1>
+
+<h2 id="igor-montagner-rafael-corsi-andrew-kurauchi-mariana-silva-craig-zilles"><strong>Igor Montagner</strong>, Rafael Corsi, Andrew Kurauchi, Mariana Silva, Craig Zilles</h2>
+
+<p><img src="logo-insper.png" alt="" /> <img src="logo-uiuc.png" alt="" /></p>
+
+<hr />
+
+<h1 id="our-context---insper">Our context - Insper</h1>
+
+<p><img src="insper.jpg" alt="bg left:30%" /></p>
+
+<ul>
+  <li>Brazilian private non-profit institution</li>
+  <li>Scholarships + stipends for 10-15% of students</li>
+  <li>CS major started in 2022</li>
+  <li>Cohort-based (<em>no courses outside of major</em>)</li>
+</ul>
+
+<hr />
+
+<h1 id="developer-life---intensive-cs1-course">Developer Life - Intensive CS1 course</h1>
+
+<p><img src="aula.jpg" alt="bg left:30%" /></p>
+
+<ul>
+  <li>24 hours per week</li>
+  <li>6 two-hour in person meetings</li>
+  <li>5 office hours</li>
+  <li>Active learning with occasional mini-lectures and live coding</li>
+  <li>Shared between 3-5 professors</li>
+</ul>
+
+<hr />
+
+<h1 id="developerlife---intensive-cs1-course">DeveloperLife - Intensive CS1 course</h1>
+
+<h3 id="broad-view-into-many-aspects-of-computing">Broad view into many aspects of computing</h3>
+
+<h3 id="students-are-able-to-deliver-a-working-software">Students are able to deliver a working software</h3>
+
+<h3 id="every-course-from-the-2nd-semester-on-can-involve-coding">Every course from the 2nd semester on can involve coding</h3>
+
+<hr />
+
+<h1 id="developer-life---assessment">Developer Life - Assessment</h1>
+
+<p><img src="sem-overview.svg" alt="width:800px" /></p>
+
+<ul>
+  <li>5 low stakes formative quizzes $Q_i$ worth 10% of final grade</li>
+  <li>5 high(er) stakes Exams $E_i$ worth 55% of final grade</li>
+  <li>Each week a new topic is included</li>
+</ul>
+
+<h3 id="exams-are-spread-over-the-semester-to-allow-student-to-catch-up-if-necessary">Exams are spread over the semester to allow student to catch-up if necessary</h3>
+
+<h3 id="final-exam-grade-is-the-average-of-the-3-largest-scores">Final exam grade is the average of the 3 largest scores</h3>
+
+<hr />
+
+<h1 id="first-experience-challenges">First experience (challenges)</h1>
+
+<ul>
+  <li><strong>Tendency to increase the gap between the faster and the slower learners</strong></li>
+  <li>For students, catching-up was hard even with 5 exams
+    <ul>
+      <li>Double the workload</li>
+      <li>Even higher stakes on the last exam</li>
+    </ul>
+  </li>
+  <li>Coding-only exams gave us (instructors) little feedback on students weaknesses</li>
+</ul>
+
+<hr />
+
+<h1 id="mastery-learning-and-second-chance-testing">Mastery Learning and Second-chance testing</h1>
+
+<h3 id="incorporate-a-way-to-help-students-catch-up-into-the-regular-course-path">Incorporate a way to help students catch-up into the “regular” course path</h3>
+
+<p><strong>Second-chance testing</strong>: Every assessment includes a retake a few days later and some time dedicated to reviewing mistakes.</p>
+
+<ul>
+  <li>Reduce failure rates</li>
+  <li>Study for the second-chance remediating material missed on the first one</li>
+  <li>Reduces self-reported test anxiety</li>
+</ul>
+
+<hr />
+
+<h1 id="research-questions">Research Questions</h1>
+
+<ul>
+  <li><strong>RQ1</strong>: Do second chances help students to increase their performance over time in intensive courses?</li>
+  <li><strong>RQ2</strong>: Are second chances effective in reducing stress/mental load/weight of assessments in intensive courses?</li>
+</ul>
+
+<hr />
+
+<h1 id="intervention">Intervention</h1>
+
+<p>Cohort of Fall 2023 had the following changes</p>
+
+<ol>
+  <li>Add second chances for Quizzes</li>
+  <li>Two types of questions:
+    <ul>
+      <li>Short answer - parsons, multiple choice, fill the blank</li>
+      <li>Coding - autograded, involve problem solving, manual code quality evaluation</li>
+    </ul>
+  </li>
+  <li>Extra week for reviewing material between Exams 1 and 2</li>
+</ol>
+
+<hr />
+
+<p><img src="fig2a-1-gray.svg" alt="bg width:800px" /></p>
+
+<hr />
+
+<h1 id="methodology">Methodology</h1>
+
+<p>Mixed-methods study, $N=39$ students.</p>
+
+<ol>
+  <li>Quantitative analysis
+    <ul>
+      <li>Quiz and exam grades</li>
+      <li>Coding and short answer</li>
+    </ul>
+  </li>
+  <li>Qualitative study
+    <ul>
+      <li>Interviewed $10$ students</li>
+      <li>Grounded Theory</li>
+      <li>Prompts about mental state, study habits and test-taking strategies</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<p># Second chances on Quizzes</p>
+
+<p><img src="quiz-1st-retake.svg" alt="width:600px" /></p>
+
+<h3 id="improvements-in-all-topics">Improvements in all topics</h3>
+
+<h3 id="final-scores-include-both-first-and-second-attempts">Final scores include both first and second attempts</h3>
+
+<hr />
+
+<h1 id="second-chances-on-quizzes">Second chances on Quizzes</h1>
+
+<p>Students have different test-taking behaviors and gains</p>
+
+<ul>
+  <li><strong>ALL</strong> ($N=12$):
+    <ul>
+      <li>From failling to passing grades</li>
+    </ul>
+  </li>
+  <li><strong>FIRST</strong> ($N=6$):
+    <ul>
+      <li>Improved from already good grades (&gt;70%)</li>
+    </ul>
+  </li>
+  <li><strong>SKIP</strong> ($N=21$):
+    <ul>
+      <li>Almost all skipped $Q5$ (dictionaries)</li>
+      <li>Might be procrastinating/gaming the system</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h1 id="second-chances-on-exams">Second chances on Exams</h1>
+
+<p><img src="tabela1.png" alt="width:1800px" /></p>
+
+<ul>
+  <li>Short answers are satisfactory from the start</li>
+  <li>Coding questions start lower and trend upwards with decreasing standard deviation</li>
+</ul>
+
+<hr />
+
+<h1 id="second-chances-on-exams-1">Second chances on Exams</h1>
+
+<ul>
+  <li>5 exams, average of the largest 3 scores
+    <ul>
+      <li>Exams $E4$ and $E5$ are optional for some</li>
+    </ul>
+  </li>
+  <li>Taking $E4$ and/or $E5$ benefits students differently
+    <ul>
+      <li>$N=5$ went from failling to passing grade</li>
+      <li>$N=16$ improved a passing grade (&lt;75%)</li>
+      <li>$N=14$ improved an excellent grade (&gt;75%)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="students-are-getting-better-over-time">Students are getting better over time</h2>
+
+<h2 id="encouraging-results-for-the-slower-learners">Encouraging results for the slower learners</h2>
+
+<h2 id="many-students-are-taking-all-quizzesexams-even-when-they-dont-needed-it">Many students are taking all quizzes/exams even when they don’t needed it</h2>
+
+<p class="bottom-right">
+More statistical details in the paper!
+</p>
+
+<hr />
+
+<h1 id="interviews-analysis">Interviews analysis</h1>
+
+<ul>
+  <li>$N=10$ students with different final grades</li>
+  <li>Grounded theory analysis, 2 coding steps</li>
+  <li>
+    <p>Three main themes</p>
+
+    <ol>
+      <li>retake decision making</li>
+      <li>mental state</li>
+      <li>study habits</li>
+    </ol>
+  </li>
+</ul>
+
+<hr />
+
+<!-- _class: quote -->
+<h1 id="retake-decision-making">Retake decision making</h1>
+
+<p>Students find grading system confusing and are not sure if they can skip</p>
+
+<blockquote>
+  <p>(…)  I didn’t know how to make the calculation to see if it was worth it for me to retake the exam</p>
+</blockquote>
+
+<p>Exam is challeging in a good way</p>
+
+<blockquote>
+  <p>They were coding exercises that involved something quite challenging, you know? And we could do something interesting.</p>
+</blockquote>
+
+<!--
+> (...)  I didn't know how to make the calculation to see if it was worth it for me to retake the exam
+
+> So it's kind of strange not to take the test. Everyone is doing it and I'm not doing anything else. So I wanted to do it
+-->
+
+<hr />
+
+<!-- _class: quote -->
+<h1 id="mental-state">Mental state</h1>
+
+<p>First chance matters, but retakes help reduce anxiety after exams</p>
+
+<blockquote>
+  <p>It was good to have this second chance, because it was not discouraging. I think I even knew some cases of friends who didn’t do so well at the beginning, but they’re doing well now, and they didn’t give up.</p>
+</blockquote>
+
+<h3 id="being-rewarded-for-persistence">Being rewarded for persistence</h3>
+
+<hr />
+
+<!-- _class: quote -->
+<h1 id="study-habits">Study habits</h1>
+
+<p>Study habits did not change over time. Student display good attitude towards learning</p>
+
+<blockquote>
+  <p>You must always be studying, always up-to-date with the subject matter because, otherwise, it will accumulate, and the faculty won’t always be pushing you to study</p>
+</blockquote>
+
+<hr />
+
+<h1 id="lessons-learned-i">Lessons Learned I</h1>
+
+<ol>
+  <li>Adding second-chance testing had a positive effect on grades</li>
+  <li>Students reported decreased test-related stress
+    <ul>
+      <li>but not for the first-chance</li>
+    </ul>
+  </li>
+  <li>Good attitude towards learning was observed</li>
+</ol>
+
+<hr />
+
+<h1 id="lessons-learned-ii---improvements">Lessons Learned II - improvements</h1>
+
+<h3 id="feedback-delay-is-very-relevant-when-multiple-chances-exist">Feedback delay is very relevant when multiple chances exist</h3>
+
+<h3 id="grading-systems-for-large-in-terms-of-content-courses">Grading systems for large (in terms of content) courses</h3>
+
+<hr />
+
+<!-- _class: front -->
+
+<h1 id="evaluating-mastery-oriented-grading-in-an-intensive-cs1-course-1">Evaluating Mastery-oriented Grading in an Intensive CS1 Course</h1>
+
+<h2 id="igor-montagner-rafael-corsi-andrew-kurauchi-mariana-silva-craig-zilles-1"><strong>Igor Montagner</strong>, Rafael Corsi, Andrew Kurauchi, Mariana Silva, Craig Zilles</h2>
+
+<p><img src="logo-insper.png" alt="" /> <img src="logo-uiuc.png" alt="" /></p>
