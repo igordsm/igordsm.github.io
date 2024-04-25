@@ -9,7 +9,7 @@ Este documento detalha alguns modelos de trabalho para alunos de graduação que
 As seguintes expectativas gerais valem para todos os modelos:
 
 1. ser respeitoso/a com os alunos e professores do curso
-2. dedicar aproximadamente 4 horas por semana
+2. dedicar pelo menos 4 horas por semana
 3. ser proativo/a na identificação de tarefas e proposição de soluções
 4. comprometer-se com as tarefas assumidas junto aos alunos e professores
 5. cuidar do sigilo de aspectos do curso relacionados a avaliação, notas e situações de alunos em geral
@@ -37,7 +37,7 @@ Seguem abaixo 3 modelos de planos de trabalho que podem ser adaptados para cada 
 
 ## Como usar os modelos
 
-Considerando que um aluno ninja trabalhará em média 4 horas semanais, não é razoável esperar que seja capaz de fazer de tudo um pouco e ainda ter um impacto significante no curso. Por isso, uma sugestão seria tornar concretas as sugestões de atividades nos modelos acima. Vou dar dois exemplos que usei na seleção para 2024/1.
+Considerando que um aluno ninja trabalhará pelo menos umas 4 horas semanais, não é razoável esperar que seja capaz de fazer de tudo um pouco e ainda ter um impacto significante no curso. Por isso, uma sugestão seria tornar concretas as sugestões de atividades nos modelos acima. Vou dar dois exemplos que usei na seleção para 2024/1.
 
 - **Vaga 1** (baseado no modelo 2 - prototipação e avaliação): a pessoa selecionada irá adaptar exercícios que usem testes automáticos usando JUnit para serem disponibilizados via PrairieLearn. Além disso, irá também adaptar alguns exercícios usados em handouts para incluir aleatorização e disponibilizá-los para treino no PrairieLearn. Em semanas de entregas grandes pode dar atendimento extra.
 

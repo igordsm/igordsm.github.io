@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Datas em formato Excel OpenXML usando Nim | Igor Montagner</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Datas em formato Excel OpenXML usando Nim" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Representar dados em computadores é uma tarefa que parece fácil mas que é na verdade bem complicada. Vou falar um pouco aqui sobre uma experiência que tive trabalhando com planilhas Excel na linguagem Nim com a biblioteca xl." />
+<meta property="og:description" content="Representar dados em computadores é uma tarefa que parece fácil mas que é na verdade bem complicada. Vou falar um pouco aqui sobre uma experiência que tive trabalhando com planilhas Excel na linguagem Nim com a biblioteca xl." />
+<link rel="canonical" href="/code/2024/01/26/datas-excel.html" />
+<meta property="og:url" content="/code/2024/01/26/datas-excel.html" />
+<meta property="og:site_name" content="Igor Montagner" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-01-26T00:00:00-03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Datas em formato Excel OpenXML usando Nim" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-01-26T00:00:00-03:00","datePublished":"2024-01-26T00:00:00-03:00","description":"Representar dados em computadores é uma tarefa que parece fácil mas que é na verdade bem complicada. Vou falar um pouco aqui sobre uma experiência que tive trabalhando com planilhas Excel na linguagem Nim com a biblioteca xl.","headline":"Datas em formato Excel OpenXML usando Nim","mainEntityOfPage":{"@type":"WebPage","@id":"/code/2024/01/26/datas-excel.html"},"url":"/code/2024/01/26/datas-excel.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Igor Montagner" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Igor Montagner</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/talks/">Talks</a><a class="page-link" href="/CV/">CV</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Datas em formato Excel OpenXML usando Nim</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2024-01-26T00:00:00-03:00" itemprop="datePublished">Jan 26, 2024
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Representar  dados em computadores é uma tarefa que parece fácil mas que é na verdade bem complicada. Vou falar um pouco aqui sobre uma experiência que tive trabalhando com planilhas Excel na linguagem <a href="https://nim-lang.org">Nim</a> com a biblioteca <a href="https://github.com/khchen/xl/">xl</a>.</p>
+
+<p>Arquivos com extensão <em>.xlsx</em> estão no formato OpenXML, um padrão com especificação aberta que é basicamente um arquivo <em>zip</em> com estrutura fixa de pastas e uma porção de arquivos <em>.xml</em> dentro. Não é exatamente complicado e só de abrir e ler os nomex e conteúdos dos arquivos já daria para entender mais ou menos como as coisas funcionam.</p>
+
+<p>Menos para datas… Datas já são um <a href="https://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time">tema bem complicado</a>, então ler datas em um arquivo externo é pedir pra sofrer.</p>
+
+<p>Examinando os valores das células, vi que a data para o dia <em>22 de dezembro de 2023</em> terá o valor …. Não ajuda muito, certo? De acordo com a documentação do formato OpenXML, datas estão no formato <em>1900-compatibility mode</em>. A explicação rápida é que o número representa dias após a data base <em>01 de janeiro de 1900</em>. Isso não batia muito com minhas contas e <a href="http://www.ericwhite.com/blog/dates-in-spreadsheetml/">esse site</a> muita coisa. No fim acabei encontrando também a <a href="https://learn.microsoft.com/en-us/office/troubleshoot/excel/1900-and-1904-date-system">documentação oficial sobre este tópico</a>, mas achei o primeiro link mais didático.</p>
+
+<p>Para começar, a explicação rápida é enganosa. A data <em>01 de janeiro de 1900</em> tem valor <strong>1</strong>, portanto o número representa o número de dias após <em>31 de dezembro de 1899</em>. Pode ser intuitivo para não programadores, mas pra nós programadores que indexamos o primeiro elemento como 0 é bastante confuso.</p>
+
+<p>Tem mais: infelizmente um software antigo e muito famoso na década de 80 e 90 chamado Lotus 123 criou essa representação, mas errou feio e considerou que 1900 era ano bisexto (e não é!). Assim, uma tonelada de planilhas foram criadas com a contagem de dias errada e os programas concorrentes precisavam ser capazes de ler e intrepretar esses dados. Por isso esse modo de armazenar datas é chamado <em>1900 compatibility mode</em>. É compatível com um software de 30 anos atrás que ninguém mais usa, mas que criou uma quantidade enorme de dados nesse formato e que precisam ser lidos…</p>
+
+<p><img src="https://winworldpc.com/res/img/screenshots/2e2a25fbb4a2f9b686b7b161059cfb5f7c568c8f5d572b6382f0ebe0fb8c35c7.png" alt="" /></p>
+
+<p>Aliás, olha só que doideira: nem os softwares de planilha mais usados (Excel, LibreOffice e OnlyOffice) concordam e e mostram datas diferentes para a mesma célula com data <em>05 de janeiro de 1900</em>. Pelo menos eles concordam quando a data passa de <em>01 de março de 1900</em>….</p>
+
+<p><img src="/assets/datas-diferentes-excel.png" alt="" /></p>
+
+<p>Vamos ver agora o código atual da <code class="language-plaintext highlighter-rouge">xl</code> que devolve um <code class="language-plaintext highlighter-rouge">datetime</code> a partir de uma célula com dados no formato que descrevi acima.</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">proc </span><span class="nf">date</span><span class="o">*</span><span class="p">(</span><span class="n">xc</span><span class="p">:</span> <span class="n">XlCell</span><span class="p">):</span> <span class="n">DateTime</span> <span class="o">=</span>
+  <span class="sd">## Assume the number of cell is a date and return it.</span>
+  <span class="sd">## Using 1900 date system: a serial number that represents the number of days</span>
+  <span class="sd">## elapsed since January 1, 1900.</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">dateTime</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="n">mJan</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">result</span> <span class="o">+=</span> <span class="n">initDuration</span><span class="p">(</span><span class="n">seconds</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="n">xc</span><span class="p">.</span><span class="n">number</span> <span class="o">*</span> <span class="mi">86400</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>A intuição do código faz todo sentido: um dia tem <code class="language-plaintext highlighter-rouge">84600</code> segundos, então basta somar isso vezes o número de dias para chegar na data correta. Mas está errado :S O número de dias varia conforme a data é antes ou depois de 29 de fevereiro de 1900. Além disso,o dia 01 de janeiro de 1900 é o número sequencial <strong>1</strong>!</p>
+
+<p>Estou tentando me envolver novamente com projetos abertos e <em>Nim</em> é uma linguagem interessante. Por isso <a href="https://github.com/khchen/xl/pull/6">enviei um PR</a> com uma correção (e testes!) e espero que seja aprovado logo. Estou usando essa lib em um projeto simples para converter planos de aula em arquivos <em>.ics</em> para colocar no meu calendário. Posto sobre isso quando estiver mais pronto.</p>
+
+
+  </div><a class="u-url" href="/code/2024/01/26/datas-excel.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Igor Montagner</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Igor Montagner</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/igordsm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">igordsm</span></a></li><li><a href="https://fosstodon.org/@igordsm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">igordsm</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Igor&#39;s personal and academic website. </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

@@ -28,8 +28,14 @@ github_username:  igordsm
 
 # Build settings
 theme: minima
+minima:
+  skin: dark 
 plugins:
   - jekyll-feed
+
+mastodon:
+- username: igordsm
+  instance: fosstodon.org
 
 # Exclude from processing.
 # The following items will not be processed, by default.
