@@ -23,30 +23,51 @@
 
 -----
 
-coisas que pode desenvolver
+# Algumas expectativas 
 
-## Impacto no curso!
+![height:400px](./uncle-ben.jpg)
+
+----------------
+
+# Algumas expectativas
+
+1. ser respeitoso/a com os alunos e professores do curso
+2. dedicar aproximadamente 4 horas por semana
+3. ser proativo/a na identificação de tarefas e proposição de soluções
+4. comprometer-se com as tarefas assumidas junto aos alunos e professores
+5. cuidar do sigilo de aspectos do curso relacionados a avaliação, notas e situações de alunos em geral
+
+----------------
+
+# Impacto no curso!
+
+--------------
+
+![](money.gif)
 
 -----
 
-Algumas responsabilidades
+# Situações cotidianas
 
-citar aqui coisas com provas, colocar meme homem aranha
+Em pares iremos
 
-------
+- receber uma situação comum 
+- escrever como cada um lidaria com ela (1min)
+- discutir as ideias em dupla (3 min)
+- cada dupla apresenta sua situação e o que discutiu
 
-algumas situações e conversas com alunos sobre elas
+----------------
 
-(um aluno pede ajuda e quando você chega ele está jogando e diz que não sabe nada)
-(é chamado para atender alguém que tem o código completo do exercício e o negócio faz sentido. Porém, o aluno não sabe explicar nada do que está escrito)
-(um aluno tem uma ideia mirabolante de algoritmo e quer resolver algum trabalho usando a ideia estranha)
-(aluno não te deixa ir embora, querendo que você o acompanhe na resolução de um exercício longo)
+# Conflitos
 
----------
+Em pares iremos
 
-coisas mais complicadas
+- receber uma situação comum 
+- escrever como cada um lidaria com ela (1min)
+- discutir as ideias em dupla (3 min)
+- cada dupla apresenta sua situação e o que discutiu
 
-(ver cola / saber que alguém mandou código para outro copiar)
-(aluno pede pra ver a prova de maneira insistente)
-(aluno te trata mal durante um atendimento / é desagradável / grosseiro)
-(
+
+-------------
+
+# Encerramento

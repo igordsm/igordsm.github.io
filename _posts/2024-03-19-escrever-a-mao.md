@@ -4,11 +4,20 @@ layout: post
 categories: reflexao
 ---
 
+<style>
+    img[alt=centered] {
+        display:block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 90%;
+    }
+</style>
+
 Tenho visto em minhas aulas de Algoritmos que a maioria da sala tem uma certa resistência a usar papel e caneta durante as atividades de sala. Em geral fazemos muitas simulações de algoritmos, procuramos exemplos de entradas difíceis e escrevemos pseudo-código. Escrever, desenhar e rabiscar foram parte importante do meu processo de pensar e encontrar soluções para estas tarefas. 
 
 Acho interessante ver alguns tentando simular coisas complicadas de cabeça ou escrever pseudo-código sem ter uma entrada do lado para ir testando. Usar somente editores de texto no PC me parece bem mais limitado do que poder criar a minha própria organização dos pensamentos no papel. E não é falta de material bom: toda sala tem papel de rascunho disponível e umas lousas portáteis como as abaixo para ajudar a rascunhar e pensar em grupo.
 
-TODO: imagem das lousas
+![centered](/assets/lousas.jpeg)
 
 Eu sempre tento levar uma delas comigo para discutir dúvidas e parece ajudar a concretizar os pensamentos, mas noto que a maioria não tem esse costume. Para mim escrever ajuda com os seguintes pontos:
 
