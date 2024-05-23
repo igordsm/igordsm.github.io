@@ -1,4 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-04-25T19:38:27-03:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Anotações em sala de aula</title><link href="/reflexao/2024/04/25/anotacoes.html" rel="alternate" type="text/html" title="Anotações em sala de aula" /><published>2024-04-25T00:00:00-03:00</published><updated>2024-04-25T00:00:00-03:00</updated><id>/reflexao/2024/04/25/anotacoes</id><content type="html" xml:base="/reflexao/2024/04/25/anotacoes.html"><![CDATA[<style>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-05-23T09:22:50-03:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Criando um editor de texto - parte 1</title><link href="/editor-de-texto/2024/05/23/editor-de-texto-1.html" rel="alternate" type="text/html" title="Criando um editor de texto - parte 1" /><published>2024-05-23T00:00:00-03:00</published><updated>2024-05-23T00:00:00-03:00</updated><id>/editor-de-texto/2024/05/23/editor-de-texto-1</id><content type="html" xml:base="/editor-de-texto/2024/05/23/editor-de-texto-1.html"><![CDATA[<p>Eu gosto de editores de texto.Mesmo. Já testei uma porção deles e de todos os tipos, desde neovim e Emacs até os menos conhecidos como helix e micro. Também uso editores de texto GUI e já experimentei um monte deles. Aliás, minhas contribuições mais complexas no elementary linux foram justamente no editor de texto Code.</p>
+
+<p>Resolvi então explorar como construir um editor de texto do zero. E não só isso: um editor de texto que funcione no terminal. Meus dois objetivos com isso são</p>
+
+<ol>
+  <li>explorar os tipos de algoritmos envolvidos na criação de um editor de texto</li>
+  <li>usar a linguagem funcional Gleam para construir um programa complexo</li>
+</ol>
+
+<p>A cada novo texto irei contando um pouco deste processo e teremos uma versão mais sofisticada do editor. Aliás, nas primeiras versões nosso “editor” não vai nem modificar os arquivos, só mostrá-los.</p>
+
+<p>Essa é uma outra vantagem de construir no terminal: ter a chance de se aprofundar em problemas que já são resolvidos completamente por outras bibliotecas. Por exemplo, um GtkSourceView já possui recursos prontos para syntax highlight e auto complete. Isso ajuda a criar um editor rápido e poupa um grande trabalho, mas não necessariamente ajuda a aprender como resolver esses problemas.</p>
+
+<p>Essa parte 1 da série explica um pouco sobre o que é um terminal em sistemas POSIX e como podemos controlá-lo para criar programas complexos.</p>
+
+<p>Para começar, todo programa de terminal como Gnome Console ou Konsole emula um dispositivo terminal “de verdade” (físico mesmo) que estava ligado ao sistema principal via rede. Nessa configuração o terminal (e seu teclado) podia estar conectado ao sistema via linha telefônica e estar a quilômetros de distância.</p>
+
+<p>Obviamente o terminal podia exibir caracteres e receber entrada via teclado. O que não é tão óbvio é que o terminal também pode ser controlado via sequências especiais de bytes. Podemos mudar as cores do texto e do fundo, posicionar o cursor em qualquer lugar da tela e rolar todas as linhas para cima (ou para baixo). Em terminais modernos conseguimos também mostrar caracteres unicode (com acentos, orientais e/ou ícones). Ou seja, o terminal é excelente para programas que tratam texto e pode ser muito interativo. Dá até para habilitar suporte a mouse!</p>
+
+<p>Uma outra vantagem do terminal é que os programas podem ser muito leves. As opções de layout são limitadas e a interação em geral é diferente de programas gráficos. Um exemplo clássico é a rolagem de tela: vários programas otimizam ao máximo essa operação, porém o terminal funciona em um esquema de páginas em que a maioria das rolagens de tela apagam pelo menos metade do texto. Ou seja, o que pode ser importante para conteúdos ricos em gráficos e interações via toque também pode ser irrelevante em uma aplicação que só trabalha com texto.</p>
+
+<p>Vamos então a como controlar o terminal. Temos uma série de sequencias especiais que começam com dois caracteres de controle. Ao enviar os bytes <code class="language-plaintext highlighter-rouge">ESC</code>+<code class="language-plaintext highlighter-rouge">[</code> o terminal irá interpretar a sequência de bytes seguintes como um comando.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ESC[2J</code> limpa a tela inteira</li>
+  <li><code class="language-plaintext highlighter-rouge">ESC[L;CH</code> move o cursor para a linha L e coluna C</li>
+  <li><code class="language-plaintext highlighter-rouge">ESC[1m</code> liga o modo negrito. Todo texto a seguir será escrito em negrito</li>
+  <li><code class="language-plaintext highlighter-rouge">ESC[0m</code> reseta para o formato padrão do terminal</li>
+  <li><code class="language-plaintext highlighter-rouge">ESC[38;2;127;255;255m</code> muda a cor para RGB(127, 255, 255)
+Também temos códigos de controle com 1 caracter só, que são enviados com a tecla Ctrl pressionada. Por exemplo, Ctrl+J envia um caracter de nova linha para o terminal. A Wikipedia tem uma lista não exaustiva de códigos de controle.</li>
+</ul>
+
+<p>Isso já nos permite escrever programas que mostram textos coloridos e posicionam o cursor em qualquer lugar da tela! Veja o exemplo abaixo em Gleam</p>
+
+<figure class="highlight"><pre><code class="language-gleam" data-lang="gleam">import gleam/io  
+  
+pub fn main() {  
+ io.print("\u{1b}[10;5H \u{1b}[1m IGOR!\u{1b}[0m normal!")  
+ io.print("\u{1b}[38;2;127;255;255mCOR!")  
+    
+}</code></pre></figure>
+
+<p>É feio? Muito, mas podemos melhorar muito a legibilidade com funções. O exemplo abaixo é bem mais legível.</p>
+
+<figure class="highlight"><pre><code class="language-gleam" data-lang="gleam">import gleam/io  
+  
+fn bold(s) {  
+  "\u{1b}[1m" &lt;&gt; s &lt;&gt; "\u{1b}[0m"  
+}  
+  
+pub fn main() {    
+ io.println(bold("IGOR") &lt;&gt; " normal")     
+}</code></pre></figure>
+
+<p>Um aspecto final do funcionamento do terminal é o tratamento da entrada (line discipline, em linux). A maneira padrão é o modo cooked, em que o terminal só envia os dados entrados pelo usuário após a tecla Enter ser pressionada. Também podemos habilitar o modo raw, em que toda tecla é disponibilizada instantâneamente para o programa.</p>
+
+<blockquote>
+  <p>:warning: A rigor cada modo é um conjunto de opções mais simples oferecidas pelo kernel do Linux para configurar o terminal.</p>
+</blockquote>
+
+<p>É possível usar a API posix para configurar o terminal, mas nesse momento vamos facilitar nossa vida e usar a ferramenta de comando ˋsttyˋ. Ela permite configurar todas opções do terminal e pode ser chamada em Gleam usando o pacote shellout. O exemplo abaixo mostra um programa que limpa o terminal, o coloca em modo raw, e mostra na linha 3 coluna 0 o último caractere digitado. O programa para quando digitamos q.</p>
+
+<figure class="highlight"><pre><code class="language-gleam" data-lang="gleam">import gleam/int  
+import gleam/io  
+import gleam/result  
+import shellout  
+  
+@external(erlang, "io", "get_chars")  
+pub fn get_chars(prompt: String, count: int) -&gt; String  
+  
+fn clear() {  
+ io.print("\u{1b}[2J")  
+}  
+  
+fn raw_mode_enter() {  
+ shellout.command("stty", ["raw", "-echo"], ".", [])  
+}  
+  
+fn raw_mode_end() {  
+ shellout.command("stty", ["-raw", "echo"], ".", [])  
+}  
+  
+fn move_cursor(row: Int, col: Int) {  
+ io.print("\u{1b}[" &lt;&gt; int.to_string(row) &lt;&gt; ";" &lt;&gt; int.to_string(col) &lt;&gt; "H")  
+}  
+  
+fn input_loop() {  
+ let k = get_chars("", 1)  
+ case k {  
+   "q" -&gt; Nil  
+   _ -&gt; input_loop()  
+ }  
+}  
+  
+pub fn main() {  
+ clear()  
+ raw_mode_enter()  
+ move_cursor(3, 0)  
+ input_loop()  
+ raw_mode_end()  
+}</code></pre></figure>
+
+<p>Esse controle do terminal já nos dá quase tudo que precisamos para criar um editor de texto! No próximo texto falarei de arquivos e acabaremos com um visualizador de arquivos. Até :)</p>]]></content><author><name></name></author><category term="editor-de-texto" /><summary type="html"><![CDATA[Eu gosto de editores de texto.Mesmo. Já testei uma porção deles e de todos os tipos, desde neovim e Emacs até os menos conhecidos como helix e micro. Também uso editores de texto GUI e já experimentei um monte deles. Aliás, minhas contribuições mais complexas no elementary linux foram justamente no editor de texto Code.]]></summary></entry><entry><title type="html">Anotações em sala de aula</title><link href="/reflexao/2024/04/25/anotacoes.html" rel="alternate" type="text/html" title="Anotações em sala de aula" /><published>2024-04-25T00:00:00-03:00</published><updated>2024-04-25T00:00:00-03:00</updated><id>/reflexao/2024/04/25/anotacoes</id><content type="html" xml:base="/reflexao/2024/04/25/anotacoes.html"><![CDATA[<style>
     img[alt=centered] {
         display:block;
         margin-left: auto;
@@ -264,8 +366,4 @@ TODO: kit canva que uso
 
 <p>Mais ainda: um brasileiro jovem médio teria dificuldade de verificar informações sugeridas por sistemas de IA e raciocinar sobre seus efeitos e benefícios. Afinal,<a href="https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/37089-em-2022-analfabetismo-cai-mas-continua-mais-alto-entre-idosos-pretos-e-pardos-e-no-nordeste">segundo o IBGE</a>, 18,3% dos jovens entre 15 e 29 anos não concluiram o ensino médio e cerca de 60% não estavam estudando.</p>
 
-<p>Da mesma maneira que o texto sobre os canudos de plástico, me parece que estamos adotando de maneira rápida uma série de tecnologias e ferramentas que tem tantas interações complexas que não é claro que a resultante disso é positiva. Ela pode ser positiva? Não sei, mas ferramentas de IA existem e os alunos usam. Como docente, gistaria de transformar esse uso então em algo que traga benefícios e que seja socialmente inserido. Imagine o que aconteceria se conseguissemos formar gente que tenha conhecimento profundo sobre tecnologia <strong>E</strong> se importa com sua utilização na sociedade? Pra mim essa é uma das questões mais interessantes da docência no momento e é algo que quero explorar mais no futuro.</p>]]></content><author><name></name></author><category term="reflexoes" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Palestra sobre licenças de software e qualidade de projeto</title><link href="/talks/2023/11/15/palestra-pfe.html" rel="alternate" type="text/html" title="Palestra sobre licenças de software e qualidade de projeto" /><published>2023-11-15T18:49:13-03:00</published><updated>2023-11-15T18:49:13-03:00</updated><id>/talks/2023/11/15/palestra-pfe</id><content type="html" xml:base="/talks/2023/11/15/palestra-pfe.html"><![CDATA[<p>No semestre passado dei uma palestra para os alunos do Projeto de Final de Engenharia no Insper sobre licenças de software e qualidade de projeto de software. Como registro, a apresentação pode ser vista abaixo.</p>
-
-<div style="margin-left: auto; margin-right: auto; max-width: 500px">
-    <iframe src="/assets/palestra-pfe/slides.html" width="100%" height="300" />
-</div>]]></content><author><name></name></author><category term="talks" /><summary type="html"><![CDATA[No semestre passado dei uma palestra para os alunos do Projeto de Final de Engenharia no Insper sobre licenças de software e qualidade de projeto de software. Como registro, a apresentação pode ser vista abaixo.]]></summary></entry></feed>
+<p>Da mesma maneira que o texto sobre os canudos de plástico, me parece que estamos adotando de maneira rápida uma série de tecnologias e ferramentas que tem tantas interações complexas que não é claro que a resultante disso é positiva. Ela pode ser positiva? Não sei, mas ferramentas de IA existem e os alunos usam. Como docente, gistaria de transformar esse uso então em algo que traga benefícios e que seja socialmente inserido. Imagine o que aconteceria se conseguissemos formar gente que tenha conhecimento profundo sobre tecnologia <strong>E</strong> se importa com sua utilização na sociedade? Pra mim essa é uma das questões mais interessantes da docência no momento e é algo que quero explorar mais no futuro.</p>]]></content><author><name></name></author><category term="reflexoes" /><summary type="html"><![CDATA[]]></summary></entry></feed>

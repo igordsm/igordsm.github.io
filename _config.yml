@@ -32,6 +32,7 @@ minima:
   skin: dark 
 plugins:
   - jekyll-feed
+  - jemoji
 
 mastodon:
 - username: igordsm
