@@ -110,4 +110,4 @@ pub fn main() {
 {% endhighlight %}
 
 
-Esse controle do terminal já nos dá quase tudo que precisamos para criar um editor de texto! No próximo texto falarei de arquivos e acabaremos com um visualizador de arquivos. Até :)
+Esse controle do terminal já nos dá quase tudo que precisamos para criar um editor de texto! No próximo texto falarei de arquivos e acabaremos com um "visualizador" de arquivos. Até :)
