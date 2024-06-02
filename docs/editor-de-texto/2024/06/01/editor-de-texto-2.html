@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Criando um editor de texto - parte 2 | Igor Montagner</title>
+<meta name="generator" content="Jekyll v4.3.2" />
+<meta property="og:title" content="Criando um editor de texto - parte 2" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="O próximo passo da série de editor de texto em linha de comando é receber argumentos na linha de comando e abrir arquivos. Vamos já preparar o terreno também para" />
+<meta property="og:description" content="O próximo passo da série de editor de texto em linha de comando é receber argumentos na linha de comando e abrir arquivos. Vamos já preparar o terreno também para" />
+<link rel="canonical" href="/editor-de-texto/2024/06/01/editor-de-texto-2.html" />
+<meta property="og:url" content="/editor-de-texto/2024/06/01/editor-de-texto-2.html" />
+<meta property="og:site_name" content="Igor Montagner" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-06-01T00:00:00-03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Criando um editor de texto - parte 2" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-06-01T00:00:00-03:00","datePublished":"2024-06-01T00:00:00-03:00","description":"O próximo passo da série de editor de texto em linha de comando é receber argumentos na linha de comando e abrir arquivos. Vamos já preparar o terreno também para","headline":"Criando um editor de texto - parte 2","mainEntityOfPage":{"@type":"WebPage","@id":"/editor-de-texto/2024/06/01/editor-de-texto-2.html"},"url":"/editor-de-texto/2024/06/01/editor-de-texto-2.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Igor Montagner" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Igor Montagner</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/talks/">Talks</a><a class="page-link" href="/CV/">CV</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Criando um editor de texto - parte 2</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2024-06-01T00:00:00-03:00" itemprop="datePublished">Jun 1, 2024
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>O próximo passo da série de editor de texto em linha de comando é receber argumentos na linha de comando e abrir arquivos. Vamos já preparar o terreno também para</p>
+
+<p>Receber argumentos é bem simples. O pacote <a href="https://hexdocs.pm/argv/">argv</a> faz isso e usar com <em>pattern matching</em> faz o código ficar bem legível. Veja abaixo a nova função <code class="language-plaintext highlighter-rouge">main</code>.</p>
+
+<pre><code class="language-gleam">pub fn main() {
+  case argv.load().arguments {
+    [filename] -&gt; start_editor(filename)
+    _ -&gt; io.println("Usage: file_viewer filename")
+  }
+</code></pre>
+
+<p>A função <code class="language-plaintext highlighter-rouge">start_editor</code> faz a leitura do arquivo passado na linha de comando e o mostra na saída. Também bem simples, cortesia do pacote <a href="https://hexdocs.pm/simplifile/">simplifile</a> :) Um novidade aqui é o módulo <code class="language-plaintext highlighter-rouge">terminal</code>. Colocamos as funções desenvolvidas na parte anterior nesse arquivo para ficar mais organizado.</p>
+
+<pre><code class="language-gleam">fn start_editor(filename) {
+  let assert Ok(contents) = simplifile.read(filename)
+
+  terminal.clear()
+  io.print(contents)
+  terminal.move_cursor(0, 0)
+  terminal.raw_mode_enter()
+  input_loop()
+  terminal.raw_mode_end()
+  Nil
+}
+</code></pre>
+
+<p>Isso já faz algo bem básico: mostra um arquivo na saída do terminal e espera pela tecla <code class="language-plaintext highlighter-rouge">Q</code> para terminar o programa. Porém, se o arquivo for maior que o tamanho do terminal a tela rola e não conseguimos ver o começo! O terminal automaticamente quebra linhas quando enviamos dados, porém ao criar um editor queremos controlar essas quebras.</p>
+
+<p>O comando <code class="language-plaintext highlighter-rouge">stty</code> também devolve o tamanho do terminal. Então podemos adicionar a função <code class="language-plaintext highlighter-rouge">get_size</code> abaixo em <code class="language-plaintext highlighter-rouge">terminal.gleam</code> para capturar o tamanho atual do terminal. O comando <code class="language-plaintext highlighter-rouge">let assert</code> usa <em>pattern matching</em> e dá erro se o padrão não bater. É uma maneira meio feia de se tratar o erro, mas deixa bem claro que <strong>se falhar o programa vai crashar</strong>.</p>
+
+<pre><code class="language-gleam">pub fn get_size() {
+  let assert Ok(output) = shellout.command("stty", ["size"], ".", [])
+  let assert Ok(#(lines, cols)) = string.split_once(output, " ")
+
+  let assert Ok(lines) = int.base_parse(lines, 10)
+  let assert Ok(cols) = int.base_parse(string.trim(cols), 10)
+
+  #(lines, cols)
+}
+</code></pre>
+
+<p>Agora o desafio vai ser transformar a string <code class="language-plaintext highlighter-rouge">contents</code> (com o conteúdo do arquivo) em uma lista de strings em que cada uma tenha no máximo a largura atual do terminal. Isso nos ajuda a contar quantas linhas vão ser efetivamente usadas quando mostrarmos o arquivo.</p>
+
+<p>O pacote <a href="https://hexdocs.pm/gleam_stdlib/gleam/string.html">gleam/string</a> já tem uma função <code class="language-plaintext highlighter-rouge">split</code>, então o trabalho maior será processar cada linha do arquivo e, se necessário, criar uma nova lista com um ou mais “linhas virtuais” para aquela linha do arquivo. Veja um exemplo abaixo em que o tamanho máximo seria 5.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Entrada
+["abcdefgh", "abc"]
+Saída
+["abcde", "fgh", "abc"]
+</code></pre></div></div>
+
+<p>Esse algoritmo vai ficar bem diferente por estarmos escrevendo em uma linguagem funcional. Pra começar <em>Gleam</em> não tem loops, é tudo recursivo. Além disso todas variáveis são imutáveis, então não dá para simplesmente adicionar ou remover elementos de uma lista. É necessário <em>criar uma nova lista sem/com o elemento</em>! Apesar de isso parecer tornar o código muito mais complicado, eu vou argumentar que na verdade ele fica mais simples. Sim, isso mesmo. Vem comigo.</p>
+
+<p>Vamos dividir o algoritmo de criar as “linhas virtuais” em 3 casos:</p>
+
+<ol>
+  <li>a lista de linhas está vazia. Devolva então uma lista vazia.</li>
+  <li>o primeiro elemento tem tamanho menor que o máximo <code class="language-plaintext highlighter-rouge">M</code>. Crie uma nova lista com o primeiro elemento intacto e chame recursivo no resto da lista.</li>
+  <li>o primeiro elemento tem tamanho maior que o máximo <code class="language-plaintext highlighter-rouge">M</code>. Crie uma nova lista com três “pedaços”:</li>
+  <li>os primeiros <code class="language-plaintext highlighter-rouge">M</code> elementos do atual</li>
+  <li>chame recursivo em uma nova lista com o restante do elemento atual mais o restante da lista original.</li>
+</ol>
+
+<p>Pronto. Só isso! Veja agora o algoritmo <code class="language-plaintext highlighter-rouge">split_long_lines</code> escrito em <em>Gleam</em></p>
+
+<pre><code class="language-gleam">fn split_long_lines(line_list, max_length) {
+  case line_list {
+    [] -&gt; []
+    [current, ..rest] -&gt; {
+      let curr_length = string.length(current)
+      case curr_length {
+        l if l &lt; max_length -&gt; [current, ..split_long_lines(rest, max_length)]
+        l -&gt; {
+          [string.slice(current, 0, max_length), ..split_long_lines([string.drop_left(current, max_length), ..rest], max_length)]
+        }
+      }
+    }
+  }
+}
+</code></pre>
+
+<p>A descrição em código é basicamente igual ao código :D Três casos, cada um retornando uma nova lista. Só é realmente feito algo quando a linha atual é maior que o tamanho máximo.</p>
+
+<p>Isso já praticamente resolve nosso problema! Com as linhas agora com tamanho máximo na largura do terminal, podemos só chamar <a href="https://hexdocs.pm/gleam_stdlib/gleam/list.html#take"><code class="language-plaintext highlighter-rouge">list.take</code></a> e pegar as primeiras <code class="language-plaintext highlighter-rouge">nlines</code>.  Veja o resultado final abaixo.</p>
+
+<pre><code class="language-gleam">fn start_editor(filename) {
+  let assert Ok(contents) = simplifile.read(filename)
+  let #(nlines, ncols) = terminal.get_size()
+  let contents_split_lines = split_line_max_length(contents, ncols)
+
+  terminal.clear()
+  io.print(string.join(list.take(contents_split_lines, nlines), "\n"))
+  terminal.move_cursor(0, 0)
+
+  terminal.raw_mode_enter()
+  input_loop()
+  terminal.raw_mode_end()
+  Nil
+}
+</code></pre>
+
+<p>Agora são mostradas as primeiras linhas do arquivo até encher o terminal. O próximo passo é agora ler as setinhas do terminal e reagir, mostrando mais linhas no topo ou na parte de baixo da tela. Vamos fazer isso no próximo texto, já que precisaremos guardar o <strong>estado</strong> (trecho do arquivo sendo mostrado) do programa durante sua execução. E como só temos variáveis constantes, vai ser necessário pensar um pouco mais sobre a organização do nosso programa. Até mais.</p>
+
+  </div><a class="u-url" href="/editor-de-texto/2024/06/01/editor-de-texto-2.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Igor Montagner</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Igor Montagner</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/igordsm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">igordsm</span></a></li><li><a href="https://fosstodon.org/@igordsm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">igordsm</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Igor&#39;s personal and academic website. </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
