@@ -1,4 +1,156 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-06-02T19:11:53-03:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Criando um editor de texto - parte 2</title><link href="/editor-de-texto/2024/06/01/editor-de-texto-2.html" rel="alternate" type="text/html" title="Criando um editor de texto - parte 2" /><published>2024-06-01T00:00:00-03:00</published><updated>2024-06-01T00:00:00-03:00</updated><id>/editor-de-texto/2024/06/01/editor-de-texto-2</id><content type="html" xml:base="/editor-de-texto/2024/06/01/editor-de-texto-2.html"><![CDATA[<p>O próximo passo da série de editor de texto em linha de comando é receber argumentos na linha de comando e abrir arquivos. Vamos já preparar o terreno também para</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-06-15T14:43:33-03:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Criando um editor de texto - parte 3</title><link href="/editor-de-texto/2024/06/15/editor-de-texto-3.html" rel="alternate" type="text/html" title="Criando um editor de texto - parte 3" /><published>2024-06-15T00:00:00-03:00</published><updated>2024-06-15T00:00:00-03:00</updated><id>/editor-de-texto/2024/06/15/editor-de-texto-3</id><content type="html" xml:base="/editor-de-texto/2024/06/15/editor-de-texto-3.html"><![CDATA[<p>Agora chegamos na parte interessante que vai juntar novidades tanto de terminal (como dispositivo de hardware) quanto programação funcional. Vejamos:</p>
+
+<ol>
+  <li>gleam não tem estado. Ou seja, vai ser necessário guardar quais linhas estão na tela e quais estão fora <strong>sem modificar nenhuma variável</strong>. Além disso, precisamos persistir essas modificações enquanto o usuário interage com o programa.</li>
+  <li>até agora só enviamos comandos para o terminal (via escape codes escritos na saída padrão). Agora vamos <strong>receber</strong> esses comandos também via entrada padrão.</li>
+</ol>
+
+<p>Vamos tratar um problema de cada vez, começando com como guardar o estado do nosso editor.</p>
+
+<h2 id="representando-o-estado-atual-do-editor">Representando o estado atual do editor</h2>
+
+<p>A primeira parte é guardar quais linhas estão dentro e fora da tela. A imagem abaixo ajuda a entender um pouco a dinâmica de um programa que mostra um arquivo no terminal.</p>
+
+<p><img src="/assets/editor-de-texto/linhas-tela.png" alt="Ilustração de um arquivo sendo mostrado no terminal" /></p>
+
+<p>Logo, precisamos não só de uma lista de linhas, mas de 3:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">before</code> guarda as linhas que estão <strong>antes</strong> do trecho atualmente mostrado na tela. É vazio se a primeira linha está sendo mostrada ou se o arquivo for menor que o número de linhas do terminal</li>
+  <li><code class="language-plaintext highlighter-rouge">screen</code> guarda as linhas que estão sendo mostradas na tela <strong>neste momento</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">after</code> guarda as linhas que estão <strong>depois</strong> do trecho mostrado na tela atualmente. É vazio se a última linha está sendo mostrada ou se o arquivo for menor que o número de linhas do terminal</li>
+</ul>
+
+<p>Uma vantagem dessa representação é que rolar a tela é muito fácil!</p>
+
+<ul>
+  <li>para descer a tela precisamos transferir a última linha de <code class="language-plaintext highlighter-rouge">screen</code> para o início de <code class="language-plaintext highlighter-rouge">after</code> e transferir a última de <code class="language-plaintext highlighter-rouge">before</code> para o início de <code class="language-plaintext highlighter-rouge">screen</code>.</li>
+  <li>para subir a tela precisamos transferir a primeira linha de <code class="language-plaintext highlighter-rouge">screen</code> para o fim de <code class="language-plaintext highlighter-rouge">before</code> e transferir a primeira de <code class="language-plaintext highlighter-rouge">after</code> para o fim de <code class="language-plaintext highlighter-rouge">screen</code>.</li>
+</ul>
+
+<p><em>gleam</em> possui o tipo <a href="https://hexdocs.pm/gleam_stdlib/gleam/queue.html">queue</a>, que permite adicionar/remover elementos de maneira eficiente no início e fim da coleção de dados. Portanto, o estado do nosso programa será uma tripla com esses três elementos.</p>
+
+<pre><code class="language-gleam">type TermState {
+  TermState(
+    before: queue.Queue(String),
+    screen: queue.Queue(String),
+    after: queue.Queue(String),
+  )
+}
+</code></pre>
+
+<p>Esse estado agora será passado para a função <code class="language-plaintext highlighter-rouge">input_loop</code> e pode ser modificado pela entrada do usuário. Iniciamos o loop principal como mostrado abaixo:</p>
+
+<pre><code class="language-gleam">let st =
+TermState(
+  queue.new(),
+  queue.from_list(list.take(contents_split_lines, nlines)),
+  queue.from_list(list.drop(contents_split_lines, nlines)),
+)
+terminal.move_cursor(0, 0)
+
+terminal.raw_mode_enter()
+input_loop(st)
+terminal.raw_mode_end()
+</code></pre>
+
+<p>Rolar a tela para baixo pode ser implementado, portanto, com o código abaixo.</p>
+
+<pre><code class="language-gleam">case queue.pop_back(state.before) {
+	Ok(#(line_show, new_before)) -&gt; {
+	  io.print("\u{1b}[1T") // escape code para o terminal rolar para baixo
+	  terminal.move_cursor(0, 0)
+	  io.print(line_show)
+	  let assert Ok(#(line_hide, new_screen)) = queue.pop_back(state.screen)
+	  input_loop(TermState(
+		new_before,
+		queue.push_front(new_screen, line_show),
+		queue.push_front(state.after, line_hide),
+	  ))
+	}
+	_ -&gt; input_loop(state)
+</code></pre>
+
+<h2 id="recebendo-teclas-não-alfanuméricas">Recebendo teclas não alfanuméricas</h2>
+
+<p>Agora que já podemos rolar a tela precisamos ler as setinhas do teclado e completar a funcionalidade que precisamos implementar. Felizmente essa é uma tarefa fácil.</p>
+
+<p>Os mesmos códigos que enviamos para o terminal podem ser recebidos dependendo das teclas pressionadas. Os que nos interessam são os seguintes:</p>
+
+<p>| Tecla          | Escape Code |
+| ————– | ———– |
+| CURSOR UP      | <code class="language-plaintext highlighter-rouge">ESC [ A</code>   |
+| CURSOR DOWN    | <code class="language-plaintext highlighter-rouge">ESC [ B</code>   |
+| CURSOR FORWARD | <code class="language-plaintext highlighter-rouge">ESC [ C</code>   |
+| CURSOR BACK    | <code class="language-plaintext highlighter-rouge">ESC [ D</code>   |
+Podemos fazer isso mudando a função <code class="language-plaintext highlighter-rouge">get_key</code> que construímos anteriormente. Agora ele pode retornar ou uma letra (tipo <code class="language-plaintext highlighter-rouge">String</code>) ou um comando para mover o cursor. Conseguimos representar isso com os seguintes tipos em <em>gleam</em>. Note que incluímos a possibilidade <code class="language-plaintext highlighter-rouge">UNKNOWN</code> para caso algum comando não suportado (ainda) seja enviado pelo terminal.</p>
+
+<pre><code class="language-gleam">pub type CursorDirection {
+  UP
+  DOWN
+  LEFT
+  RIGHT
+}
+
+pub type Key {
+  Letter(char: String)
+  CursorMovement(dir: CursorDirection)
+  UNKNOWN
+}
+</code></pre>
+
+<p>Nossa função <code class="language-plaintext highlighter-rouge">get_key</code> muda para a seguinte. Agora ela devolve o tipo <code class="language-plaintext highlighter-rouge">Key</code> e checa se o caractere lido é um <code class="language-plaintext highlighter-rouge">ESC</code>. Se, for chama a função <code class="language-plaintext highlighter-rouge">read_escape_sequence</code> que faz a leitura do restante do escape code. Se não só devolve o caractere lido com o construtor <code class="language-plaintext highlighter-rouge">Letter</code>.</p>
+
+<pre><code class="language-gleam">pub fn get_key() -&gt; Key {
+  case get_chars("", 1) {
+    "\u{1b}" -&gt; read_escape_sequence()
+  	letter -&gt; Letter(letter)
+  }
+}
+
+fn read_escape_sequence() {
+	get_chars("", 1) // read [
+	case get_chars("", 1) {
+		"A" -&gt; CursorMovement(UP)
+		"B" -&gt; CursorMovement(DOWN)
+		"C" -&gt; CursorMovement(RIGHT)
+		"D" -&gt; CursorMovement(LEFT)
+		_ -&gt; UNKNOWN
+	}
+}
+</code></pre>
+
+<h2 id="juntando-tudo">Juntando tudo</h2>
+
+<p>Para juntar tudo basta mexer em <code class="language-plaintext highlighter-rouge">input_loop</code> para que o estado seja passado sempre na função recursiva e que chequemos as setas além de letras. Veja abaixo uma parte dessa função.</p>
+
+<p>Um ponto interessante é que se não há nenhuma alteração no estado do programa basta fazer a chamada recursiva com o mesmo estado que foi recebido. É tudo bem claro e não há mudanças “escondidas”.</p>
+
+<pre><code class="language-gleam">fn input_loop(state: TermState) {
+  case terminal.get_key() {
+    terminal.CursorMovement(terminal.UP) -&gt; {
+      case queue.pop_back(state.before) {
+        Ok(#(line_show, new_before)) -&gt; {
+          io.print("\u{1b}[1T")
+          terminal.move_cursor(0, 0)
+          io.print(line_show)
+          let assert Ok(#(line_hide, new_screen)) = queue.pop_back(state.screen)
+          input_loop(TermState(
+            new_before,
+            queue.push_front(new_screen, line_show),
+            queue.push_front(state.after, line_hide),
+          ))
+        }
+        _ -&gt; input_loop(state)
+      }
+    }
+	// checar seta para baixo
+	terminal.Letter("q") -&gt; Nil
+    _ -&gt; input_loop(state)
+}
+</code></pre>
+
+<p>Um passo interessante aqui seria reorganizar esse código em módulos para podermos deixar o código mais legível e organizado. Iremos fazer isso na próxima parte, já que precisaremos extender o estado do editor para incluir posição do cursor.</p>]]></content><author><name></name></author><category term="editor-de-texto" /><summary type="html"><![CDATA[Agora chegamos na parte interessante que vai juntar novidades tanto de terminal (como dispositivo de hardware) quanto programação funcional. Vejamos:]]></summary></entry><entry><title type="html">Criando um editor de texto - parte 2</title><link href="/editor-de-texto/2024/06/01/editor-de-texto-2.html" rel="alternate" type="text/html" title="Criando um editor de texto - parte 2" /><published>2024-06-01T00:00:00-03:00</published><updated>2024-06-01T00:00:00-03:00</updated><id>/editor-de-texto/2024/06/01/editor-de-texto-2</id><content type="html" xml:base="/editor-de-texto/2024/06/01/editor-de-texto-2.html"><![CDATA[<p>O próximo passo da série de editor de texto em linha de comando é receber argumentos na linha de comando e abrir arquivos. Vamos já preparar o terreno também para</p>
 
 <p>Receber argumentos é bem simples. O pacote <a href="https://hexdocs.pm/argv/">argv</a> faz isso e usar com <em>pattern matching</em> faz o código ficar bem legível. Veja abaixo a nova função <code class="language-plaintext highlighter-rouge">main</code>.</p>
 
@@ -346,33 +498,4 @@ pub fn main() {
 
 <p>A solução proposta pela autor é a interoperabilidade dessas plataformas, mesmo que forçada por legislação ou via engenharia reversa. Os exemplos citados incluem reparos de telefones e até tratores, mas passam também por coisas mais cotidianas como programas de mensagens e redes sociais. A ideia geral é que toda a tecnologia que temos e usamos deveria ser acessível para reparos e usos sem restrições artificais de disponibilidade e/ou concorrência.</p>
 
-<p>Algumas notícias recentes como a <a href="https://www.theverge.com/2023/12/13/24000120/threads-meta-activitypub-test-mastodon">adoção de ActivityPub pelo Threads</a> ou da interop forçada do iMessage<a href="https://www.engadget.com/apple-confirms-it-has-blocked-imessage-exploit-012015485.html">[1]</a><a href="https://www.engadget.com/beeper-mini-is-back-promising-imessage-access-on-android-if-you-sign-in-with-an-apple-id-182924774.html">[2]</a> tornaram o livro mais relevante para mim. Gosto de tecnologias não tradicionais, então sempre comemoro quando esse tipo de movimento ocorre. Enfim, recomendo a leitura. Dá para ler fácil em um fim de semana e serve como introdução a vários assuntos legais de Web aberta e tecnologias alternativas.</p>]]></content><author><name></name></author><category term="livros" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">PSP: alguns experimentos com desenvolvimento de software</title><link href="/psp/2023/11/29/experimentos-psp.html" rel="alternate" type="text/html" title="PSP: alguns experimentos com desenvolvimento de software" /><published>2023-11-29T00:00:00-03:00</published><updated>2023-11-29T00:00:00-03:00</updated><id>/psp/2023/11/29/experimentos-psp</id><content type="html" xml:base="/psp/2023/11/29/experimentos-psp.html"><![CDATA[<p>Depois de desnterrar meu PSP após algumas oconveras com alunos resolvi ligá-lo e brincar um pouco com ele. É um console portátil estranhamente pequeno para os padrões atuais, sendo ligeiramente menor que meu ceuluar e ridiculamente menor que um SteamDeck</p>
-
-<p><img src="/assets/psp/foto-sdl.jpeg" alt="" /></p>
-
-<p>Por gostar de tecnologias abertas e afins, sempre tive instalados alguns homebrew no meu PSP. Só pela diversão resolvi hoje tentar compilar pacotes para o PSP. Não é algo exatamente comum de se fazer, mas gosto de aprender a programar em plataformas  não convencionais.</p>
-
-<p>Uma coisa sensacional do PSP é a evolução das ferramentas desenvolvimento não oficiais: <a href="https://pspdev.github.io/">PSPdev</a>. Não só várias bibliotecas relevantes para jogos como SDL2 e Lua tem versões para PSP como também é possível gerar jogos e programas que rodam também em PSPs que não usam Custom Firmware (ou seja, que não foram hackeados). Vou fazer um guia básico aqui de como fiz para compilar e rodar um dos exemplos do site diretamente no meu PSP.</p>
-
-<p><a href="https://github.com/igordsm/psp-sdl2-with-docker/tree/main">Tudo o que foi feito está disponível neste repositório do github</a>. Os comandos nessa página usam esses arquivos como referência.</p>
-
-<p>Para  facilitar a vida procurei primeiro por algum docker file ou release binário e encontrei esse repo: <a href="https://github.com/ticky/docker-pspdev/">ticky/docker-pspdev</a>. Tentei rodar diretamente, mas não funcionou pela imagem estar baseada em Ubuntu 12.04, que não tem mais repositórios online. Atualizei a imagem para 22.04 e mudei um pouquinho as dependências, conseguindo rodar comandos básicos na imagem de resultado.</p>
-
-<p>Para ter um shell com tudo instalado basta rodar</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -v $PWD:/src/  -it --rm igormontagner/pspdev
-</code></pre></div></div>
-
-<p>O código da pasta atual já estará disponível na pasta <code class="language-plaintext highlighter-rouge">/src</code>. Useis dois exemplos disponíveis no site do PSPdev: um com as bibliotecas nativas do PSP e outro com SDL2 (biblioteca multiplataforma muito usada). Para compilar ambos é só executar os comandos abaixo. Como estamos usando docker, fica muito fácil rodar somente ou ou dois comandos dentro do container e assim não precisamos nem criar uma sessão interativa :D</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkdir build &amp;&amp; cd build
-psp-cmake ..
-make
-</code></pre></div></div>
-
-<p>Isso deve ter criado um arquivo <code class="language-plaintext highlighter-rouge">EBOOT.PBP</code> na pasta <code class="language-plaintext highlighter-rouge">build</code>. É esse arquivo que representa um jogo no PSP. Para fazê-lo executável pasta ligar o PSP no PC, criar uma pasta <code class="language-plaintext highlighter-rouge">SDL</code> dentro da pasta <code class="language-plaintext highlighter-rouge">/GAME</code> e copiar o <code class="language-plaintext highlighter-rouge">EBOOT.PBP</code> para lá.</p>
-
-<video width="600" controls="" src="/assets/psp/demo-sdl.ogv">  
-</video>
-
-<p>E é isso! Não é complicado codar e rodar programas no PSP e é essa uma das razões que a cena Homebrew foi tão forte nesse console. Olha só a quantidade de <a href="https://www.gamebrew.org/wiki/List_of_PSP_homebrew_applications">apps</a> e <a href="https://www.gamebrew.org/wiki/List_of_PSP_homebrew_games">jogos</a> homebrew! Alguns deles ainda são atualizados e existe até um port experimental da engine Godot :O</p>]]></content><author><name></name></author><category term="psp" /><summary type="html"><![CDATA[Depois de desnterrar meu PSP após algumas oconveras com alunos resolvi ligá-lo e brincar um pouco com ele. É um console portátil estranhamente pequeno para os padrões atuais, sendo ligeiramente menor que meu ceuluar e ridiculamente menor que um SteamDeck]]></summary></entry></feed>
+<p>Algumas notícias recentes como a <a href="https://www.theverge.com/2023/12/13/24000120/threads-meta-activitypub-test-mastodon">adoção de ActivityPub pelo Threads</a> ou da interop forçada do iMessage<a href="https://www.engadget.com/apple-confirms-it-has-blocked-imessage-exploit-012015485.html">[1]</a><a href="https://www.engadget.com/beeper-mini-is-back-promising-imessage-access-on-android-if-you-sign-in-with-an-apple-id-182924774.html">[2]</a> tornaram o livro mais relevante para mim. Gosto de tecnologias não tradicionais, então sempre comemoro quando esse tipo de movimento ocorre. Enfim, recomendo a leitura. Dá para ler fácil em um fim de semana e serve como introdução a vários assuntos legais de Web aberta e tecnologias alternativas.</p>]]></content><author><name></name></author><category term="livros" /><summary type="html"><![CDATA[]]></summary></entry></feed>
