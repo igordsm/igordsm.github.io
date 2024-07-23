@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Criando um editor de texto - parte 5 | Igor Montagner</title>
+<meta name="generator" content="Jekyll v4.3.3" />
+<meta property="og:title" content="Criando um editor de texto - parte 5" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="O visualizador já está pronto, agora é começar a editar! Vamos então começar a editar texto e nosso primeiro exemplo será bem simples: editar uma única linha, incluindo usar as setas para esquerda e direita para posicionar o cursor. O resultado fica parecido com o abaixo." />
+<meta property="og:description" content="O visualizador já está pronto, agora é começar a editar! Vamos então começar a editar texto e nosso primeiro exemplo será bem simples: editar uma única linha, incluindo usar as setas para esquerda e direita para posicionar o cursor. O resultado fica parecido com o abaixo." />
+<link rel="canonical" href="/editor-de-texto/2024/07/23/editor-de-texto-5.html" />
+<meta property="og:url" content="/editor-de-texto/2024/07/23/editor-de-texto-5.html" />
+<meta property="og:site_name" content="Igor Montagner" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-23T00:00:00-03:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Criando um editor de texto - parte 5" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-07-23T00:00:00-03:00","datePublished":"2024-07-23T00:00:00-03:00","description":"O visualizador já está pronto, agora é começar a editar! Vamos então começar a editar texto e nosso primeiro exemplo será bem simples: editar uma única linha, incluindo usar as setas para esquerda e direita para posicionar o cursor. O resultado fica parecido com o abaixo.","headline":"Criando um editor de texto - parte 5","mainEntityOfPage":{"@type":"WebPage","@id":"/editor-de-texto/2024/07/23/editor-de-texto-5.html"},"url":"/editor-de-texto/2024/07/23/editor-de-texto-5.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css">
+  <link rel="stylesheet" href="/assets/custom.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Igor Montagner" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Igor Montagner</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/talks/">Talks</a><a class="page-link" href="/CV/">CV</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Criando um editor de texto - parte 5</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2024-07-23T00:00:00-03:00" itemprop="datePublished">Jul 23, 2024
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>O visualizador já está pronto, agora é começar a editar! Vamos então começar a editar texto e nosso primeiro exemplo será bem simples: editar uma única linha, incluindo usar as setas para esquerda e direita para posicionar o cursor. O resultado fica parecido com o abaixo.</p>
+
+<p>Nosso primeiro passo será definir um tipo <code class="language-plaintext highlighter-rouge">EditableString</code>. Isso é necessário pois modificar uma String acarreta na criação de uma nova String. Por isso iremos tratar nosso texto como uma lista de <a href="https://pt.wikipedia.org/wiki/Grafema">grafemas</a>. Outro ponto: saber o tamanho da nossa string é importante, por isso iremos guardar esse valor no nosso tipo. O algoritmo <a href="https://hexdocs.pm/gleam_stdlib/gleam/list.html#length">list.length</a> em Gleam é $\mathcal{O}(n)$, então seria legal evitar passar pela lista inteira só para pegar seu tamanho.</p>
+
+<pre><code class="language-gleam">pub type EditableString {
+  EditableString(text: List(String), total_length: Int)
+}
+
+pub fn new() {
+  EditableString([], 0)
+}
+</code></pre>
+
+<p>A partir desse texto iremos tentar aproveitar melhor as funções da biblioteca padrão de Gleam e escrever código que aproveite o módulo <a href="https://hexdocs.pm/gleam_stdlib/gleam/list.html">list</a>. Vejamos um exemplo simples que mostra nossa string no terminal.</p>
+
+<pre><code class="language-gleam">pub fn print(es: EditableString) {
+  list.each(es.text, io.print)
+}
+</code></pre>
+
+<p>A função <a href="https://hexdocs.pm/gleam_stdlib/gleam/list.html#each">list.each</a> aplica uma função a cada elemento do primeiro argumento e descarta o resultado. Isso é perfeito para o nosso caso, em que queremos chamar a mesma função para todo elemento da lista. Daria para fazer com a recursão que já usamos em outros textos, mas fica bem mais comprido…</p>
+
+<pre><code class="language-gleam">pub fn print(es: EditableString) {
+  [] -&gt; Nil
+  [first, ..rest] -&gt; {
+    io.print(first)
+    print(rest)
+  }
+}
+</code></pre>
+
+<p>A inserção também pode ser feita com funções de <code class="language-plaintext highlighter-rouge">list</code> e fica bem curtinha :) As funções <code class="language-plaintext highlighter-rouge">take</code> e <code class="language-plaintext highlighter-rouge">drop</code> são relativamente explicativas, então vou focar no <code class="language-plaintext highlighter-rouge">flatten</code>. Ele pega uma lista de listas e transforma em uma lista com um nível só. Super útil no caso abaixo, que ficamos com uma lista com três pedaços do texto.</p>
+
+<pre><code class="language-gleam">pub fn insert_at_cursor(es: EditableString, pos, str) {
+  let sl = es.text
+  let new_list =
+    [list.take(sl, pos), string.to_graphemes(str), list.drop(sl, pos)]
+    |&gt; list.flatten
+  EditableString(new_list, es.total_length + string.length(str))
+}
+</code></pre>
+
+<p>A etapa final é criar o loop de eventos e garantir que o cursor aponta para o lugar certo. Veja abaixo.</p>
+
+<pre><code class="language-gleam">fn input_loop(es: EditableString, cursor: Int) {
+  case terminal.get_key() {
+    terminal.CursorMovement(terminal.LEFT) -&gt; {
+      let new_cursor = int.min(cursor - 1, 1)
+      terminal.move_cursor(0, new_cursor)
+      input_loop(es, new_cursor)
+    }
+    terminal.CursorMovement(terminal.RIGHT) -&gt; {
+      let new_cursor = int.max(es.total_length + 1, cursor)
+      terminal.move_cursor(0, new_cursor)
+      input_loop(es, new_cursor)
+    }
+    terminal.Letter(s) -&gt; {
+      terminal.clear_line()
+      let new_es = editable_string.insert_at_cursor(es, cursor - 1, s)
+      terminal.move_cursor(0, 1)
+      editable_string.print(new_es)
+      terminal.move_cursor(0, cursor + 1)
+      input_loop(new_es, cursor + 1)
+    }
+    terminal.Enter -&gt; Nil
+    terminal.UNKNOWN -&gt; Nil
+    _ -&gt; Nil
+  }
+}
+</code></pre>
+
+<p>Apertar <code class="language-plaintext highlighter-rouge">Enter</code> finaliza a edição da linha. Esse código ainda tem alguns problemas:</p>
+
+<ol>
+  <li>se a linha ficar maior que o terminal o cursor vai ficar piscando no fim da linha 1, porém o texto vai ser editado no lugar correto.</li>
+  <li>o cursor fica sempre na primeira linha.</li>
+  <li>não há nenhum tratamento para o número de linhas no terminal que o texto ocupa.</li>
+</ol>
+
+<p>Porém, já temos um grande avanço em termos de interação. Juntar isso com o visualizador ainda vai dar trabalho e isso fica pros próximos textos :P</p>
+
+  </div><a class="u-url" href="/editor-de-texto/2024/07/23/editor-de-texto-5.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Igor Montagner</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Igor Montagner</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/igordsm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">igordsm</span></a></li><li><a href="https://fosstodon.org/@igordsm"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#mastodon"></use></svg> <span class="username">igordsm</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Igor&#39;s personal and academic website. </p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

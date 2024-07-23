@@ -1,4 +1,181 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-06-16T15:53:52-03:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Criando um editor de texto - parte 3</title><link href="/editor-de-texto/2024/06/15/editor-de-texto-3.html" rel="alternate" type="text/html" title="Criando um editor de texto - parte 3" /><published>2024-06-15T00:00:00-03:00</published><updated>2024-06-15T00:00:00-03:00</updated><id>/editor-de-texto/2024/06/15/editor-de-texto-3</id><content type="html" xml:base="/editor-de-texto/2024/06/15/editor-de-texto-3.html"><![CDATA[<p>Agora chegamos na parte interessante que vai juntar novidades tanto de terminal (como dispositivo de hardware) quanto programação funcional. Vejamos:</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-07-23T17:24:43-03:00</updated><id>/feed.xml</id><title type="html">Igor Montagner</title><subtitle>Igor&apos;s personal and academic website. </subtitle><entry><title type="html">Criando um editor de texto - parte 5</title><link href="/editor-de-texto/2024/07/23/editor-de-texto-5.html" rel="alternate" type="text/html" title="Criando um editor de texto - parte 5" /><published>2024-07-23T00:00:00-03:00</published><updated>2024-07-23T00:00:00-03:00</updated><id>/editor-de-texto/2024/07/23/editor-de-texto-5</id><content type="html" xml:base="/editor-de-texto/2024/07/23/editor-de-texto-5.html"><![CDATA[<p>O visualizador já está pronto, agora é começar a editar! Vamos então começar a editar texto e nosso primeiro exemplo será bem simples: editar uma única linha, incluindo usar as setas para esquerda e direita para posicionar o cursor. O resultado fica parecido com o abaixo.</p>
+
+<p>Nosso primeiro passo será definir um tipo <code class="language-plaintext highlighter-rouge">EditableString</code>. Isso é necessário pois modificar uma String acarreta na criação de uma nova String. Por isso iremos tratar nosso texto como uma lista de <a href="https://pt.wikipedia.org/wiki/Grafema">grafemas</a>. Outro ponto: saber o tamanho da nossa string é importante, por isso iremos guardar esse valor no nosso tipo. O algoritmo <a href="https://hexdocs.pm/gleam_stdlib/gleam/list.html#length">list.length</a> em Gleam é $\mathcal{O}(n)$, então seria legal evitar passar pela lista inteira só para pegar seu tamanho.</p>
+
+<pre><code class="language-gleam">pub type EditableString {
+  EditableString(text: List(String), total_length: Int)
+}
+
+pub fn new() {
+  EditableString([], 0)
+}
+</code></pre>
+
+<p>A partir desse texto iremos tentar aproveitar melhor as funções da biblioteca padrão de Gleam e escrever código que aproveite o módulo <a href="https://hexdocs.pm/gleam_stdlib/gleam/list.html">list</a>. Vejamos um exemplo simples que mostra nossa string no terminal.</p>
+
+<pre><code class="language-gleam">pub fn print(es: EditableString) {
+  list.each(es.text, io.print)
+}
+</code></pre>
+
+<p>A função <a href="https://hexdocs.pm/gleam_stdlib/gleam/list.html#each">list.each</a> aplica uma função a cada elemento do primeiro argumento e descarta o resultado. Isso é perfeito para o nosso caso, em que queremos chamar a mesma função para todo elemento da lista. Daria para fazer com a recursão que já usamos em outros textos, mas fica bem mais comprido…</p>
+
+<pre><code class="language-gleam">pub fn print(es: EditableString) {
+  [] -&gt; Nil
+  [first, ..rest] -&gt; {
+    io.print(first)
+    print(rest)
+  }
+}
+</code></pre>
+
+<p>A inserção também pode ser feita com funções de <code class="language-plaintext highlighter-rouge">list</code> e fica bem curtinha :) As funções <code class="language-plaintext highlighter-rouge">take</code> e <code class="language-plaintext highlighter-rouge">drop</code> são relativamente explicativas, então vou focar no <code class="language-plaintext highlighter-rouge">flatten</code>. Ele pega uma lista de listas e transforma em uma lista com um nível só. Super útil no caso abaixo, que ficamos com uma lista com três pedaços do texto.</p>
+
+<pre><code class="language-gleam">pub fn insert_at_cursor(es: EditableString, pos, str) {
+  let sl = es.text
+  let new_list =
+    [list.take(sl, pos), string.to_graphemes(str), list.drop(sl, pos)]
+    |&gt; list.flatten
+  EditableString(new_list, es.total_length + string.length(str))
+}
+</code></pre>
+
+<p>A etapa final é criar o loop de eventos e garantir que o cursor aponta para o lugar certo. Veja abaixo.</p>
+
+<pre><code class="language-gleam">fn input_loop(es: EditableString, cursor: Int) {
+  case terminal.get_key() {
+    terminal.CursorMovement(terminal.LEFT) -&gt; {
+      let new_cursor = int.min(cursor - 1, 1)
+      terminal.move_cursor(0, new_cursor)
+      input_loop(es, new_cursor)
+    }
+    terminal.CursorMovement(terminal.RIGHT) -&gt; {
+      let new_cursor = int.max(es.total_length + 1, cursor)
+      terminal.move_cursor(0, new_cursor)
+      input_loop(es, new_cursor)
+    }
+    terminal.Letter(s) -&gt; {
+      terminal.clear_line()
+      let new_es = editable_string.insert_at_cursor(es, cursor - 1, s)
+      terminal.move_cursor(0, 1)
+      editable_string.print(new_es)
+      terminal.move_cursor(0, cursor + 1)
+      input_loop(new_es, cursor + 1)
+    }
+    terminal.Enter -&gt; Nil
+    terminal.UNKNOWN -&gt; Nil
+    _ -&gt; Nil
+  }
+}
+</code></pre>
+
+<p>Apertar <code class="language-plaintext highlighter-rouge">Enter</code> finaliza a edição da linha. Esse código ainda tem alguns problemas:</p>
+
+<ol>
+  <li>se a linha ficar maior que o terminal o cursor vai ficar piscando no fim da linha 1, porém o texto vai ser editado no lugar correto.</li>
+  <li>o cursor fica sempre na primeira linha.</li>
+  <li>não há nenhum tratamento para o número de linhas no terminal que o texto ocupa.</li>
+</ol>
+
+<p>Porém, já temos um grande avanço em termos de interação. Juntar isso com o visualizador ainda vai dar trabalho e isso fica pros próximos textos :P</p>]]></content><author><name></name></author><category term="editor-de-texto" /><summary type="html"><![CDATA[O visualizador já está pronto, agora é começar a editar! Vamos então começar a editar texto e nosso primeiro exemplo será bem simples: editar uma única linha, incluindo usar as setas para esquerda e direita para posicionar o cursor. O resultado fica parecido com o abaixo.]]></summary></entry><entry><title type="html">Criando um editor de texto - parte 4</title><link href="/editor-de-texto/2024/06/20/editor-de-texto-4.html" rel="alternate" type="text/html" title="Criando um editor de texto - parte 4" /><published>2024-06-20T00:00:00-03:00</published><updated>2024-06-20T00:00:00-03:00</updated><id>/editor-de-texto/2024/06/20/editor-de-texto-4</id><content type="html" xml:base="/editor-de-texto/2024/06/20/editor-de-texto-4.html"><![CDATA[<p>Vamos partir para uma etapa de organização de código agora que já temos um visualizador de arquivos que funciona. No final deste texto teremos algo como o gif abaixo.</p>
+
+<video controls="" width="80%">
+<source src="/assets/editor-de-texto/part4.mkv" type="video/mp4" />
+</video>
+
+<p>Os primeiros passos são melhorar nosso tipo <code class="language-plaintext highlighter-rouge">TermState</code>. Vamos colocar um pouco mais de informações nele e criar uma função <code class="language-plaintext highlighter-rouge">new</code> que cria um <code class="language-plaintext highlighter-rouge">TermState</code> a partir do conteúdo de um arquivo.</p>
+
+<pre><code class="language-gleam">pub type TermState {
+  TermState(
+    fname: String,
+    nlines: Int, 
+    ncols: Int,
+    before: queue.Queue(String),
+    screen: queue.Queue(String),
+    after: queue.Queue(String),
+  )
+}
+
+pub fn new(fname: String, lines: String, nrows: Int, ncols: Int) -&gt; TermState {
+  let line_list = split_line_max_length(lines, ncols)
+  TermState(
+    fname, nrows, ncols,
+    queue.new(),
+    queue.from_list(list.take(line_list, nrows)),
+    queue.from_list(list.drop(line_list, nrows)),
+  )
+}
+</code></pre>
+
+<p>Isso já simplifica um bocado o código do <code class="language-plaintext highlighter-rouge">main</code>, além de facilitar futuras implementações relacionadas à edição de arquivos.</p>
+
+<p>O outro passo é extrair o código das funções de rolagem da tela. Veja abaixo como ficaria o <code class="language-plaintext highlighter-rouge">scroll_down</code>.</p>
+
+<pre><code class="language-gleam">pub fn scroll_down(st: TermState) {
+  case queue.pop_front(st.after) {
+    Ok(#(line_show, new_after)) -&gt; {
+      let assert Ok(#(line_hide, new_screen)) = queue.pop_front(st.screen)
+      Ok(#(
+        line_show,
+        line_hide,
+        TermState(
+          ..st,
+          before: queue.push_back(st.before, line_hide),
+          screen: queue.push_back(new_screen, line_show),
+          after: new_after,
+        ),
+      ))
+    }
+    _ -&gt; {
+      Error(st)
+    }
+  }
+}
+</code></pre>
+
+<p>Essa função usa o tipo <a href="https://hexdocs.pm/gleam_stdlib/gleam/result.html">gleam/result</a>, que representa uma operação que pode (ou não) dar erro. No nosso caso <code class="language-plaintext highlighter-rouge">scroll_down</code> dá erro quando chegamos no fim do arquivo (<code class="language-plaintext highlighter-rouge">state.after</code> está vazio).</p>
+
+<p>O código que recebe a tecla seta para baixo também fica um pouco mais claro.</p>
+
+<pre><code class="language-gleam">terminal.CursorMovement(terminal.DOWN) -&gt; {
+  case term_state.scroll_down(state) {
+	Ok(#(line_show, line_hide, new_state)) -&gt; {
+	 // atualiza interface do terminal
+	 io.print("\u{1b}[1S")
+	 terminal.move_cursor(state.nlines,0)
+	 terminal.clear_line()
+	 io.print(line_show)
+
+	 // veremos isso mais para a frente hoje :)
+	 repaint_bottom_bar(new_state, new_state.fname)
+	 
+	 input_loop(new_state)
+	}
+	Error(st) -&gt; {
+	 input_loop(st)
+	}
+  }
+  
+}
+</code></pre>
+
+<p>A parte final que faremos por hoje é pintar a linha verde na parte de baixo do console. A ideia é mostrar o nome do arquivo aberto e possívelmente outras informações úteis no futuro. A sacada para fazer isso é, basicamente, criar um <code class="language-plaintext highlighter-rouge">TermState</code> com uma linha a menos do que o disponível no terminal :)</p>
+
+<pre><code class="language-gleam">// no main
+let st = term_state.new(filename, contents, nlines-1, ncols)
+
+// e chamar a função abaixo sempre que rolar a tela
+fn repaint_bottom_bar(state: TermState, fname) {
+  terminal.move_cursor(state.nlines+1, 0)
+  
+  io.print("\u{1b}[48:5:2m")
+  terminal.clear_line()
+  io.print(" &lt;gled&gt; -- " &lt;&gt; fname &lt;&gt; " \u{1b}[0m")
+}
+</code></pre>
+<p>O efeito é o do vídeo acima: uma barra verde fixa na parte de baixo do editor.</p>
+
+<p>E é isso :) Temos agora um código um pouco (bem pouco) mais organizado antes de fazer a primeira parte difícil do editor: posicionar o cursor na tela e manter a informação de qual linha/coluna isso está mapeado no texto. O código final pode ser visto <a href="https://github.com/igordsm/term_editor/tree/main/src/part4">no repo term_editor</a>.</p>]]></content><author><name></name></author><category term="editor-de-texto" /><summary type="html"><![CDATA[Vamos partir para uma etapa de organização de código agora que já temos um visualizador de arquivos que funciona. No final deste texto teremos algo como o gif abaixo.]]></summary></entry><entry><title type="html">Criando um editor de texto - parte 3</title><link href="/editor-de-texto/2024/06/15/editor-de-texto-3.html" rel="alternate" type="text/html" title="Criando um editor de texto - parte 3" /><published>2024-06-15T00:00:00-03:00</published><updated>2024-06-15T00:00:00-03:00</updated><id>/editor-de-texto/2024/06/15/editor-de-texto-3</id><content type="html" xml:base="/editor-de-texto/2024/06/15/editor-de-texto-3.html"><![CDATA[<p>Agora chegamos na parte interessante que vai juntar novidades tanto de terminal (como dispositivo de hardware) quanto programação funcional. Vejamos:</p>
 
 <ol>
   <li>gleam não tem estado. Ou seja, vai ser necessário guardar quais linhas estão na tela e quais estão fora <strong>sem modificar nenhuma variável</strong>. Além disso, precisamos persistir essas modificações enquanto o usuário interage com o programa.</li>
@@ -464,38 +641,4 @@ pub fn main() {
 
 <p>Esse post foi motivado pela minha recente decisão de desabilitar Javascript em páginas que não são aplicações web. Apesar de alguns sites pararem de funcionar corretamente, isso tornou minha experiência muito melhor em geral. Quase tudo carrega instantâneo e isso até faz alguns Paywalls pararem de funcionar. Tenho usado o <a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">uBlock Origin</a> e tem sido muito bom. Sinto que não perdi nada em termos de minha experiência de uso da Web e ganhei muito em termos de velocidade e praticidade.</p>
 
-<p>Outra mudança foi me motivar a buscar outras maneiras de consumir conteúdo interessante. Tenho usado mais minha conta no <a href="https://fosstodon.org/@igordsm">Fosstodon</a>, leio alguns blogs que gosto e estou tentando ressucitar o costume de usar RSS ao invés de visitar portais de conteúdo. Talvez seja meio antiquado, mas por enquanto estou gostando.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Nesses últimos tempos a TIM tem se superado comigo: se perco uma ligação a operadora me manda um SMS dizendo que se eu tivesse o serviço “TrueCaller qualquer coisa” eu conseguiria ver o número que me ligou! Ou as infinitas ligações para me dizer que eu tenho um recado e que se quiser ouvir eu tenho que ligar para um outro número. Também já me ofereceram Créditos a Cobrar, diversos planos diferentes e novas condições imperdíveis (que eu perdi).]]></summary></entry><entry><title type="html">“Am I good enough?” - Michelle Obama</title><link href="/livros/2023/12/25/livro-michelle-obama.html" rel="alternate" type="text/html" title="“Am I good enough?” - Michelle Obama" /><published>2023-12-25T00:00:00-03:00</published><updated>2023-12-25T00:00:00-03:00</updated><id>/livros/2023/12/25/livro-michelle-obama</id><content type="html" xml:base="/livros/2023/12/25/livro-michelle-obama.html"><![CDATA[<p>Acabei de ler o livro “Minha história” da Michelle Obama e gostei bastante.</p>
-
-<p><img src="https://m.media-amazon.com/images/I/815rLjPo9KL._AC_UF1000,1000_QL80_FMwebp_.jpg" alt="Capa do livro &quot;minha história&quot; de Michelle Obama" class="capa" /></p>
-
-<p>O livro é uma autobiografia, então obviamente a própria Michelle conta sua história desde quando era a criança Michelle Robinson até o fim de sua estadia na casa branca como primeira dama Michelle Obama. Tudo muito bem escrito e com uma boa dose tanto de realismo quanto de humor, o livro é de leitura fácil e prende bem. São mais de 400 páginas que passam até bem rápido.</p>
-
-<p>Dentre os muitos pontos marcantes no livro vou citar dois aqui que me fizeram pensar. O primeiro é uma frase que ela repete ao longo do livro (e da vida) para ela mesma em momentos de dificuldade: “Am I good enough? Yes, I am”. Eu gostei muito dessa frase encorajadora justamente por ela ser simples. Ela não se encoraja dizendo que é maravilhosa, linda, forte, excepcional ou qualquer adjetivo que implique grandeza e superioridade. Para ter coragem basta dizer que ela é boa <em>o suficiente</em>, nada mais nem nada menos que isso. Ler isso para mim é um alívio. Eu acho bastante arrogante eu dizer para mim mesmo que sou excelente, inteligente, trabalhador ou qualquer coisa desse tipo. Mas eu consigo dizer, sem soar artificial ou arrogante, que sou bom o suficiente para encarar um desafio ou circunstância difícil.</p>
-
-<p>O segundo ponto é que essa mensagem de apoio é passada para outras pessoas, especialmente jovens, constantemente. De menina pobre de Chicago ela foi para Princeton e Harvard com o apoio de muita gente (citados no livro :) E decide então que não é especial, fodona e gênia, mas sim reconhece que teve esse apoio e tenta dizer para jovens desfavorecidos que ela também já esteve lá. E ouvir isso importamuito. Uma das visitas mais marcantes foi à escola Elizabeth Garret Anderson, que ensinava primariamente crianças negras ou de minorias étnicas. Foram 3 contatos (2009 ,2011 e 2012) e <a href="https://theconversation.com/how-michelle-obamas-visit-to-a-london-school-helped-boost-students-grades-61694https://theconversation.com/how-michelle-obamas-visit-to-a-london-school-helped-boost-students-grades-61694https://theconversation.com/how-michelle-obamas-visit-to-a-london-school-helped-boost-students-grades-61694">esta reportagem</a> mostra que houve um ganho de desempenho significativo das alunas a partir de 2010 nos testes padronizados. É claro que existem vários fatores que podem influenciar isso, então não é exatamente possível afirmar que essa foi a causa da melhora. Porém, é significativo que não só essa escola aparece no livro como ela voltou para lá em 2018 para reforçar a mensagem e a importância do acontecimento em sua vida.</p>
-
-<p>Para finalizar, todas as histórias do livro acontecem em um contexto diferente do meu: quem conta a história é uma mulher negra que tenta a todo momento encontrar sua voz e ocupar um lugar no mundo de acordo com o que ela acredita. Suas buscas e dilemas são colocados de maneira tão humana que essas diferenças me aproximaram da história e me deixaram inspirado. Vale a leitura :)</p>]]></content><author><name></name></author><category term="livros" /><summary type="html"><![CDATA[Acabei de ler o livro “Minha história” da Michelle Obama e gostei bastante.]]></summary></entry><entry><title type="html">Livro “The Internet Con” (Cory Doctorow)</title><link href="/livros/2023/12/17/livro-internet-con.html" rel="alternate" type="text/html" title="Livro “The Internet Con” (Cory Doctorow)" /><published>2023-12-17T00:00:00-03:00</published><updated>2023-12-17T00:00:00-03:00</updated><id>/livros/2023/12/17/livro-internet-con</id><content type="html" xml:base="/livros/2023/12/17/livro-internet-con.html"><![CDATA[<style>
-    img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 90%;
-        max-height: 300px
-    }
-</style>
-
-<p>Recentemente acabei de ler o livro <a href="https://www.versobooks.com/en-gb/products/3035-the-internet-con">“The Internet Con: how to seize the means of computation”</a> por Cory Doctorow.</p>
-
-<p><img src="https://www.versobooks.com/cdn/shop/files/getimage_f56a5b40-cc2c-496e-a798-9da52c436081.jpg?v=1690862906&amp;width=584" alt="" /></p>
-
-<p>O tema principal do livro é uma estratégia de negócios comumente usada nas principais Big Techs atualmente: criação de um produto baseado no <em>Efeito de Rede</em> e posterior aumento do <em>Custo de troca</em> para que os usuários continuem na plataforma mesmo após ela não ser tão vantajosa quanto no início.</p>
-
-<p><em>Efeito de rede</em> é o nome dado a uma caracterísitca bem interessante de vários serviços online: quanto mais gente que você conhece usa maior é o valor que o serviço retorna a você. Note que a relação aqui é simétrica e até um tanto simbiótica: o fato de você usar também cria incentivos e benefícios para que os seus conhecidos usem (ou continuem usando) o serviço. Esse efeito não é negativo isoladamente, mas se torna complexo quando é aplicado em plataformas fechadas.</p>
-
-<p>Isso nos leva ao segundo ponto do livro: <em>Custo de troca</em>. Ao fecharem cada vez mais suas plataformas e não permitirem interoperabilidade ou acessos via API essas plataformas aumentam o <em>Custo de trocar para um concorrente</em>. Aliado ao <em>Efeito de rede</em>, isso cria um ambiente não competitivo em que seria necessário levar grande parte dos seus contatos para o novo concorrente para continuar tendo os mesmos benefícios.</p>
-
-<p>Segundo o autor, essa mistura leva a uma queda na utilidade dos serviços prestados: agora que os usuários estão presos na plataforma pode-se fazer o que quiser para aumentar seus lucros. Seria por isso que “todo mundo odeia Facebook/twitter mas não consegue parar de usar”. O principal argumento é que isso cria estruturas de poder com influência e dinheiro grandes demais para serem saudáveis para a sociedade (segundo o autor).</p>
-
-<p>A solução proposta pela autor é a interoperabilidade dessas plataformas, mesmo que forçada por legislação ou via engenharia reversa. Os exemplos citados incluem reparos de telefones e até tratores, mas passam também por coisas mais cotidianas como programas de mensagens e redes sociais. A ideia geral é que toda a tecnologia que temos e usamos deveria ser acessível para reparos e usos sem restrições artificais de disponibilidade e/ou concorrência.</p>
-
-<p>Algumas notícias recentes como a <a href="https://www.theverge.com/2023/12/13/24000120/threads-meta-activitypub-test-mastodon">adoção de ActivityPub pelo Threads</a> ou da interop forçada do iMessage<a href="https://www.engadget.com/apple-confirms-it-has-blocked-imessage-exploit-012015485.html">[1]</a><a href="https://www.engadget.com/beeper-mini-is-back-promising-imessage-access-on-android-if-you-sign-in-with-an-apple-id-182924774.html">[2]</a> tornaram o livro mais relevante para mim. Gosto de tecnologias não tradicionais, então sempre comemoro quando esse tipo de movimento ocorre. Enfim, recomendo a leitura. Dá para ler fácil em um fim de semana e serve como introdução a vários assuntos legais de Web aberta e tecnologias alternativas.</p>]]></content><author><name></name></author><category term="livros" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+<p>Outra mudança foi me motivar a buscar outras maneiras de consumir conteúdo interessante. Tenho usado mais minha conta no <a href="https://fosstodon.org/@igordsm">Fosstodon</a>, leio alguns blogs que gosto e estou tentando ressucitar o costume de usar RSS ao invés de visitar portais de conteúdo. Talvez seja meio antiquado, mas por enquanto estou gostando.</p>]]></content><author><name></name></author><summary type="html"><![CDATA[Nesses últimos tempos a TIM tem se superado comigo: se perco uma ligação a operadora me manda um SMS dizendo que se eu tivesse o serviço “TrueCaller qualquer coisa” eu conseguiria ver o número que me ligou! Ou as infinitas ligações para me dizer que eu tenho um recado e que se quiser ouvir eu tenho que ligar para um outro número. Também já me ofereceram Créditos a Cobrar, diversos planos diferentes e novas condições imperdíveis (que eu perdi).]]></summary></entry></feed>
