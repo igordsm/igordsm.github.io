@@ -57,12 +57,12 @@ A etapa final é criar o loop de eventos e garantir que o cursor aponta para o l
 fn input_loop(es: EditableString, cursor: Int) {
   case terminal.get_key() {
     terminal.CursorMovement(terminal.LEFT) -> {
-      let new_cursor = int.min(cursor - 1, 1)
+      let new_cursor = int.max(cursor - 1, 1)
       terminal.move_cursor(0, new_cursor)
       input_loop(es, new_cursor)
     }
     terminal.CursorMovement(terminal.RIGHT) -> {
-      let new_cursor = int.max(es.total_length + 1, cursor)
+      let new_cursor = int.min(es.total_length + 1, cursor + 1)
       terminal.move_cursor(0, new_cursor)
       input_loop(es, new_cursor)
     }
