@@ -7,6 +7,11 @@ categories: editor-de-texto
 O visualizador já está pronto, agora é começar a editar! Vamos então começar a editar texto e nosso primeiro exemplo será bem simples: editar uma única linha, incluindo usar as setas para esquerda e direita para posicionar o cursor. O resultado fica parecido com o abaixo. 
 
 
+<video controls width="80%">
+<source src="/assets/editor-de-texto/part5.mkv" type="video/mp4"/>
+</video>
+
+
 Nosso primeiro passo será definir um tipo `EditableString`. Isso é necessário pois modificar uma String acarreta na criação de uma nova String. Por isso iremos tratar nosso texto como uma lista de [grafemas](https://pt.wikipedia.org/wiki/Grafema). Outro ponto: saber o tamanho da nossa string é importante, por isso iremos guardar esse valor no nosso tipo. O algoritmo [list.length](https://hexdocs.pm/gleam_stdlib/gleam/list.html#length) em Gleam é $\mathcal{O}(n)$, então seria legal evitar passar pela lista inteira só para pegar seu tamanho. 
 
 ```gleam
