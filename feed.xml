@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+    <title>Igor Montagner</title>
+    <link href="https://igordsm.github.io/feed.xml" rel="self" />
+    <link href="https://igordsm.github.io" />
+    <updated>2024-08-17T17:21:44-03:00</updated>
+    <author>
+        <name>Igor Montagner</name>
+    </author>
+    <id>https://igordsm.github.io</id>
+
+    <entry>
+        <title>Cansei de geradores de sites estáticos</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos.html"/>
+        <id>https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos.html</id>
+
+        <updated>2024-08-17T17:14:14-03:00</updated>
+            <summary>
+                <![CDATA[
+                    Eu já usei uma série quase incontável de programas do tipo jekyll, mkdocs e hugo. Esses SSG (static site generators)&nbsp;são os preferidos de desenvolvedores e&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                
+  <p>
+    Eu já usei uma série quase incontável de programas do tipo jekyll, mkdocs e hugo. Esses SSG (<i>static site generators)</i>&nbsp;são os preferidos de desenvolvedores e entusiastas de tecnologia em geral. E eles também são ferramentas com uma usabilidade questionável. Você usar o editor que quiser! E também o tema que gostar mais, inclusive fazer o seu próprio! E ainda tem as novidades que saem a cada versão. Isso cria uma combinação enorme de situações que tem tudo a ver com tecnologia e são divertidas muitas vezes.&nbsp;
+  </p>
+
+  <p>
+    Nada contra gostar de configurar seu próprio ambiente e ter controle total sobre a tecnologia usada. Eu gosto disso. Mas com o tempo tenho percebido que às vezes eu só quero <b>tecnologia que não me atrapalhe</b>. Parece louco escrever isso explicitamente, mas é algo que tem sido comum para mim nos últimos tempos. Meu trabalho é exigente e tenho uma série atividades que gosto de fazer. Quando eu tenho tempo para escrever meus pensamentos aqui eu quero gastar meu tempo <b>escrevendo. </b>Não instalando pela enésima vez o ambiente para rodar jekyll. Ou descobrindo se o meu tema suporta alguma funcionalidade específica, já que a documentação é escarça e cada tema implementa o que quiser.&nbsp;
+  </p>
+
+  <p>
+    Então agora estou usando o <a href="https://getpublii.com/" target="_blank">Publii</a>, um gerenciador de conteúdo que gera um site estático que pode ser colocado no github pages ou AWS S3. Acabei de publicar o meu site clicando em um botão grande "Publicar" e não dando <i>git push </i>seguido de uma séria de comandos depois. Tudo integrado, fácil e sem grande dor de cabeça. O tema eu escolhi em um site do próprio software e instalar foi bem fácil. Vou ir usando aqui e vendo o que dá. Nas próximas semanas irei portar o conteúdo do site antigo para cá e ganhar mais experiência com isso. No limite é bem fácil de voltar para um SSG, mas acho que estou bem mais confortável ficando por aqui mesmo.&nbsp;
+  </p>
+
+  <p>
+    
+  </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Palestra na Python Brasil 2021</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/palestra-na-python-brasil-2021.html"/>
+        <id>https://igordsm.github.io/palestra-na-python-brasil-2021.html</id>
+            <category term="talks"/>
+
+        <updated>2024-08-15T19:03:11-03:00</updated>
+            <summary>
+                <![CDATA[
+                    Depois da última palestra acabei querendo repetir, e dessa vez falei sobre as contribuições de alunos na matéria Desenvolvimento Aberto no Insper. Foi bem gostoso&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                
+  <p>
+    Depois da <a href="https://igordsm.github.io/palestra-na-python-brasil-2020.html">última palestra</a> acabei querendo repetir, e dessa vez falei sobre as contribuições de alunos na matéria Desenvolvimento Aberto no Insper. Foi bem gostoso também e me diverti bastante adaptando o material da disciplina para o evento.&nbsp;
+  </p>
+<div><div class="post__iframe"><iframe loading="lazy" width="560" height="315" src="https://www.youtube-nocookie.com/embed/mZnOf7BH4kY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>    
+
+
+
+</div>
+
+  <p>
+    
+  </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Palestra na Python Brasil 2020</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/palestra-na-python-brasil-2020.html"/>
+        <id>https://igordsm.github.io/palestra-na-python-brasil-2020.html</id>
+            <category term="talks"/>
+
+        <updated>2020-08-15T18:33:00-03:00</updated>
+            <summary>
+                <![CDATA[
+                    No meio da pandemia resolvi fazer uma palestra na Python BR, a conferência nacional de Python. Como sou professor, acabei falando um pouco sobre fazer&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                
+  <p>
+    No meio da pandemia resolvi fazer uma palestra na Python BR, a conferência nacional de Python. Como sou professor, acabei falando um pouco sobre fazer faculdade e gostei do resultado. A palestra agora está disponível online e acho que pode ainda ser interessante. Veja aí abaixo :)
+  </p>
+<div><div class="post__iframe"><iframe loading="lazy" width="560" height="315" src="https://www.youtube-nocookie.com/embed/yCXxcNnOFNY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>    </div>
+            ]]>
+        </content>
+    </entry>
+</feed>

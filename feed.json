@@ -1,0 +1,57 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Igor Montagner",
+    "description": "",
+    "home_page_url": "https://igordsm.github.io",
+    "feed_url": "https://igordsm.github.io/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "Igor Montagner"
+    },
+    "items": [
+        {
+            "id": "https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos.html",
+            "url": "https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos.html",
+            "title": "Cansei de geradores de sites estáticos",
+            "summary": "Eu já usei uma série quase incontável de programas do tipo jekyll, mkdocs e hugo. Esses SSG (static site generators)&nbsp;são os preferidos de desenvolvedores e&hellip;",
+            "content_html": "\n  <p>\n    Eu já usei uma série quase incontável de programas do tipo jekyll, mkdocs e hugo. Esses SSG (<i>static site generators)</i>&nbsp;são os preferidos de desenvolvedores e entusiastas de tecnologia em geral. E eles também são ferramentas com uma usabilidade questionável. Você usar o editor que quiser! E também o tema que gostar mais, inclusive fazer o seu próprio! E ainda tem as novidades que saem a cada versão. Isso cria uma combinação enorme de situações que tem tudo a ver com tecnologia e são divertidas muitas vezes.&nbsp;\n  </p>\n\n  <p>\n    Nada contra gostar de configurar seu próprio ambiente e ter controle total sobre a tecnologia usada. Eu gosto disso. Mas com o tempo tenho percebido que às vezes eu só quero <b>tecnologia que não me atrapalhe</b>. Parece louco escrever isso explicitamente, mas é algo que tem sido comum para mim nos últimos tempos. Meu trabalho é exigente e tenho uma série atividades que gosto de fazer. Quando eu tenho tempo para escrever meus pensamentos aqui eu quero gastar meu tempo <b>escrevendo. </b>Não instalando pela enésima vez o ambiente para rodar jekyll. Ou descobrindo se o meu tema suporta alguma funcionalidade específica, já que a documentação é escarça e cada tema implementa o que quiser.&nbsp;\n  </p>\n\n  <p>\n    Então agora estou usando o <a href=\"https://getpublii.com/\" target=\"_blank\">Publii</a>, um gerenciador de conteúdo que gera um site estático que pode ser colocado no github pages ou AWS S3. Acabei de publicar o meu site clicando em um botão grande \"Publicar\" e não dando <i>git push </i>seguido de uma séria de comandos depois. Tudo integrado, fácil e sem grande dor de cabeça. O tema eu escolhi em um site do próprio software e instalar foi bem fácil. Vou ir usando aqui e vendo o que dá. Nas próximas semanas irei portar o conteúdo do site antigo para cá e ganhar mais experiência com isso. No limite é bem fácil de voltar para um SSG, mas acho que estou bem mais confortável ficando por aqui mesmo.&nbsp;\n  </p>\n\n  <p>\n    \n  </p>",
+            "author": {
+                "name": "Igor Montagner"
+            },
+            "tags": [
+            ],
+            "date_published": "2024-08-17T17:14:14-03:00",
+            "date_modified": "2024-08-17T17:21:44-03:00"
+        },
+        {
+            "id": "https://igordsm.github.io/palestra-na-python-brasil-2021.html",
+            "url": "https://igordsm.github.io/palestra-na-python-brasil-2021.html",
+            "title": "Palestra na Python Brasil 2021",
+            "summary": "Depois da última palestra acabei querendo repetir, e dessa vez falei sobre as contribuições de alunos na matéria Desenvolvimento Aberto no Insper. Foi bem gostoso&hellip;",
+            "content_html": "\n  <p>\n    Depois da <a href=\"https://igordsm.github.io/palestra-na-python-brasil-2020.html\">última palestra</a> acabei querendo repetir, e dessa vez falei sobre as contribuições de alunos na matéria Desenvolvimento Aberto no Insper. Foi bem gostoso também e me diverti bastante adaptando o material da disciplina para o evento.&nbsp;\n  </p>\n<div><div class=\"post__iframe\"><iframe loading=\"lazy\" width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/mZnOf7BH4kY\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>    \n\n\n\n</div>\n\n  <p>\n    \n  </p>",
+            "author": {
+                "name": "Igor Montagner"
+            },
+            "tags": [
+                   "talks"
+            ],
+            "date_published": "2024-08-15T19:03:11-03:00",
+            "date_modified": "2024-08-15T19:03:11-03:00"
+        },
+        {
+            "id": "https://igordsm.github.io/palestra-na-python-brasil-2020.html",
+            "url": "https://igordsm.github.io/palestra-na-python-brasil-2020.html",
+            "title": "Palestra na Python Brasil 2020",
+            "summary": "No meio da pandemia resolvi fazer uma palestra na Python BR, a conferência nacional de Python. Como sou professor, acabei falando um pouco sobre fazer&hellip;",
+            "content_html": "\n  <p>\n    No meio da pandemia resolvi fazer uma palestra na Python BR, a conferência nacional de Python. Como sou professor, acabei falando um pouco sobre fazer faculdade e gostei do resultado. A palestra agora está disponível online e acho que pode ainda ser interessante. Veja aí abaixo :)\n  </p>\n<div><div class=\"post__iframe\"><iframe loading=\"lazy\" width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/yCXxcNnOFNY\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>    </div>",
+            "author": {
+                "name": "Igor Montagner"
+            },
+            "tags": [
+                   "talks"
+            ],
+            "date_published": "2020-08-15T18:33:00-03:00",
+            "date_modified": "2024-08-15T18:36:21-03:00"
+        }
+    ]
+}

@@ -1,38 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-         <loc>https://igordsm.github.io/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://igordsm.github.io/elementary/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://igordsm.github.io/other-floss/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://igordsm.github.io/talks/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://igordsm.github.io/blog/2021-12-06/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://igordsm.github.io/blog/2021-12-24/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://igordsm.github.io/talks/pfe-boas-praticas/slides/</loc>
-         <lastmod>2023-02-24</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
+<?xml-stylesheet type="text/xsl" href="https://igordsm.github.io/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+<loc>https://igordsm.github.io/</loc>
+</url>
+<url>
+<loc>https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos.html</loc>
+<lastmod>2024-08-17T17:21:44-03:00</lastmod>
+</url>
+<url>
+<loc>https://igordsm.github.io/cv-2.html</loc>
+<lastmod>2024-08-15T18:41:21-03:00</lastmod>
+</url>
+<url>
+<loc>https://igordsm.github.io/palestra-na-python-brasil-2020.html</loc>
+<lastmod>2024-08-15T18:36:21-03:00</lastmod>
+</url>
+<url>
+<loc>https://igordsm.github.io/palestra-na-python-brasil-2021.html</loc>
+<lastmod>2024-08-15T19:03:11-03:00</lastmod>
+</url>
 </urlset>
