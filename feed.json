@@ -10,9 +10,9 @@
     },
     "items": [
         {
-            "id": "https://igordsm.github.io/sigcse-2024/",
-            "url": "https://igordsm.github.io/sigcse-2024/",
-            "title": "SIGCSE 2024",
+            "id": "https://igordsm.github.io/paper-no-sigcse-2024/",
+            "url": "https://igordsm.github.io/paper-no-sigcse-2024/",
+            "title": "Paper no SIGCSE 2024",
             "summary": "Título: Evaluating Mastery-oriented Grading in an Intensive CS1 Course pdf / ACM Digital Library Fiz a apresentação desse paper que fiz junto com o Rafael&hellip;",
             "content_html": "<p><strong>Título</strong>: Evaluating Mastery-oriented Grading in an Intensive CS1 Course <a href=\"https://zilles.cs.illinois.edu/papers/mastery_INSPER_SIGCSE_2024.pdf\">pdf</a> / <a href=\"https://dl.acm.org/doi/abs/10.1145/3626252.3630841\">ACM Digital Library</a></p><p>Fiz a apresentação desse paper que fiz junto com o Rafael Corsi e em parceria com Craig Zilles e Mariana Silva de Illinois. Foi o primeiro trabalho do Insper aprovado em uma conferência de educação tão boa e espero que tenhamos mais vários desse calibre :)</p><center>\n<embed src=\"https://igordsm.github.io/media/files/slides-sigcse-2024.pdf\" width=\"500\" height=\"400\"></embed>\n</center>\n\n",
             "author": {
