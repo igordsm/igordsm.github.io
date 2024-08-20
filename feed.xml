@@ -3,19 +3,45 @@
     <title>Igor Montagner</title>
     <link href="https://igordsm.github.io/feed.xml" rel="self" />
     <link href="https://igordsm.github.io" />
-    <updated>2024-08-17T17:21:44-03:00</updated>
+    <updated>2024-08-20T20:02:00-03:00</updated>
     <author>
         <name>Igor Montagner</name>
     </author>
     <id>https://igordsm.github.io</id>
 
     <entry>
+        <title>SIGCSE 2024</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/sigcse-2024/"/>
+        <id>https://igordsm.github.io/sigcse-2024/</id>
+            <category term="talks"/>
+            <category term="pesquisa"/>
+
+        <updated>2024-08-20T20:02:00-03:00</updated>
+            <summary>
+                <![CDATA[
+                    Título: Evaluating Mastery-oriented Grading in an Intensive CS1 Course pdf / ACM Digital Library Fiz a apresentação desse paper que fiz junto com o Rafael&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p><strong>Título</strong>: Evaluating Mastery-oriented Grading in an Intensive CS1 Course <a href="https://zilles.cs.illinois.edu/papers/mastery_INSPER_SIGCSE_2024.pdf">pdf</a> / <a href="https://dl.acm.org/doi/abs/10.1145/3626252.3630841">ACM Digital Library</a></p><p>Fiz a apresentação desse paper que fiz junto com o Rafael Corsi e em parceria com Craig Zilles e Mariana Silva de Illinois. Foi o primeiro trabalho do Insper aprovado em uma conferência de educação tão boa e espero que tenhamos mais vários desse calibre :)</p><center>
+<embed src="https://igordsm.github.io/media/files/slides-sigcse-2024.pdf" width="500" height="400"></embed>
+</center>
+
+
+            ]]>
+        </content>
+    </entry>
+    <entry>
         <title>Cansei de geradores de sites estáticos</title>
         <author>
             <name>Igor Montagner</name>
         </author>
-        <link href="https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos.html"/>
-        <id>https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos.html</id>
+        <link href="https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos/"/>
+        <id>https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos/</id>
 
         <updated>2024-08-17T17:14:14-03:00</updated>
             <summary>
@@ -49,8 +75,8 @@
         <author>
             <name>Igor Montagner</name>
         </author>
-        <link href="https://igordsm.github.io/palestra-na-python-brasil-2021.html"/>
-        <id>https://igordsm.github.io/palestra-na-python-brasil-2021.html</id>
+        <link href="https://igordsm.github.io/palestra-na-python-brasil-2021/"/>
+        <id>https://igordsm.github.io/palestra-na-python-brasil-2021/</id>
             <category term="talks"/>
 
         <updated>2024-08-15T19:03:11-03:00</updated>
@@ -63,7 +89,7 @@
             <![CDATA[
                 
   <p>
-    Depois da <a href="https://igordsm.github.io/palestra-na-python-brasil-2020.html">última palestra</a> acabei querendo repetir, e dessa vez falei sobre as contribuições de alunos na matéria Desenvolvimento Aberto no Insper. Foi bem gostoso também e me diverti bastante adaptando o material da disciplina para o evento.&nbsp;
+    Depois da <a href="https://igordsm.github.io/palestra-na-python-brasil-2020/">última palestra</a> acabei querendo repetir, e dessa vez falei sobre as contribuições de alunos na matéria Desenvolvimento Aberto no Insper. Foi bem gostoso também e me diverti bastante adaptando o material da disciplina para o evento.&nbsp;
   </p>
 <div><div class="post__iframe"><iframe loading="lazy" width="560" height="315" src="https://www.youtube-nocookie.com/embed/mZnOf7BH4kY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>    
 
@@ -82,8 +108,8 @@
         <author>
             <name>Igor Montagner</name>
         </author>
-        <link href="https://igordsm.github.io/palestra-na-python-brasil-2020.html"/>
-        <id>https://igordsm.github.io/palestra-na-python-brasil-2020.html</id>
+        <link href="https://igordsm.github.io/palestra-na-python-brasil-2020/"/>
+        <id>https://igordsm.github.io/palestra-na-python-brasil-2020/</id>
             <category term="talks"/>
 
         <updated>2020-08-15T18:33:00-03:00</updated>
