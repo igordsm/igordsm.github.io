@@ -3,12 +3,35 @@
     <title>Igor Montagner</title>
     <link href="https://igordsm.github.io/feed.xml" rel="self" />
     <link href="https://igordsm.github.io" />
-    <updated>2024-08-20T20:02:00-03:00</updated>
+    <updated>2024-08-26T20:09:25-03:00</updated>
     <author>
         <name>Igor Montagner</name>
     </author>
     <id>https://igordsm.github.io</id>
 
+    <entry>
+        <title>Esse blog está &quot;dando certo&quot;?</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/esse-blog-esta-dando-certo/"/>
+        <id>https://igordsm.github.io/esse-blog-esta-dando-certo/</id>
+
+        <updated>2024-08-26T20:09:25-03:00</updated>
+            <summary>
+                <![CDATA[
+                    O que significa um blog "dar certo"? E este blog, o que significa ele estar "cumprindo seu objetivo"? Precisa de um? Estive pensando nisso nos&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                
+  <p>
+    O que significa um blog "dar certo"? E este blog, o que significa ele estar "cumprindo seu objetivo"? Precisa de um? Estive pensando nisso nos ultimos dias e não tenho uma resposta, pra ser sincero.<br><br>Algumas pessoas usam blogs para contruir reputação. Quer dizer, usavam. Agora as pessoas postam no LinkedIn, em grande parte. E muitos são aqueles textos super formuláicos de gente tentando se vender como especialista. Acho chato e muito pouco autêntico. Teríamos um mundo MUITO melhor se todo mundo que posta coisas do tipo "5 lições de vida que aprendi assistindo Harry Potter" realmente aplicasse as 5 lições de vida (super genéricas) sobre as quais escreve. Eu gostaria muito de não ser essas pessoas. Não é que querer construir uma reputação seja ruim, mas se a maneira atual de fazer isso (com textos na internet) é com esse tipo de texto eu prefiro não focar em construir uma reputação.<br><br>De uma maneira mais básica, me parece que existirem pessoas que leem o blog seria uma boa medida. Por outro lado, não publico nada que seja realmente essencial em termos de conteudo. A maioria são textos de opinião em assuntos **bem específicos**. Por aqui não tem material de ensino nem coisas relacionadas à pesquisa. O blog é de teor inteiramente pessoal. Essencialmente, se eu deixar de escrever o blog nada de ruim acontece. É bem provável, inclusive, que ninguém note. <br><br>Aliás, eu me importo se ninguém lê os textos? É claro que eu gostaria de ter muitos visitantes todo mês, mas o ponto é outro. Senão tiver ninguém, isso vai me fazer mal? Hoje eu diria que não... Escrever aqui é uma forma de sair um pouco da rotina e de organizar coisas que faço e penso no meu cotidiano fora do trabalho. Como sou um pouco obsessivo, não falar e pensar em trabalho é difícil e o blog ajuda a reservar um tempinho para isso. Mais ainda: até agora eu não selecionei nenhuma ideia de texto pensando em quem poderia ler isso. <br><br>Talvez seja esse o ponto de um blog pessoal, no fim das contas. Escrever aqui me faz bem e isso basta. Mais do que isso deixaria de ser algo simples e passa a envolver querer otimizar e melhorar continuamente. Já faço isso em muitos outros momentos da vida. Não ter que fazer isso aqui é um alívio :)<br><br>
+  </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Paper no SIGCSE 2024</title>
         <author>
