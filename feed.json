@@ -10,6 +10,21 @@
     },
     "items": [
         {
+            "id": "https://igordsm.github.io/reflexoes-sobre-participacoes-em-software-livre/",
+            "url": "https://igordsm.github.io/reflexoes-sobre-participacoes-em-software-livre/",
+            "title": "Reflexões sobre participações em software livre",
+            "summary": "Durante a pandemia eu tive muitas contribuições aceitas para o ElementaryOS e isso foi uma das coisas que me motivou tanto a criar a eletiva&hellip;",
+            "content_html": "<p>Durante a pandemia eu tive muitas contribuições aceitas para o <a href=\"https://elementary.io\">ElementaryOS</a> e isso foi uma das coisas que me motivou tanto a criar a eletiva de <a href=\"https://insper.github.io/open-dev\">Desenvolvimento Aberto</a> quanto a fazer uma  <a href=\"https://igordsm.github.io/palestra-na-python-brasil-2021/\">palestra na Python Brasil</a> e <a href=\"https://ieeexplore.ieee.org/abstract/document/9962744/\">publicar um artigo científico sobre o design da disciplina</a>. </p><p>Após um período afastado de software livre e bem cansativo no trabalho resolvi tentar voltar a fazer pequenas contribuições a projetos que gosto. E como eu realmente gosto de linguagens de programação, no fim foquei em coisas em <a href=\"https://nim-lang.org/\">Nim</a> e <a href=\"https://gleam.run\">Gleam</a>. Ambas tem comunidades pequenas e tem particularidades que as tornam únicas em comparação com linguagens mais “famosas”. </p><p>Quando testei <em>Nim</em> inicialmente gostei bastante por ser uma linguagem mais baixo nível, que compila para C e C++ mas também funciona em JS. Fazendo alguns experimentos topei na lib <a href=\"https://github.com/khchen/xl\">XL</a>, que é usada para ler arquivos Excel (<em>.xlsx</em>) e parecia funcionar bem… Tirando um bug bizarro que errava as datas em 1 ou 2 dias. Resolvi estudar formatos de datas e <a href=\"https://github.com/khchen/xl/pull/6\">fazer um PR</a>. E tive basicamente nenhuma resposta… até que depois de 6 meses o PR foi aceito sem nenhuma comentário ou discussão. </p><p>Minha experiência com <em>Gleam</em> já foi um pouco diferente. Comecei testando um wrapper de <a href=\"https://p5js.org/\">p5.js</a> que permitiria criar pequenos programas visuais e interativos no browser. O projeto <a href=\"https://github.com/Acepie/p5js_gleam/tree/main\">acepie/p5js_gleam</a> também é desenvolvido por somente uma pessoa, o que já me preocupou de novo. Como faltavam umas funções e constantes revolvi <a href=\"https://github.com/Acepie/p5js_gleam/issues/4\">abrir uma issue</a> e ver o que aconteceria. Em poucos dias <em>acepie</em> respondeu e já tinha adicionado as funções que faltavam. Fiquei contente pela responsividade e também pela sorte de ter alguém olhando o projeto. </p><p>As interações terem sido tão diferentes pode ter sido só acaso, mas para mim foi algo significativo. Em comunidades pequenas é comum que alguns projetos sejam meio “abandonados”, já que muito é mantido por somente uma pessoa e manter projetos é bem cansativo. Hoje eu tenho muito mais ânimo de usar <em>gleam</em> e tentar contribuir com a comunidade. Quando sair algum PR em <em>Gleam</em> eu conto aqui como foi. Enquanto isso o que me resta é me divertir com linguagens funcionais e tecnologias meio estranhas :)</p>",
+            "author": {
+                "name": "Igor Montagner"
+            },
+            "tags": [
+                   "reflexões"
+            ],
+            "date_published": "2024-09-09T19:46:00-03:00",
+            "date_modified": "2024-09-09T19:57:44-03:00"
+        },
+        {
             "id": "https://igordsm.github.io/esse-blog-esta-dando-certo/",
             "url": "https://igordsm.github.io/esse-blog-esta-dando-certo/",
             "title": "Esse blog está &quot;dando certo&quot;?",
@@ -19,9 +34,10 @@
                 "name": "Igor Montagner"
             },
             "tags": [
+                   "reflexões"
             ],
             "date_published": "2024-08-26T20:09:25-03:00",
-            "date_modified": "2024-08-26T20:09:25-03:00"
+            "date_modified": "2024-09-09T19:56:18-03:00"
         },
         {
             "id": "https://igordsm.github.io/paper-no-sigcse-2024/",
