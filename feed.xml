@@ -3,12 +3,45 @@
     <title>Igor Montagner</title>
     <link href="https://igordsm.github.io/feed.xml" rel="self" />
     <link href="https://igordsm.github.io" />
-    <updated>2024-09-09T19:57:44-03:00</updated>
+    <updated>2024-09-15T18:29:38-03:00</updated>
     <author>
         <name>Igor Montagner</name>
     </author>
     <id>https://igordsm.github.io</id>
 
+    <entry>
+        <title>Meu celular é bom demais</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/meu-celular-e-bom-demais/"/>
+        <id>https://igordsm.github.io/meu-celular-e-bom-demais/</id>
+            <category term="reflexões"/>
+
+        <updated>2024-09-15T18:29:38-03:00</updated>
+            <summary>
+                <![CDATA[
+                    Ele tem absolutamente tudo o que preciso, mas acaba sendo bom até demais. Noto que nos dias que estou mais cansado ou ansioso meu uso&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Ele tem absolutamente tudo o que preciso, mas acaba sendo bom até demais. Noto que nos dias que estou mais cansado ou ansioso meu uso aumenta. Por mais que eu não use Instagram, TikTok e afins, ainda fico ligado no WhatsApp e uso muio o Firefox para ler. YouTube é um problema em geral. O celular ficar apitando toda hora me irrita também, então deixo ele praticamente sempre no mudo (ou no modo vibrar). </p><p>Quando olho meu tempo de uso vejo que são, na maioria dos dias, mais de duas horas por dia. Posso contar o número de vezes que destravo a tela: pelo menos 40 vezes por dia. É coisa demais. Os principais “culpados” são <strong>Firefox</strong> e <strong>YouTube</strong>. Às vezes o tempo supera 4 horas de uso, mas em geral são quando eu assisti filmes ou séries no celular. Não considero esse tipo de uso um problema, já que em geral é um tempo de descanso bem aproveitado. </p><p>Até considerei deixar de ter um smartphone, na onda da galera do <a href="https://www.reddit.com/r/dumbphones/">r/dumbphones</a>, mas ainda não cheguei nesse ponto. Quer dizer, já pesquisei uma infinidade de aparelhos minimalistas e muitas horas navegando em fórums. Só que isso não ajudou e só alimentou o problema, eu acho. </p><p>De qualquer maneira, minha lista de usos “essenciais” é meio curta:</p><ul>
+<li><strong>todo dia</strong> ouço música usando VLC</li>
+<li><strong>todo dia</strong> uso apps com Forest para registrar tempo de foco. </li>
+<li><strong>todo dia</strong> uso WhatsApp/Beeper para falar com minha família</li>
+<li><strong>todo dia</strong> uso Habitica para tentar melhorar meus hábitos</li>
+<li><strong>duas a três vezes por semana</strong> eu uso o Gympass para fazer exercícios em academias diversas</li>
+<li><strong>uma vez por semana</strong> uso o NewPipe para baixar músicas para ouvir offline</li>
+<li><strong>uma vez por semana</strong> uso algum app de navegação enquanto dirijo</li>
+<li><strong>mais ou menos uma vez por semana</strong> tiro fotos importantes com o smartphone. </li>
+<li><strong>uma ou duas vezes por mês</strong> preciso usar Zona Azul ou apps de pagamento de estacionamento</li>
+<li><strong>uma ou duas vezes por mês</strong> uso celular para guardar QRCode de eventos</li>
+</ul>
+<p><strong>YouTube</strong> está 0 relacionado com essas atividades. O NewPipe faz esse papel, mas como é um player anônimo não tem feed de recomendações para me atrapalhar. O <strong>Firefox</strong> até ajuda em algumas pesquisas durante uma emergência, mas também não está nas coisas que mais me beneficiam. </p><p>No próximo mês vou testar as Ferramentas de <a href="https://wellbeing.google/for-everyone/">“Digital Wellbeing”</a>. Estou colocando limites bem mais estritos para esses dois apps: 30 minutos por dia para cada. Também deletei TODOS os ícones da minha tela inicial e deixei somente os dos apps acima. Também ativei a economia de energia, já que isso costuma ajudar a deixar menos apps inúteis acumulando. Se der certo conto aqui um pouco mais como isso aconteceu. </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Reflexões sobre participações em software livre</title>
         <author>
