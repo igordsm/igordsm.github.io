@@ -10,6 +10,22 @@
     },
     "items": [
         {
+            "id": "https://igordsm.github.io/seminario-o-que-e-educacao-em-computacao-resultados-e-aprendizados-da-parceria-insper-uiuc/",
+            "url": "https://igordsm.github.io/seminario-o-que-e-educacao-em-computacao-resultados-e-aprendizados-da-parceria-insper-uiuc/",
+            "title": "Seminário &quot;O que é Educação em Computação? Resultados e aprendizados da parceria Insper-UIUC&quot;",
+            "summary": "No dia 19/09 apresentei o seminário ** O que é Educação em Computação? Resultados e aprendizados da parceria Insper-UIUC** na série de Seminários Acadêmicos da&hellip;",
+            "content_html": "<p>No dia 19/09 apresentei o seminário ** O que é Educação em Computação?  Resultados e aprendizados da parceria Insper-UIUC** na série de Seminários Acadêmicos da Engenheria. Foi uma boa experiência organizar tudo o que fiz nos últimos anos e refletir um pouco sobre minha experiência. Estou deixando aqui nesta página os slides da apresentação e links para os papers que citei. </p><center>\n    <br>\n<embed src=\"https://igordsm.github.io/media/files/slides-seminario-2024.pdf\" width=\"500\" height=\"400\"></embed>\n</center>\n\n<p>Artigos citados:</p><ul>\n<li><a href=\"https://ieeexplore.ieee.org/abstract/document/9028687\">Teaching C programming in context: a joint effort between the Computer Systems, Embedded Computing and Programming Challenges courses</a></li>\n<li><a href=\"https://ieeexplore.ieee.org/abstract/document/9962662\">How much C can students learn in one week? Experiences teaching C in advanced CS courses</a></li>\n<li><a href=\"https://ieeexplore.ieee.org/abstract/document/9962744\">Learning professional software development skills by contributing to Open Source projects</a></li>\n<li><a href=\"https://dl.acm.org/doi/abs/10.1145/3626252.3630841\">Evaluating Mastery-oriented Grading in an Intensive CS1 Course</a></li>\n</ul>\n",
+            "author": {
+                "name": "Igor Montagner"
+            },
+            "tags": [
+                   "talks",
+                   "pesquisa"
+            ],
+            "date_published": "2024-09-21T09:50:41-03:00",
+            "date_modified": "2024-09-21T09:57:26-03:00"
+        },
+        {
             "id": "https://igordsm.github.io/meu-celular-e-bom-demais/",
             "url": "https://igordsm.github.io/meu-celular-e-bom-demais/",
             "title": "Meu celular é bom demais",

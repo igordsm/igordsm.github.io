@@ -3,12 +3,45 @@
     <title>Igor Montagner</title>
     <link href="https://igordsm.github.io/feed.xml" rel="self" />
     <link href="https://igordsm.github.io" />
-    <updated>2024-09-15T18:29:38-03:00</updated>
+    <updated>2024-09-21T09:57:26-03:00</updated>
     <author>
         <name>Igor Montagner</name>
     </author>
     <id>https://igordsm.github.io</id>
 
+    <entry>
+        <title>Seminário &quot;O que é Educação em Computação? Resultados e aprendizados da parceria Insper-UIUC&quot;</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/seminario-o-que-e-educacao-em-computacao-resultados-e-aprendizados-da-parceria-insper-uiuc/"/>
+        <id>https://igordsm.github.io/seminario-o-que-e-educacao-em-computacao-resultados-e-aprendizados-da-parceria-insper-uiuc/</id>
+            <category term="talks"/>
+            <category term="pesquisa"/>
+
+        <updated>2024-09-21T09:50:41-03:00</updated>
+            <summary>
+                <![CDATA[
+                    No dia 19/09 apresentei o seminário ** O que é Educação em Computação? Resultados e aprendizados da parceria Insper-UIUC** na série de Seminários Acadêmicos da&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>No dia 19/09 apresentei o seminário ** O que é Educação em Computação?  Resultados e aprendizados da parceria Insper-UIUC** na série de Seminários Acadêmicos da Engenheria. Foi uma boa experiência organizar tudo o que fiz nos últimos anos e refletir um pouco sobre minha experiência. Estou deixando aqui nesta página os slides da apresentação e links para os papers que citei. </p><center>
+    <br>
+<embed src="https://igordsm.github.io/media/files/slides-seminario-2024.pdf" width="500" height="400"></embed>
+</center>
+
+<p>Artigos citados:</p><ul>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/9028687">Teaching C programming in context: a joint effort between the Computer Systems, Embedded Computing and Programming Challenges courses</a></li>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/9962662">How much C can students learn in one week? Experiences teaching C in advanced CS courses</a></li>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/9962744">Learning professional software development skills by contributing to Open Source projects</a></li>
+<li><a href="https://dl.acm.org/doi/abs/10.1145/3626252.3630841">Evaluating Mastery-oriented Grading in an Intensive CS1 Course</a></li>
+</ul>
+
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Meu celular é bom demais</title>
         <author>
