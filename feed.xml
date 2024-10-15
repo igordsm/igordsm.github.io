@@ -3,12 +3,33 @@
     <title>Igor Montagner</title>
     <link href="https://igordsm.github.io/feed.xml" rel="self" />
     <link href="https://igordsm.github.io" />
-    <updated>2024-09-21T10:11:28-03:00</updated>
+    <updated>2024-10-05T21:24:52-03:00</updated>
     <author>
         <name>Igor Montagner</name>
     </author>
     <id>https://igordsm.github.io</id>
 
+    <entry>
+        <title>Coisas digitais demais</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/coisas-digitais-demais/"/>
+        <id>https://igordsm.github.io/coisas-digitais-demais/</id>
+            <category term="reflexões"/>
+
+        <updated>2024-10-05T21:24:52-03:00</updated>
+            <summary>
+                <![CDATA[
+                    Meu armazenamento do Google está quase cheio e preciso decidir o que fazer com tantos dados que tenho. Comecei a tentar organizar meus dados e&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Meu armazenamento do Google está quase cheio e preciso decidir o que fazer com tantos dados que tenho. Comecei a <strong>tentar</strong> organizar meus dados e notei que tenho coisas demais… Algumas das minhas coisas ainda estão no Dropbox, que eu parei de usar cotidianamente há algum tempo. Tudo do trabalho deveria ir para o OneDrive corporativo. Tenho dados pessoais no <a href="https://www.pcloud.com/">pCloud</a> e também sincronizo algumas pastas usando <a href="https://syncthing.net/">Syncthing</a>. Acho isso muito bagunçado e está ficando cansativo.</p><p>Percebi isso quando pensei em adotar o <a href="https://www.zotero.org">Zotero</a> para organizar minhas leituras de papers e notei que teria que sincronizar com mais um serviço… Já está coisa demais para organizar! Isso sem os 4Gb emails arquivados no GMail que eu nunca mais vou usar nem meu backup do Whatsapp que ocupa quase 1Gb de… nada?</p><p>Acho isso cansativo. A ideia inicial do GMail e vários serviços do Google era boa: não precisa mais arquivar pois temos um baita sistema de busca e damos um monte de espaço grátis. Porém hoje percebo que isso não é tão legal assim…. Tem uma tonelada de dados produzidos que estão desorganizados e que desse jeito ficam sendo inúteis. E agora depois de anos guardando tudo dessa maneira criar algum sentido a partir disso é um trabalho enorme! </p><p>Não sei o que fazer com isso, mas percebi hoje e achei cansativo. No fim acaba sendo mais uma coisa para gerenciar na vida em um momento em que já tenho coisas demais para gerenciar. E nesse caso o ganho que tenho ao fazer isso não é claro. Não fazer incomoda, mas será que fazer só </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Seminário &quot;O que é Educação em Computação? Resultados e aprendizados da parceria Insper-UIUC&quot;</title>
         <author>
