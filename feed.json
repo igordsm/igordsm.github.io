@@ -10,6 +10,21 @@
     },
     "items": [
         {
+            "id": "https://igordsm.github.io/apresentacoes-terceirizadas-em-eventos-cientificos/",
+            "url": "https://igordsm.github.io/apresentacoes-terceirizadas-em-eventos-cientificos/",
+            "title": "Apresentações terceirizadas em eventos científicos",
+            "summary": "Em alguns congressos acadêmicos que participei diversos papers foram apresentados por pessoas que não eram as autoras originais. E foram todas apresentações ruins pois o&hellip;",
+            "content_html": "<p>Em alguns congressos acadêmicos que participei diversos papers foram apresentados por pessoas que não eram as autoras originais.  E foram todas apresentações ruins pois o  apresentador improvisado não tinha nem conhecimento do assunto nem um bom script para seguir. Um número grande dessas apresentacões foi feita por brasileiros e isso me chamou a atenção. Parecia ter um certo senso de “não poder perder a publicação” e era válido, por isso, pedir para alguém apresentar. </p><p>Na minha visão, congressos são importantes pela criação de comunidade, não só por contar publicações para CAPES ou MEC. Se o evento é internacional então essas burocracias brasileiras nem importam para os participantes em geral. O que importa é encontrar gente que faz um bons trabalhos na área para que, por meio da interação entre as pessoas, todos possam crescer junto. Ter um paper aceito em um evento é uma troca que beneficia a todos: os autores recebem visibilidade na comunidade, a platéia conhece de maneira resumida um monte de trabalhos e pode escolher quais vai olhar com calma depois, e ainda por cima podemos todos sentar juntos para trabalhar e avançar a área <strong>como uma comunidade</strong>. Todo evento que vou tenho várias ideias interessantes, volto super motivado e com planos para melhorar meu trabalho. Várias coisas eu só sei por ter participados ativamente dos eventos.</p><p>Meu maior problema com apresentações “terceirizadas” é que não é só o autor que perde.  Os participantes do evento deixam também de ter os benefícios que citei acima.  De fato, o autor do paper original até que se sai bem. Vai ter o paper publicado e não “gastou” tempo e dinheiro viajando. </p><p>Um ponto chocante extra é que alguns enviam trabalhos para eventos  internacionais e não sabem falar inglês. Não é só um sotaque carregado, falta de vocabulário ou mesmo uma fala pausada cheia de “hmm, hmm”. É um nível que inviabiliza comunicação e acaba criando um evento meio paralelo em que só se fala português. Isso não é uma exclusividade brasileira: quando eu estava no doutorado existia o evento paralelo em mandarim no ICIP e ICPR. </p><p>Enfim, não apresentar o próprio trabalho em congressos é uma ideia ruim que faz todo mundo sair perdendo. É isso. </p>",
+            "author": {
+                "name": "Igor Montagner"
+            },
+            "tags": [
+                   "pesquisa"
+            ],
+            "date_published": "2024-10-30T21:44:48-03:00",
+            "date_modified": "2024-10-30T21:44:48-03:00"
+        },
+        {
             "id": "https://igordsm.github.io/livro-the-internet-con-how-to-seize-the-means-of-computation/",
             "url": "https://igordsm.github.io/livro-the-internet-con-how-to-seize-the-means-of-computation/",
             "title": "Livro &quot;The Internet Con: how to seize the means of computation&quot;",
@@ -144,21 +159,6 @@
             ],
             "date_published": "2024-08-15T19:03:11-03:00",
             "date_modified": "2024-08-15T19:03:11-03:00"
-        },
-        {
-            "id": "https://igordsm.github.io/palestra-na-python-brasil-2020/",
-            "url": "https://igordsm.github.io/palestra-na-python-brasil-2020/",
-            "title": "Palestra na Python Brasil 2020",
-            "summary": "No meio da pandemia resolvi fazer uma palestra na Python BR, a conferência nacional de Python. Como sou professor, acabei falando um pouco sobre fazer&hellip;",
-            "content_html": "\n  <p>\n    No meio da pandemia resolvi fazer uma palestra na Python BR, a conferência nacional de Python. Como sou professor, acabei falando um pouco sobre fazer faculdade e gostei do resultado. A palestra agora está disponível online e acho que pode ainda ser interessante. Veja aí abaixo :)\n  </p>\n<div><div class=\"post__iframe\"><iframe loading=\"lazy\" width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/yCXxcNnOFNY\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>    </div>",
-            "author": {
-                "name": "Igor Montagner"
-            },
-            "tags": [
-                   "talks"
-            ],
-            "date_published": "2020-08-15T18:33:00-03:00",
-            "date_modified": "2024-08-15T18:36:21-03:00"
         }
     ]
 }
