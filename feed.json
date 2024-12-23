@@ -10,6 +10,21 @@
     },
     "items": [
         {
+            "id": "https://igordsm.github.io/por-que-e-tao-dificil-ensinar-desenvolvimento-de-projetos-na-graduacao/",
+            "url": "https://igordsm.github.io/por-que-e-tao-dificil-ensinar-desenvolvimento-de-projetos-na-graduacao/",
+            "title": "Por que é tão difícil ensinar desenvolvimento de Projetos na graduação?",
+            "summary": "Trabalho no Insper há 7 anos e todo semestre temos conversas entre os professores sobre como “fazer os alunos trabalharem melhor nos projetos”. Esse “melhor”&hellip;",
+            "content_html": "<p>Trabalho no Insper há 7 anos e todo semestre temos conversas entre os professores sobre como “fazer os alunos trabalharem melhor nos projetos”. Esse “melhor” às vezes é sobre trabalho em equipe, outras vezes sobre a qualidade dos projetos entregues, e outras ainda sobre motivação e/ou autonomia. De qualquer maneira, não é um problema resolvido no Insper nem na literatura de educação em Computação/Engenharia de Software. </p><p>Comecei a fazer, por curiosidade, um curso de gerenciamento de projetos. Daquele bem tradicional, PMBOK mesmo. Não tem nada a ver com o que ensinamos atualmente como boas práticas em desenvolvimento de software, mas ter uma segunda visão me fez perceber alguns pontos abertos em comum. </p><p><strong>Problema 1</strong>: nossos projetos são curtos demais e não são complexos o suficiente. No curso que estou fazendo recomenda-se dedicar 5% do tempo estimado do projeto para planejamento. Pessoalmente, acho pouco provável que um planejamento de menos de 1 hora seja útil. Isto significa que, nessa minha interpretação, um projeto precisa ocupar pelo menos 20 horas. Temos poucos projetos de disciplina que ocupam tanto tempo… </p><p>Se formos olhar pelo lado mais “ágil” continuamos com o mesmo problema. Na minha interpretação não faz lá tanto sentido termos somente uma ou duas sprints de uma semana. Eu sempre entendi que o benefício das sprints era sentido mesmo em um prazo de meses, não semanas. </p><p><strong>Problema 2</strong>: nossos projetos são feitos para dar certo. De novo citando o curso, gerenciamento de projetos é bom para realizar coisas que não sabemos como fazer (ainda). Projetos de faculdade são propostos com o professor já tendo uma boa ideia do que fazer e se o projeto é viável ou não. Isso significa que os alunos tem grande chances de sucesso se forem simplesmente batendo cabeça até achar a solução. Isso talvez demore um pouco mais, mas ainda assim vão ter sucesso e não encontrarão consequências negativas por não seguirem um processo. </p><p><strong>Problema 3</strong>: artefatos de design e documentação são inúteis por conta dos problemas 1 e 2. Criar esses documentos pode até ser útil como parte do processo de aprendizagem, mas raramente significam a diferença entre o projeto ter sucesso ou fracassar. Pela baixa complexidade e escopo restrito do que é pedido fica bem mais difícil ver valor em pensar antes de desenvolver. Para o tipo de problema proposto é factível só sentar e ficar programando até algo que parece certo sair. Pode não ser a maneira mais rápida, mas funciona. </p><p><strong>Problema 4</strong>: não dá tempo de sofrer as consequências de más práticas. Isso é uma consequência do problema 1, mas vale reforçar. Como nossos projetos duram semanas, os alunos conseguem fazer coisas <strong>bem</strong> erradas e ainda assim terminar com um projeto passável, às vezes até com uma nota bem boa. É “aceitável” (na visão dos alunos) passar noites em claro para resolver problemas como trabalho em equipe ruim ou péssimas escolhas tecnológicas. Afinal, depois da entrega todos podem esquecer que aquele projeto já existiu e ninguém carrega o débito técnico criado porpráticas ruins de desenvolvimento de projeto. </p><p>Na minha opinião esses 4 problemas tornam o ensino de desenvolvimento de projetos mais desafiador do que o esperado. É preciso um grau importante de intecionalidade para conseguirmos fazer com que a experiência de realizar um projeto na faculdade se torne aprendizado em como realizar projetos de maneira eficiente e sustentável. </p><p>Essas reflexões para mim são úteis justamente pois eu ǹão sei ensinar desenvolvimento de projetos. Escrevo para me lembrar disso quando for, novamente, orientar trabalhos de conclusão de curso (Capstone) ou participar dos projetos em Sprint Session. Quem sabe consigo fazer um trabalho melhor da próxima vez :) ?</p>",
+            "author": {
+                "name": "Igor Montagner"
+            },
+            "tags": [
+                   "ensino"
+            ],
+            "date_published": "2024-12-23T06:25:48-03:00",
+            "date_modified": "2024-12-23T06:25:48-03:00"
+        },
+        {
             "id": "https://igordsm.github.io/apresentacoes-terceirizadas-em-eventos-cientificos/",
             "url": "https://igordsm.github.io/apresentacoes-terceirizadas-em-eventos-cientificos/",
             "title": "Apresentações terceirizadas em eventos científicos",
@@ -144,21 +159,6 @@
             ],
             "date_published": "2024-08-17T17:14:14-03:00",
             "date_modified": "2024-08-17T17:21:44-03:00"
-        },
-        {
-            "id": "https://igordsm.github.io/palestra-na-python-brasil-2021/",
-            "url": "https://igordsm.github.io/palestra-na-python-brasil-2021/",
-            "title": "Palestra na Python Brasil 2021",
-            "summary": "Depois da última palestra acabei querendo repetir, e dessa vez falei sobre as contribuições de alunos na matéria Desenvolvimento Aberto no Insper. Foi bem gostoso&hellip;",
-            "content_html": "\n  <p>\n    Depois da <a href=\"https://igordsm.github.io/palestra-na-python-brasil-2020/\">última palestra</a> acabei querendo repetir, e dessa vez falei sobre as contribuições de alunos na matéria Desenvolvimento Aberto no Insper. Foi bem gostoso também e me diverti bastante adaptando o material da disciplina para o evento.&nbsp;\n  </p>\n<div><div class=\"post__iframe\"><iframe loading=\"lazy\" width=\"560\" height=\"315\" src=\"https://www.youtube-nocookie.com/embed/mZnOf7BH4kY\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe></div>    \n\n\n\n</div>\n\n  <p>\n    \n  </p>",
-            "author": {
-                "name": "Igor Montagner"
-            },
-            "tags": [
-                   "talks"
-            ],
-            "date_published": "2024-08-15T19:03:11-03:00",
-            "date_modified": "2024-08-15T19:03:11-03:00"
         }
     ]
 }
