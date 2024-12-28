@@ -3,12 +3,32 @@
     <title>Igor Montagner</title>
     <link href="https://igordsm.github.io/feed.xml" rel="self" />
     <link href="https://igordsm.github.io" />
-    <updated>2024-12-23T06:25:48-03:00</updated>
+    <updated>2024-12-27T21:38:38-03:00</updated>
     <author>
         <name>Igor Montagner</name>
     </author>
     <id>https://igordsm.github.io</id>
 
+    <entry>
+        <title>Jogos antigos no PSP</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/jogos-antigos-no-psp/"/>
+        <id>https://igordsm.github.io/jogos-antigos-no-psp/</id>
+
+        <updated>2024-12-27T21:36:21-03:00</updated>
+            <summary>
+                <![CDATA[
+                    Agora na viagem de fim de ano decidi levar somente meu tablet (para ler e escrever no blog) e meu PSP. Sim, eu tenho um&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Agora na viagem de fim de ano decidi levar somente meu tablet (para ler e escrever no blog) e meu PSP. Sim, eu tenho um PSP funcionando mesmo tendo sido comprado há 15 anos.</p><figure class="post__image"><img loading="lazy" src="https://igordsm.github.io/media/files/psp-pokemon-tcg.jpg" alt="PSP rodando jogos de gameboy"  data-is-external-image="true"></figure><p>Um dos usos que mais faço é para emulação. Ele tem um emulador de PS1 nativo e faz tudo das gerações anteriores muito bem (NES &amp; SNES, Megadrive &amp; MasterSystem, Gameboy color/advance, etc). Ainda consigo uma bateria de umas 5 horas com emuladores de sistemas mais antigos. Considerando que vários consolos retro da Anbernic e afins tem baterias de duração similar, vejo isso como uma marca excelente. </p><p>Ter jogado um bocado nesse fim de ano me fez refletir um bocado… Primeiro que temos portáteis sendo fabricados hoje com preço muito barato mas que são essencialmente tão bons (em termos de funcionalidade) que um aparelho de 15 anos atrás. Não que esses aparelhos novos não tenham vantagens: são abertos por natureza e permitem a instalação de novos softwares e customização do que já existe. O PSP só consegue tudo isso devido ao trabalho incansável de voluntários que decidiram quebrar as proteções anti-pirataria para poderem criar softwares para o PSP (e também para piratear jogos, não vamos ser ingênuos)…</p><p>Segundo que jogos antigos tem uma relação diferente com o jogador. Vou usar o exemplo do TCG de Pokémon do Gameboy Color e comparar com o Pokémon TCG Pocket atual para celulares. </p><p>O jogo do Gameboy não tarefas diárias, não é feito para ser jogado infinitamente nem tem micro transações. A história principal em si dura umas 10-20 horas (no máximo) e, apesar de existir uma boa dose de replay, não é um jogo feito para ser jogado “pra sempre”. O custo também é fixo: é só comprar o jogo e acabou. Até existe a dinâmica de ganhar pacotes de cartas de prêmio, mas isso não está associado a nenhum valor em dinheiro. </p><p>Em resumo, pra mim acabam sendo atualmente relações mais saudáveis com a vida. Continuo usando um aparelho em boa condição, sem compras desenfreadas, e jogo algo que não tenta dominar a minha vida. É algo que pegarei para jogar, vou me divertir umas 20 horas e acabou. E aí eu jogo outra coisa e vida que segue. </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Por que é tão difícil ensinar desenvolvimento de Projetos na graduação?</title>
         <author>
@@ -227,41 +247,6 @@
 </center>
 
 
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Cansei de geradores de sites estáticos</title>
-        <author>
-            <name>Igor Montagner</name>
-        </author>
-        <link href="https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos/"/>
-        <id>https://igordsm.github.io/cansei-de-geradores-de-sites-estaticos/</id>
-
-        <updated>2024-08-17T17:14:14-03:00</updated>
-            <summary>
-                <![CDATA[
-                    Eu já usei uma série quase incontável de programas do tipo jekyll, mkdocs e hugo. Esses SSG (static site generators)&nbsp;são os preferidos de desenvolvedores e&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                
-  <p>
-    Eu já usei uma série quase incontável de programas do tipo jekyll, mkdocs e hugo. Esses SSG (<i>static site generators)</i>&nbsp;são os preferidos de desenvolvedores e entusiastas de tecnologia em geral. E eles também são ferramentas com uma usabilidade questionável. Você usar o editor que quiser! E também o tema que gostar mais, inclusive fazer o seu próprio! E ainda tem as novidades que saem a cada versão. Isso cria uma combinação enorme de situações que tem tudo a ver com tecnologia e são divertidas muitas vezes.&nbsp;
-  </p>
-
-  <p>
-    Nada contra gostar de configurar seu próprio ambiente e ter controle total sobre a tecnologia usada. Eu gosto disso. Mas com o tempo tenho percebido que às vezes eu só quero <b>tecnologia que não me atrapalhe</b>. Parece louco escrever isso explicitamente, mas é algo que tem sido comum para mim nos últimos tempos. Meu trabalho é exigente e tenho uma série atividades que gosto de fazer. Quando eu tenho tempo para escrever meus pensamentos aqui eu quero gastar meu tempo <b>escrevendo. </b>Não instalando pela enésima vez o ambiente para rodar jekyll. Ou descobrindo se o meu tema suporta alguma funcionalidade específica, já que a documentação é escarça e cada tema implementa o que quiser.&nbsp;
-  </p>
-
-  <p>
-    Então agora estou usando o <a href="https://getpublii.com/" target="_blank">Publii</a>, um gerenciador de conteúdo que gera um site estático que pode ser colocado no github pages ou AWS S3. Acabei de publicar o meu site clicando em um botão grande "Publicar" e não dando <i>git push </i>seguido de uma séria de comandos depois. Tudo integrado, fácil e sem grande dor de cabeça. O tema eu escolhi em um site do próprio software e instalar foi bem fácil. Vou ir usando aqui e vendo o que dá. Nas próximas semanas irei portar o conteúdo do site antigo para cá e ganhar mais experiência com isso. No limite é bem fácil de voltar para um SSG, mas acho que estou bem mais confortável ficando por aqui mesmo.&nbsp;
-  </p>
-
-  <p>
-    
-  </p>
             ]]>
         </content>
     </entry>
