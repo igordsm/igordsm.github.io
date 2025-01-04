@@ -10,6 +10,21 @@
     },
     "items": [
         {
+            "id": "https://igordsm.github.io/gravando-audio-usando-o-mic-do-celular/",
+            "url": "https://igordsm.github.io/gravando-audio-usando-o-mic-do-celular/",
+            "title": "Gravando áudio usando o mic do celular",
+            "summary": "Meu celular tem um microfone melhor que tanto meu notebook quanto a minha câmera USB. Como estou explorando gravar alguns vídeos explicativos resolvi tentar usá-lo&hellip;",
+            "content_html": "<p>Meu celular tem um microfone melhor que tanto meu notebook quanto a minha câmera USB. Como estou explorando gravar alguns vídeos explicativos resolvi tentar usá-lo para gravar as narrações. </p><p>Das últimas vezes gravei com outros microfones e acabei sempre precisando editar os áudios pois o volume ficava meio estranho, parecendo meio baixo e com um ruído de fundo incômodo. Vídeos gravados no celular não ficam assim e com uma qualidade bem melhor. </p><p>O <a href=\"https://github.com/Genymobile/scrcpy/tree/master\">scrcpy</a> é um software que usa o ADB (Android Debug Bridge) para redirecionar a tela e/ou áudio do celular para o PC. Funciona incrivelmente bem, é rápido e permite também capturar os vídeos e áudios. </p><p>Para usá-lo é necessário ativar as opções de desenvolvimento e permitir debugging via USB. Com isso ativado é só rodar:</p><pre><code>scrcpy --no-video  --audio-source=mic --record=bla.opus\n</code></pre>\n<p>Assim que acabar de gravar o áudio é só fechar o programa com Ctrl+C e pronto! Áudio gravado :) Prefiro usar assim pois posso posicionar o celular como um microfone “de verdade” e o áudio já fica gravado no PC. Não precisa ficar transferindo via cabo ou colocar em algum serviço de arquivos em Nuvem. Acho essa opção super prática e recomendo :)</p>",
+            "author": {
+                "name": "Igor Montagner"
+            },
+            "tags": [
+                   "tech"
+            ],
+            "date_published": "2025-01-03T21:00:49-03:00",
+            "date_modified": "2025-01-03T21:00:49-03:00"
+        },
+        {
             "id": "https://igordsm.github.io/jogos-antigos-no-psp/",
             "url": "https://igordsm.github.io/jogos-antigos-no-psp/",
             "title": "Jogos antigos no PSP",
@@ -143,22 +158,6 @@
             ],
             "date_published": "2024-08-26T20:09:25-03:00",
             "date_modified": "2024-09-09T19:56:18-03:00"
-        },
-        {
-            "id": "https://igordsm.github.io/paper-no-sigcse-2024/",
-            "url": "https://igordsm.github.io/paper-no-sigcse-2024/",
-            "title": "Paper no SIGCSE 2024",
-            "summary": "Título: Evaluating Mastery-oriented Grading in an Intensive CS1 Course pdf / ACM Digital Library Fiz a apresentação desse paper que fiz junto com o Rafael&hellip;",
-            "content_html": "<p><strong>Título</strong>: Evaluating Mastery-oriented Grading in an Intensive CS1 Course <a href=\"https://zilles.cs.illinois.edu/papers/mastery_INSPER_SIGCSE_2024.pdf\">pdf</a> / <a href=\"https://dl.acm.org/doi/abs/10.1145/3626252.3630841\">ACM Digital Library</a></p><p>Fiz a apresentação desse paper que fiz junto com o Rafael Corsi e em parceria com Craig Zilles e Mariana Silva de Illinois. Foi o primeiro trabalho do Insper aprovado em uma conferência de educação tão boa e espero que tenhamos mais vários desse calibre :)</p><center>\n<embed src=\"https://igordsm.github.io/media/files/slides-sigcse-2024.pdf\" width=\"500\" height=\"400\"></embed>\n</center>\n\n",
-            "author": {
-                "name": "Igor Montagner"
-            },
-            "tags": [
-                   "talks",
-                   "pesquisa"
-            ],
-            "date_published": "2024-08-20T20:02:00-03:00",
-            "date_modified": "2024-08-20T20:02:00-03:00"
         }
     ]
 }

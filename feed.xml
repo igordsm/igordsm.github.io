@@ -3,12 +3,35 @@
     <title>Igor Montagner</title>
     <link href="https://igordsm.github.io/feed.xml" rel="self" />
     <link href="https://igordsm.github.io" />
-    <updated>2024-12-27T21:38:38-03:00</updated>
+    <updated>2025-01-03T21:00:49-03:00</updated>
     <author>
         <name>Igor Montagner</name>
     </author>
     <id>https://igordsm.github.io</id>
 
+    <entry>
+        <title>Gravando áudio usando o mic do celular</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/gravando-audio-usando-o-mic-do-celular/"/>
+        <id>https://igordsm.github.io/gravando-audio-usando-o-mic-do-celular/</id>
+            <category term="tech"/>
+
+        <updated>2025-01-03T21:00:49-03:00</updated>
+            <summary>
+                <![CDATA[
+                    Meu celular tem um microfone melhor que tanto meu notebook quanto a minha câmera USB. Como estou explorando gravar alguns vídeos explicativos resolvi tentar usá-lo&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <p>Meu celular tem um microfone melhor que tanto meu notebook quanto a minha câmera USB. Como estou explorando gravar alguns vídeos explicativos resolvi tentar usá-lo para gravar as narrações. </p><p>Das últimas vezes gravei com outros microfones e acabei sempre precisando editar os áudios pois o volume ficava meio estranho, parecendo meio baixo e com um ruído de fundo incômodo. Vídeos gravados no celular não ficam assim e com uma qualidade bem melhor. </p><p>O <a href="https://github.com/Genymobile/scrcpy/tree/master">scrcpy</a> é um software que usa o ADB (Android Debug Bridge) para redirecionar a tela e/ou áudio do celular para o PC. Funciona incrivelmente bem, é rápido e permite também capturar os vídeos e áudios. </p><p>Para usá-lo é necessário ativar as opções de desenvolvimento e permitir debugging via USB. Com isso ativado é só rodar:</p><pre><code>scrcpy --no-video  --audio-source=mic --record=bla.opus
+</code></pre>
+<p>Assim que acabar de gravar o áudio é só fechar o programa com Ctrl+C e pronto! Áudio gravado :) Prefiro usar assim pois posso posicionar o celular como um microfone “de verdade” e o áudio já fica gravado no PC. Não precisa ficar transferindo via cabo ou colocar em algum serviço de arquivos em Nuvem. Acho essa opção super prática e recomendo :)</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Jogos antigos no PSP</title>
         <author>
@@ -221,32 +244,6 @@
   <p>
     O que significa um blog "dar certo"? E este blog, o que significa ele estar "cumprindo seu objetivo"? Precisa de um? Estive pensando nisso nos ultimos dias e não tenho uma resposta, pra ser sincero.<br><br>Algumas pessoas usam blogs para contruir reputação. Quer dizer, usavam. Agora as pessoas postam no LinkedIn, em grande parte. E muitos são aqueles textos super formuláicos de gente tentando se vender como especialista. Acho chato e muito pouco autêntico. Teríamos um mundo MUITO melhor se todo mundo que posta coisas do tipo "5 lições de vida que aprendi assistindo Harry Potter" realmente aplicasse as 5 lições de vida (super genéricas) sobre as quais escreve. Eu gostaria muito de não ser essas pessoas. Não é que querer construir uma reputação seja ruim, mas se a maneira atual de fazer isso (com textos na internet) é com esse tipo de texto eu prefiro não focar em construir uma reputação.<br><br>De uma maneira mais básica, me parece que existirem pessoas que leem o blog seria uma boa medida. Por outro lado, não publico nada que seja realmente essencial em termos de conteudo. A maioria são textos de opinião em assuntos **bem específicos**. Por aqui não tem material de ensino nem coisas relacionadas à pesquisa. O blog é de teor inteiramente pessoal. Essencialmente, se eu deixar de escrever o blog nada de ruim acontece. É bem provável, inclusive, que ninguém note. <br><br>Aliás, eu me importo se ninguém lê os textos? É claro que eu gostaria de ter muitos visitantes todo mês, mas o ponto é outro. Senão tiver ninguém, isso vai me fazer mal? Hoje eu diria que não... Escrever aqui é uma forma de sair um pouco da rotina e de organizar coisas que faço e penso no meu cotidiano fora do trabalho. Como sou um pouco obsessivo, não falar e pensar em trabalho é difícil e o blog ajuda a reservar um tempinho para isso. Mais ainda: até agora eu não selecionei nenhuma ideia de texto pensando em quem poderia ler isso. <br><br>Talvez seja esse o ponto de um blog pessoal, no fim das contas. Escrever aqui me faz bem e isso basta. Mais do que isso deixaria de ser algo simples e passa a envolver querer otimizar e melhorar continuamente. Já faço isso em muitos outros momentos da vida. Não ter que fazer isso aqui é um alívio :)<br><br>
   </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Paper no SIGCSE 2024</title>
-        <author>
-            <name>Igor Montagner</name>
-        </author>
-        <link href="https://igordsm.github.io/paper-no-sigcse-2024/"/>
-        <id>https://igordsm.github.io/paper-no-sigcse-2024/</id>
-            <category term="talks"/>
-            <category term="pesquisa"/>
-
-        <updated>2024-08-20T20:02:00-03:00</updated>
-            <summary>
-                <![CDATA[
-                    Título: Evaluating Mastery-oriented Grading in an Intensive CS1 Course pdf / ACM Digital Library Fiz a apresentação desse paper que fiz junto com o Rafael&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                <p><strong>Título</strong>: Evaluating Mastery-oriented Grading in an Intensive CS1 Course <a href="https://zilles.cs.illinois.edu/papers/mastery_INSPER_SIGCSE_2024.pdf">pdf</a> / <a href="https://dl.acm.org/doi/abs/10.1145/3626252.3630841">ACM Digital Library</a></p><p>Fiz a apresentação desse paper que fiz junto com o Rafael Corsi e em parceria com Craig Zilles e Mariana Silva de Illinois. Foi o primeiro trabalho do Insper aprovado em uma conferência de educação tão boa e espero que tenhamos mais vários desse calibre :)</p><center>
-<embed src="https://igordsm.github.io/media/files/slides-sigcse-2024.pdf" width="500" height="400"></embed>
-</center>
-
-
             ]]>
         </content>
     </entry>
