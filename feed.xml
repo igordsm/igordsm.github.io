@@ -3,12 +3,43 @@
     <title>Igor Montagner</title>
     <link href="https://igordsm.github.io/feed.xml" rel="self" />
     <link href="https://igordsm.github.io" />
-    <updated>2025-01-03T21:00:49-03:00</updated>
+    <updated>2026-03-07T16:25:16-03:00</updated>
     <author>
         <name>Igor Montagner</name>
     </author>
     <id>https://igordsm.github.io</id>
 
+    <entry>
+        <title>Ensino de algoritmos: simulação</title>
+        <author>
+            <name>Igor Montagner</name>
+        </author>
+        <link href="https://igordsm.github.io/ensino-de-algoritmos-simulacao/"/>
+        <id>https://igordsm.github.io/ensino-de-algoritmos-simulacao/</id>
+            <category term="reflexões"/>
+            <category term="ensino"/>
+
+        <updated>2026-03-07T16:06:07-03:00</updated>
+            <summary>
+                <![CDATA[
+                    Eu não consegui simular este código pois não entendi o que ele faz Nos últimos tempos tenho ensinado diversos alunos que tem dificuldade em ler&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                <blockquote>
+<p>Eu não consegui simular este código pois não entendi o que ele faz</p></blockquote>
+<p>Nos últimos tempos tenho ensinado diversos alunos que tem dificuldade em ler (pseudo) código e simular sua execução passo a passo. Como trabalho no 3^o semestre, acho um pouco surpreendente que tenham conseguido passar por todo o primeiro ano tendo essa dificuldade. Uma aluna relatou a dificuldade acima logo após uma avaliação diagnóstica no início do semestre.</p><p>Relendo aqui alguns trabalhos sobre ensino de programação, acho que encontrei uma interpretação interessante. Segundo vários estudos (por exemplo, [1,2]), as habilidades de programação podem ser categorizadas em 4 categorias:</p><ol>
+<li><strong>Leitura e compreensão</strong>: explicar o que um código faz usando linguagem natural (português ou inglês, por exemplo). </li>
+<li><strong>Simulação</strong>: executar um programa mentalmente passo a passo, podendo listar os valores de cada variável em qualquer momento dessa execução</li>
+<li><strong>Sequenciamento</strong>: organizar ideias, expressões e blocos de código na sequência correta para resolver um problema</li>
+<li><strong>Escrita de código</strong>: digitar um programa que resolve o problema proposto.</li>
+</ol>
+<p>Essas habilidades não são “sequênciais”, em que primeiro precisa aprender a ler código para depois escrever, por exemplo. Elas são interligadas e uma pessoa pode ter diferentes níveis de habilidade em cada uma. </p><p>Para uma pessoa com poucas habilidade de <strong>simulação</strong>, saber o que um algoritmo faz ajuda a adivinhar o estado do programa em cada iteração de um loop, por exemplo. Note que usei a palavra <strong>adivinhar</strong>, e isso foi de propósito. Aqui não necessariamente existe um <em>modelo mental</em>[3] de como o computador executa um programa, estou me referindo a uma <em>suposição</em> mesmo. O pensamento é mais na linha de <em>“faz sentido que isso ocorra assim em um algoritmo de busca binária”</em> do que <em>“executei mentalmente o programa todo, linha a linha, e observei isso acontecer”</em>.</p><p>Enfim, isso me motivou a montar mais materiais de simulação e tentar trazer mais conhecimento sobre porque considero essa habilidade essencial. </p><h3 id="bibliografia">Bibliografia</h3>
+<p>[1] Lopez, M., Whalley, J., Robbins, P., &amp; Lister, R. (2008, September). Relationships between reading, tracing and writing skills in introductory programming. In Proceedings of the fourth international workshop on computing education research (pp. 101-112).</p><p>[2] Fowler, M., Smith IV, D. H., Hassan, M., Poulsen, S., West, M., &amp; Zilles, C. (2022). Reevaluating the relationship between explaining, tracing, and writing skills in CS1 in a replication study. Computer Science Education, 32(3), 355-383.</p><p>[3] Juha, S. (2013). Notional machines and introductory programming education. ACM Trans. Comput. Educ, 13(2), 1-31.</p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Gravando áudio usando o mic do celular</title>
         <author>
@@ -48,7 +79,7 @@
             </summary>
         <content type="html">
             <![CDATA[
-                <p>Agora na viagem de fim de ano decidi levar somente meu tablet (para ler e escrever no blog) e meu PSP. Sim, eu tenho um PSP funcionando mesmo tendo sido comprado há 15 anos.</p><figure class="post__image"><img loading="lazy" src="https://igordsm.github.io/media/files/psp-pokemon-tcg.jpg" alt="PSP rodando jogos de gameboy"  data-is-external-image="true"></figure><p>Um dos usos que mais faço é para emulação. Ele tem um emulador de PS1 nativo e faz tudo das gerações anteriores muito bem (NES &amp; SNES, Megadrive &amp; MasterSystem, Gameboy color/advance, etc). Ainda consigo uma bateria de umas 5 horas com emuladores de sistemas mais antigos. Considerando que vários consolos retro da Anbernic e afins tem baterias de duração similar, vejo isso como uma marca excelente. </p><p>Ter jogado um bocado nesse fim de ano me fez refletir um bocado… Primeiro que temos portáteis sendo fabricados hoje com preço muito barato mas que são essencialmente tão bons (em termos de funcionalidade) que um aparelho de 15 anos atrás. Não que esses aparelhos novos não tenham vantagens: são abertos por natureza e permitem a instalação de novos softwares e customização do que já existe. O PSP só consegue tudo isso devido ao trabalho incansável de voluntários que decidiram quebrar as proteções anti-pirataria para poderem criar softwares para o PSP (e também para piratear jogos, não vamos ser ingênuos)…</p><p>Segundo que jogos antigos tem uma relação diferente com o jogador. Vou usar o exemplo do TCG de Pokémon do Gameboy Color e comparar com o Pokémon TCG Pocket atual para celulares. </p><p>O jogo do Gameboy não tarefas diárias, não é feito para ser jogado infinitamente nem tem micro transações. A história principal em si dura umas 10-20 horas (no máximo) e, apesar de existir uma boa dose de replay, não é um jogo feito para ser jogado “pra sempre”. O custo também é fixo: é só comprar o jogo e acabou. Até existe a dinâmica de ganhar pacotes de cartas de prêmio, mas isso não está associado a nenhum valor em dinheiro. </p><p>Em resumo, pra mim acabam sendo atualmente relações mais saudáveis com a vida. Continuo usando um aparelho em boa condição, sem compras desenfreadas, e jogo algo que não tenta dominar a minha vida. É algo que pegarei para jogar, vou me divertir umas 20 horas e acabou. E aí eu jogo outra coisa e vida que segue. </p>
+                <p>Agora na viagem de fim de ano decidi levar somente meu tablet (para ler e escrever no blog) e meu PSP. Sim, eu tenho um PSP funcionando mesmo tendo sido comprado há 15 anos.</p><figure class="post__image"><img loading="lazy" src="https://igordsm.github.io/media/files/psp-pokemon-tcg.jpg" alt="PSP rodando jogos de gameboy"  data-is-external-image="true"></figure><p>Um dos usos que mais faço é para emulação. Ele tem um emulador de PS1 nativo e faz tudo das gerações anteriores muito bem (NES &amp; SNES, Megadrive &amp; MasterSystem, Gameboy color/advance, etc). Ainda consigo uma bateria de umas 5 horas com emuladores de sistemas mais antigos. Considerando que vários consolos retro da Anbernic e afins tem baterias de duração similar, vejo isso como uma marca excelente. </p><p>Ter jogado um bocado nesse fim de ano me fez refletir um bocado… Primeiro que temos portáteis sendo fabricados hoje com preço muito barato mas que são essencialmente tão bons (em termos de funcionalidade) quanto um aparelho de 15 anos atrás. Não que esses aparelhos novos não tenham vantagens: são abertos por natureza e permitem a instalação de novos softwares e customização do que já existe. O PSP só consegue tudo isso devido ao trabalho incansável de voluntários que decidiram quebrar as proteções anti-pirataria para poderem criar softwares para o PSP (e também para piratear jogos, não vamos ser ingênuos)…</p><p>Segundo que jogos antigos tem uma relação diferente com o jogador. Vou usar o exemplo do TCG de Pokémon do Gameboy Color e comparar com o Pokémon TCG Pocket atual para celulares. </p><p>O jogo do Gameboy não tem tarefas diárias, não é feito para ser jogado infinitamente nem tem micro transações. A história principal em si dura umas 10-20 horas (no máximo) e, apesar de existir uma boa dose de replay, não é um jogo feito para ser jogado “pra sempre”. O custo também é fixo: é só comprar o jogo e acabou. Até existe a dinâmica de ganhar pacotes de cartas de prêmio, mas isso não está associado a nenhum valor em dinheiro. </p><p>Em resumo, pra mim acabam sendo atualmente relações mais saudáveis com a vida. Continuo usando um aparelho em boa condição, sem compras desenfreadas, e jogo algo que não tenta dominar a minha vida. É algo que pegarei para jogar, vou me divertir umas 20 horas e acabou. E aí eu jogo outra coisa e vida que segue. </p>
             ]]>
         </content>
     </entry>
@@ -220,30 +251,6 @@
         <content type="html">
             <![CDATA[
                 <p>Durante a pandemia eu tive muitas contribuições aceitas para o <a href="https://elementary.io">ElementaryOS</a> e isso foi uma das coisas que me motivou tanto a criar a eletiva de <a href="https://insper.github.io/open-dev">Desenvolvimento Aberto</a> quanto a fazer uma  <a href="https://igordsm.github.io/palestra-na-python-brasil-2021/">palestra na Python Brasil</a> e <a href="https://ieeexplore.ieee.org/abstract/document/9962744/">publicar um artigo científico sobre o design da disciplina</a>. </p><p>Após um período afastado de software livre e bem cansativo no trabalho resolvi tentar voltar a fazer pequenas contribuições a projetos que gosto. E como eu realmente gosto de linguagens de programação, no fim foquei em coisas em <a href="https://nim-lang.org/">Nim</a> e <a href="https://gleam.run">Gleam</a>. Ambas tem comunidades pequenas e tem particularidades que as tornam únicas em comparação com linguagens mais “famosas”. </p><p>Quando testei <em>Nim</em> inicialmente gostei bastante por ser uma linguagem mais baixo nível, que compila para C e C++ mas também funciona em JS. Fazendo alguns experimentos topei na lib <a href="https://github.com/khchen/xl">XL</a>, que é usada para ler arquivos Excel (<em>.xlsx</em>) e parecia funcionar bem… Tirando um bug bizarro que errava as datas em 1 ou 2 dias. Resolvi estudar formatos de datas e <a href="https://github.com/khchen/xl/pull/6">fazer um PR</a>. E tive basicamente nenhuma resposta… até que depois de 6 meses o PR foi aceito sem nenhuma comentário ou discussão. </p><p>Minha experiência com <em>Gleam</em> já foi um pouco diferente. Comecei testando um wrapper de <a href="https://p5js.org/">p5.js</a> que permitiria criar pequenos programas visuais e interativos no browser. O projeto <a href="https://github.com/Acepie/p5js_gleam/tree/main">acepie/p5js_gleam</a> também é desenvolvido por somente uma pessoa, o que já me preocupou de novo. Como faltavam umas funções e constantes revolvi <a href="https://github.com/Acepie/p5js_gleam/issues/4">abrir uma issue</a> e ver o que aconteceria. Em poucos dias <em>acepie</em> respondeu e já tinha adicionado as funções que faltavam. Fiquei contente pela responsividade e também pela sorte de ter alguém olhando o projeto. </p><p>As interações terem sido tão diferentes pode ter sido só acaso, mas para mim foi algo significativo. Em comunidades pequenas é comum que alguns projetos sejam meio “abandonados”, já que muito é mantido por somente uma pessoa e manter projetos é bem cansativo. Hoje eu tenho muito mais ânimo de usar <em>gleam</em> e tentar contribuir com a comunidade. Quando sair algum PR em <em>Gleam</em> eu conto aqui como foi. Enquanto isso o que me resta é me divertir com linguagens funcionais e tecnologias meio estranhas :)</p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Esse blog está &quot;dando certo&quot;?</title>
-        <author>
-            <name>Igor Montagner</name>
-        </author>
-        <link href="https://igordsm.github.io/esse-blog-esta-dando-certo/"/>
-        <id>https://igordsm.github.io/esse-blog-esta-dando-certo/</id>
-            <category term="reflexões"/>
-
-        <updated>2024-08-26T20:09:25-03:00</updated>
-            <summary>
-                <![CDATA[
-                    O que significa um blog "dar certo"? E este blog, o que significa ele estar "cumprindo seu objetivo"? Precisa de um? Estive pensando nisso nos&hellip;
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                
-  <p>
-    O que significa um blog "dar certo"? E este blog, o que significa ele estar "cumprindo seu objetivo"? Precisa de um? Estive pensando nisso nos ultimos dias e não tenho uma resposta, pra ser sincero.<br><br>Algumas pessoas usam blogs para contruir reputação. Quer dizer, usavam. Agora as pessoas postam no LinkedIn, em grande parte. E muitos são aqueles textos super formuláicos de gente tentando se vender como especialista. Acho chato e muito pouco autêntico. Teríamos um mundo MUITO melhor se todo mundo que posta coisas do tipo "5 lições de vida que aprendi assistindo Harry Potter" realmente aplicasse as 5 lições de vida (super genéricas) sobre as quais escreve. Eu gostaria muito de não ser essas pessoas. Não é que querer construir uma reputação seja ruim, mas se a maneira atual de fazer isso (com textos na internet) é com esse tipo de texto eu prefiro não focar em construir uma reputação.<br><br>De uma maneira mais básica, me parece que existirem pessoas que leem o blog seria uma boa medida. Por outro lado, não publico nada que seja realmente essencial em termos de conteudo. A maioria são textos de opinião em assuntos **bem específicos**. Por aqui não tem material de ensino nem coisas relacionadas à pesquisa. O blog é de teor inteiramente pessoal. Essencialmente, se eu deixar de escrever o blog nada de ruim acontece. É bem provável, inclusive, que ninguém note. <br><br>Aliás, eu me importo se ninguém lê os textos? É claro que eu gostaria de ter muitos visitantes todo mês, mas o ponto é outro. Senão tiver ninguém, isso vai me fazer mal? Hoje eu diria que não... Escrever aqui é uma forma de sair um pouco da rotina e de organizar coisas que faço e penso no meu cotidiano fora do trabalho. Como sou um pouco obsessivo, não falar e pensar em trabalho é difícil e o blog ajuda a reservar um tempinho para isso. Mais ainda: até agora eu não selecionei nenhuma ideia de texto pensando em quem poderia ler isso. <br><br>Talvez seja esse o ponto de um blog pessoal, no fim das contas. Escrever aqui me faz bem e isso basta. Mais do que isso deixaria de ser algo simples e passa a envolver querer otimizar e melhorar continuamente. Já faço isso em muitos outros momentos da vida. Não ter que fazer isso aqui é um alívio :)<br><br>
-  </p>
             ]]>
         </content>
     </entry>
